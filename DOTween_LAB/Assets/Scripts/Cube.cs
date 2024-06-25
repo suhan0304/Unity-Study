@@ -5,13 +5,14 @@ using DG.Tweening;
 
 public class Cube : MonoBehaviour
 {
-    private Vector3 targetPos = new Vector3(0, 5, 0);
-    private Vector3 targetScale = new Vector3(2, 2, 2);
     void Start()
     {
-        transform
-            .DOScale(1.5f, 2f)      // DO 대상의 변화를 직접 지시
-            .SetEase(Ease.InCirc)   // Set 추가 설정
-            .OnComplete(() => transform.DOMove(targetPos, 2.0f)); // On 람다를 이용한 콜백 함수
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(transform.DOMove(new Vector3(0f, 5f, 0f), 2f));
+        seq.Join(transform.DORotate(new Vector3(0f, -180f, 0f), 2f));
+        seq.Append(transform.DORotate(new Vector3(0f, 360f, 0f), 2f));
+        seq.Insert(4.0f, transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 1.0f));
+        seq.Prepend(transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 2.0f));
     }
 }
