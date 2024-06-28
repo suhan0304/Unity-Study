@@ -14,3 +14,9 @@
     align-items: stretch;
     -unity-font-style: bold;
 }
+
+.button-blue:hover {
+}
+
+.button-blue:active {
+}
