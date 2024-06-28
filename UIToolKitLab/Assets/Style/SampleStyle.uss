@@ -2,7 +2,7 @@
     height: 100px;
     font-size: 45px;
     color: rgb(255, 255, 255);
-    background-color: rgb(81, 81, 255);
+    background-color: rgb(58, 58, 250);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
