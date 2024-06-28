@@ -1,0 +1,16 @@
+.button-blue {
+    height: 100px;
+    font-size: 45px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(81, 81, 255);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    align-items: stretch;
+    -unity-font-style: bold;
+}
