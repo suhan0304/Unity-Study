@@ -13,10 +13,14 @@
     border-left-width: 0;
     align-items: stretch;
     -unity-font-style: bold;
+    transition-timing-function: ease-out;
+    transition-duration: 0.1s;
 }
 
 .button-blue:hover {
+    scale: 1.05 1.05;
 }
 
 .button-blue:active {
+    background-color: rgb(117, 117, 255);
 }
