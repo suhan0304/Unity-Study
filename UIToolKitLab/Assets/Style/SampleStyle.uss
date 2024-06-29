@@ -24,3 +24,41 @@
 .button-blue:active {
     background-color: rgb(117, 117, 255);
 }
+
+.text--title {
+    font-size: 80px;
+    align-items: stretch;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 40px;
+    padding-right: 0;
+    padding-bottom: 40px;
+    padding-left: 0;
+    width: 100%;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-text-align: upper-center;
+    -unity-font-style: bold;
+}
+
+.text--paragraph {
+    font-size: 36px;
+    white-space: normal;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 20px;
+    padding-right: 80px;
+    padding-bottom: 20px;
+    padding-left: 80px;
+}

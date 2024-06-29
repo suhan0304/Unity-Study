@@ -7,8 +7,8 @@
         </ui:VisualElement>
         <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 100%; height: 50%; -unity-background-image-tint-color: rgba(255, 255, 255, 0); background-color: rgb(255, 255, 255); align-items: flex-start; align-self: auto; justify-content: space-between; padding-top: 40px; padding-bottom: 40px;">
             <ui:VisualElement style="flex-grow: 1; align-items: center; width: 100%;">
-                <ui:Label tabindex="-1" text="Quamquam" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="font-size: 80px; align-items: stretch; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 40px; padding-right: 0; padding-bottom: 40px; padding-left: 0; width: 100%; -unity-background-scale-mode: stretch-to-fill; -unity-text-align: upper-center; -unity-font-style: bold;" />
-                <ui:Label tabindex="-1" text="Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Sed in rebus apertissimis nimium longi sumus. Sed quanta sit alias, nunc tantum possitne esse tanta. Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Quod idem cum vestri faciant, non satis magnam tribuunt inventoribus gratiam." parse-escape-sequences="true" display-tooltip-when-elided="true" name="Paragraph" style="font-size: 36px; white-space: normal; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 20px; padding-right: 80px; padding-bottom: 20px; padding-left: 80px;" />
+                <ui:Label tabindex="-1" text="Quamquam" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="text--title" />
+                <ui:Label tabindex="-1" text="Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Sed in rebus apertissimis nimium longi sumus. Sed quanta sit alias, nunc tantum possitne esse tanta. Vos autem cum perspicuis dubia debeatis illustrare, dubiis perspicua conamini tollere. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Quod idem cum vestri faciant, non satis magnam tribuunt inventoribus gratiam." parse-escape-sequences="true" display-tooltip-when-elided="true" name="Paragraph" class="text--paragraph" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; align-items: stretch; justify-content: center; width: 100%; height: 240px; padding-left: 60px; padding-right: 60px;">
                 <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" class="button-blue" />
@@ -16,11 +16,10 @@
         </ui:VisualElement>
         <ui:VisualElement name="Container_Bottom" style="flex-grow: 0; width: 100%; height: 100%; position: absolute;">
             <ui:VisualElement name="Scrim" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.84);" />
-            <ui:VisualElement name="BottomSheet" style="flex-grow: 0; position: absolute; width: 100%; height: 50%; bottom: 0; background-color: rgb(255, 255, 255); border-top-left-radius: 40px; border-top-right-radius: 40px;">
-                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
-                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            <ui:VisualElement name="BottomSheet" style="flex-grow: 0; position: absolute; width: 100%; height: 50%; bottom: 0; background-color: rgb(255, 255, 255); border-top-left-radius: 40px; border-top-right-radius: 40px; align-items: center; padding-top: 50px;">
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="padding-top: 50px;" />
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--paragraph" style="padding-top: 100px; padding-bottom: 100px;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
