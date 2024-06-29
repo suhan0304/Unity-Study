@@ -83,7 +83,9 @@
 }
 
 .bottomsheet--up {
-    translate: 0 0;
+    translate: 0 0%;
+    transition-duration: 1s;
+    transition-timing-function: ease-out-bounce;
 }
 
 .Scrim {
@@ -91,7 +93,7 @@
     background-color: rgba(0, 0, 0, 0.84);
     position: relative;
     opacity: 0;
-    transition-duration: .25s;
+    transition-duration: 0.25s;
 }
 
 .Scrim--fadein {

@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
         // Open Bottom-Sheet
         _bottomContainer.style.display = DisplayStyle.Flex;
 
-        _bottomSheet.AddToClassList("buttomsheet--up");
+        _bottomSheet.AddToClassList("bottomsheet--up");
         _scrim.AddToClassList("Scrim--fadein");
     }
 
@@ -49,7 +49,7 @@ public class UIController : MonoBehaviour
         // Close Bottom-Sheet
         _bottomContainer.style.display = DisplayStyle.None;
 
-        _bottomSheet.RemoveFromClassList("buttomsheet--up");
+        _bottomSheet.RemoveFromClassList("bottomsheet--up");
         _scrim.RemoveFromClassList("Scrim--fadein");
     }
 }
