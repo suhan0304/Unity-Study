@@ -91,7 +91,7 @@
     background-color: rgba(0, 0, 0, 0.84);
     position: relative;
     opacity: 0;
-    transition-duration: 1s;
+    transition-duration: .25s;
 }
 
 .Scrim--fadein {
