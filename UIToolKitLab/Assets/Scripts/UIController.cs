@@ -91,6 +91,4 @@ public class UIController : MonoBehaviour
         string m = "\"Sed in rebus apertissimis nimium longi sumus.\"";
         DOTween.To(() => _message.text, x => _message.text = x, m, 3f).SetEase(Ease.Linear);
     }
-
 }
-
