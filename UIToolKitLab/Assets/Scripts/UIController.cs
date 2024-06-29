@@ -64,12 +64,18 @@ public class UIController : MonoBehaviour
         _scrim.AddToClassList("Scrim--fadein");
 
         AnimateGirl();
+
+        // End Transition Animation
+        _bottomSheet.RegisterCallback<TransitionEndEvent>(
+            evt => {
+                if (!_bottomSheet.ClassListContains("bottomsheet--up"))
+                    _bottomContainer.style.display = DisplayStyle.None;
+            }
+        );
     }
 
     private void OnCloseButtonClicked(ClickEvent evt) {
         // Close Bottom-Sheet
-        _bottomContainer.style.display = DisplayStyle.None;
-
         _bottomSheet.RemoveFromClassList("bottomsheet--up");
         _scrim.RemoveFromClassList("Scrim--fadein");
     }
