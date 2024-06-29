@@ -14,5 +14,6 @@
                 <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" class="button-blue" />
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 100%;" />
     </ui:VisualElement>
 </ui:UXML>
