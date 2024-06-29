@@ -19,7 +19,7 @@
             <ui:VisualElement name="BottomSheet" class="bottomsheet">
                 <ui:Label tabindex="-1" text="Omnes" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="padding-top: 50px;" />
                 <ui:VisualElement name="Image_Girl" class="image--girl image--girl--up" />
-                <ui:Label tabindex="-1" text="Sed in rebus apertissimis nimium logi sumus." parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--paragraph" style="padding-top: 100px; padding-bottom: 100px;" />
+                <ui:Label tabindex="-1" text="Sed in rebus apertissimis nimium logi sumus." parse-escape-sequences="true" display-tooltip-when-elided="true" name="Message" class="text--paragraph" style="padding-top: 100px; padding-bottom: 100px;" />
                 <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button_Close" style="position: absolute; right: 50px; width: 34px; height: 34px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); background-color: rgb(255, 255, 255); background-image: url(&quot;project://database/Assets/Texture/xmark.png?fileID=2800000&amp;guid=cc879d35f0a43654da523b2145855fe4&amp;type=3#xmark&quot;); -unity-background-image-tint-color: rgb(214, 214, 214);" />
             </ui:VisualElement>
         </ui:VisualElement>
