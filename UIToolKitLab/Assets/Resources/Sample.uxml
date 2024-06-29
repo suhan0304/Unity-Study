@@ -17,8 +17,10 @@
         <ui:VisualElement name="Container_Bottom" style="flex-grow: 0; width: 100%; height: 100%; position: absolute;">
             <ui:VisualElement name="Scrim" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.84);" />
             <ui:VisualElement name="BottomSheet" style="flex-grow: 0; position: absolute; width: 100%; height: 50%; bottom: 0; background-color: rgb(255, 255, 255); border-top-left-radius: 40px; border-top-right-radius: 40px; align-items: center; padding-top: 50px;">
-                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="padding-top: 50px;" />
-                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--paragraph" style="padding-top: 100px; padding-bottom: 100px;" />
+                <ui:Label tabindex="-1" text="Omnes" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="padding-top: 50px;" />
+                <ui:VisualElement style="flex-grow: 1; background-image: resource(&apos;TV&apos;); width: 400px; height: 500px;" />
+                <ui:Label tabindex="-1" text="Sed in rebus apertissimis nimium logi sumus." parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--paragraph" style="padding-top: 100px; padding-bottom: 100px;" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" style="position: absolute; right: 50px; width: 34px; height: 34px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); background-color: rgb(255, 255, 255);" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
