@@ -20,5 +20,24 @@ public class UIController : MonoBehaviour
         _bottomContainer = root.Q<VisualElement>("Container_Bottom");
         _openButton = root.Q<Button>("Button_Open");
         _closeButton = root.Q<Button>("Button_Close");
+
+        // Hide bottom-sheet
+        _bottomContainer.style.display = DisplayStyle.None;
+
+        // Button Callback
+        _openButton.RegisterCallback<ClickEvent>(OnOpenButtonClicked);
+        _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
+
+    }
+
+    private void OnOpenButtonClicked(ClickEvent evt) {
+        // Open Bottom-Sheet
+        _bottomContainer.style.display = DisplayStyle.Flex;
+    }
+
+    private void OnCloseButtonClicked(ClickEvent evt) {
+        // Close Bottom-Sheet
+        _bottomContainer.style.display = DisplayStyle.None;
     }
 }
+
