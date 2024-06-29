@@ -83,7 +83,7 @@
 }
 
 .bottomsheet--up {
-    translate: 0 0%;
+    translate: 0 0;
     transition-duration: 1s;
     transition-timing-function: ease-out-bounce;
 }
@@ -98,4 +98,32 @@
 
 .Scrim--fadein {
     opacity: 1;
+}
+
+.image--boy {
+    flex-grow: 0;
+    background-image: url("project://database/Assets/Texture/Boy.png?fileID=2800000&guid=d0ef17e1f9a831a4abda69396c23a4a4&type=3#Boy");
+    width: 300px;
+    height: 600px;
+    flex-direction: column;
+    flex-basis: auto;
+    flex-shrink: 0;
+    transition-duration: 2s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.image--boy--inair {
+    translate: -500px -400px;
+}
+
+.image--girl {
+    flex-grow: 1;
+    background-image: resource('TV');
+    width: 400px;
+    height: 500px;
+    transition-duration: 1s;
+}
+
+.image--girl--up {
+    translate: 0 -50px;
 }

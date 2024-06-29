@@ -15,6 +15,9 @@ public class UIController : MonoBehaviour
     private VisualElement _bottomSheet;
     private VisualElement _scrim;
 
+    private VisualElement _boy;
+    private VisualElement _girl;
+
     private void Start() {
         // Find Root-Element
         var root = GetComponent<UIDocument>().rootVisualElement; 
@@ -28,6 +31,9 @@ public class UIController : MonoBehaviour
         _bottomSheet = root.Q<VisualElement>("BottomSheet");
         _scrim = root.Q<VisualElement>("Scrim");
 
+        _boy = root.Q<VisualElement>("Image_Boy");
+        _girl = root.Q<VisualElement>("Image_Girl");
+
         // Hide bottom-sheet
         _bottomContainer.style.display = DisplayStyle.None;
 
@@ -35,6 +41,12 @@ public class UIController : MonoBehaviour
         _openButton.RegisterCallback<ClickEvent>(OnOpenButtonClicked);
         _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
 
+        // Boy Animation
+        Invoke("AnimateBoy", .1f);
+    }
+
+    private void AnimateBoy() {
+        _boy.RemoveFromClassList("image--boy--inair");
     }
 
     private void OnOpenButtonClicked(ClickEvent evt) {
@@ -43,6 +55,8 @@ public class UIController : MonoBehaviour
 
         _bottomSheet.AddToClassList("bottomsheet--up");
         _scrim.AddToClassList("Scrim--fadein");
+
+        AnimateGirl();
     }
 
     private void OnCloseButtonClicked(ClickEvent evt) {
@@ -51,6 +65,15 @@ public class UIController : MonoBehaviour
 
         _bottomSheet.RemoveFromClassList("bottomsheet--up");
         _scrim.RemoveFromClassList("Scrim--fadein");
+    }
+
+    private void AnimateGirl() {
+        _girl.ToggleInClassList("image--girl--up");
+        _girl.RegisterCallback<TransitionEndEvent>(AnimateBackGirl);
+    }
+
+    private void AnimateBackGirl(TransitionEndEvent evt) {
+        _girl.ToggleInClassList("image--girl--up");
     }
 }
 
