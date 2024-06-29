@@ -15,7 +15,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Container_Bottom" style="width: 100%; height: 100%; position: absolute;">
-            <ui:VisualElement name="Scrim" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.84); position: relative;" />
+            <ui:VisualElement name="Scrim" class="Scrim" />
             <ui:VisualElement name="BottomSheet" class="bottomsheet">
                 <ui:Label tabindex="-1" text="Omnes" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="padding-top: 50px;" />
                 <ui:VisualElement name="Image_Girl" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Resources/TV.png?fileID=2800000&amp;guid=d9cdd89f3e51f8246b0a2dbba530978c&amp;type=3#TV&quot;); width: 400px; height: 500px;" />
