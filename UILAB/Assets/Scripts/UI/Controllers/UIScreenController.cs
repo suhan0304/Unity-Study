@@ -33,8 +33,12 @@ public class UIScreenController : MonoBehaviour
 
     void OnClickCoinButton(ClickEvent evt) {
         Vector2 clickPos = new Vector2(evt.position.x, evt.position.y);
-        Debug.Log($"[UIScreenController] OnClickCoinButton : clickPos ({clickPos.x}, {clickPos.y})");
+
         Vector2 screenPos = clickPos.GetScreenCoordinate(root);
+
+        
+        Debug.Log($"[UIScreenController] OnClickCoinButton : clickPos ({clickPos.x}, {clickPos.y})");
+        Debug.Log($"[UIScreenController] OnClickCoinButton : screenPos ({screenPos.x}, {screenPos.y})");
 
         CoinEvents.CoinButtonClick?.Invoke(screenPos);
     }

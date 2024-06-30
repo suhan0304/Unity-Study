@@ -53,7 +53,7 @@ namespace UICoinFX
         }
 
         void PlayPooledFX(Vector2 screenPos) {
-            //Vector3 worldPos = screenPos.ScreenPosToWorldPos(m_Camera, m_ZDepth) + m_SourceOffset;
+            Vector3 worldPos = screenPos.ScreenPosToWorldPos(m_Camera, m_ZDepth) + m_SourceOffset;
 
             ObjectPoolBehaviour fxPool = GetFXPool();
 
@@ -64,7 +64,7 @@ namespace UICoinFX
                 return;
 
             ps.gameObject.SetActive(true);
-            //ps.gameObject.transform.position = worldPos;
+            ps.gameObject.transform.position = worldPos;
 
             // ForceField 추가 (목적지 설정)
             ParticleSystemForceField forceField = GetForceField();
@@ -72,7 +72,7 @@ namespace UICoinFX
 
             // UI 위치를 기반으로 ForceField 위치 업데이트
             PositionToVisualElement positionToVisualElement = forceField.gameObject.GetComponent<PositionToVisualElement>();
-            //positionToVisualElement.MoveToElement();
+            positionToVisualElement.MoveToElement();
 
             // 파티클 시스템에 ForceField 부착
             ParticleSystem.ExternalForcesModule externalForces = ps.externalForces;
