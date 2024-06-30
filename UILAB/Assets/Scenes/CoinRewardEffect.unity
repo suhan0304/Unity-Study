@@ -167,6 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498bcab736c2458499d15001567f85e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Document: {fileID: 1488533176}
+  m_MagnetData:
+    FXPool: {fileID: 797861529}
+    ForceField: {fileID: 1355645927}
+  m_Camera: {fileID: 961739752}
+  m_ZDepth: 10
+  m_SourceOffset: {x: 0, y: 0.1, z: 0}
 --- !u!1 &170684327
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +477,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -561,6 +568,7 @@ GameObject:
   - component: {fileID: 1355645926}
   - component: {fileID: 1355645927}
   - component: {fileID: 1355645928}
+  - component: {fileID: 1355645929}
   m_Layer: 0
   m_Name: CoinForceField
   m_TagString: Untagged
@@ -1099,6 +1107,23 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1355645929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355645925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fb7d4e344cc464dbad4074bf287d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ObjectToMode: {fileID: 1355645925}
+  m_Camera: {fileID: 961739752}
+  m_Depth: 10
+  m_Document: {fileID: 1488533176}
+  m_ElementName: Image--Coin_Icon
 --- !u!1 &1488533175
 GameObject:
   m_ObjectHideFlags: 0
