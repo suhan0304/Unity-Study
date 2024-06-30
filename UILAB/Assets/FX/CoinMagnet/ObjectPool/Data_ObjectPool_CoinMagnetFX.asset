@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f50aff7d07fc3409daa530fd39440b, type: 3}
   m_Name: Data_ObjectPool_CoinMagnetFX
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 0}
-  amountToPool: 0
-  shouldExpand: 0
+  objectToPool: {fileID: 8155992032284298113, guid: 47a9cc402041a0947bd4743b9c2cb5bd,
+    type: 3}
+  amountToPool: 5
+  shouldExpand: 1
