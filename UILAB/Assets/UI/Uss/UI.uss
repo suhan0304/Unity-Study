@@ -1,0 +1,20 @@
+.button--regular {
+    width: 40%;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-left-color: rgb(25, 25, 25);
+    border-right-color: rgb(25, 25, 25);
+    border-top-color: rgb(25, 25, 25);
+    border-bottom-color: rgb(25, 25, 25);
+    border-top-width: 18px;
+    border-right-width: 18px;
+    border-bottom-width: 18px;
+    border-left-width: 18px;
+    font-size: 50px;
+    -unity-font-definition: url("project://database/Assets/Fonts/Oswald-Regular%20SDF.asset?fileID=11400000&guid=ad821ea1c0eb3634fbb8ef24003a2869&type=2#Oswald-Regular SDF");
+    -unity-font-style: normal;
+}
