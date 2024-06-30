@@ -33,11 +33,13 @@ namespace UICoinFX
 
         // start and end corrdinates for effect
         void OnEnable() {
-            // 이벤트 + 메소드 연결 예정
+            // 이벤트 + 메소드 연결
+            CoinEvents.CoinButtonClick += OnCoinButtonClick;
         }
 
         void OnDisable() {
-            // 이벤트 + 메소드 연결 예정
+            // 이벤트 + 메소드 연결 해제
+            CoinEvents.CoinButtonClick -= OnCoinButtonClick;
         }
 
         ObjectPoolBehaviour GetFXPool() {
@@ -76,6 +78,14 @@ namespace UICoinFX
             ParticleSystem.ExternalForcesModule externalForces = ps.externalForces;
             externalForces.enabled = true;
             externalForces.AddInfluence(forceField);
+
+            ps.Play();
+        }        
+        
+        // buying some coin from the ShopScreen
+        void OnCoinButtonClick(Vector2 screenPos)
+        {
+            PlayPooledFX(screenPos);
         }
     }
 }
