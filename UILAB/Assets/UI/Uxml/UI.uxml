@@ -6,7 +6,7 @@
             <ui:VisualElement name="Image--Coin_Icon" style="flex-grow: 1; position: absolute; left: 220px; background-image: url(&quot;project://database/Assets/Textures/CoinRewardEffect/coin-animation.png?fileID=1769602409&amp;guid=9e1212a63bda01d42807d3cabf46f7e4&amp;type=3#coin-animation_0&quot;); background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); width: 160px; height: 150px;" />
         </ui:VisualElement>
         <ui:VisualElement name="VisualElement_Buttons" style="flex-grow: 1; padding-top: 100px; padding-right: 100px; padding-bottom: 100px; padding-left: 100px; flex-direction: row; justify-content: space-around; align-self: auto; align-items: center;">
-            <ui:Button text="+ COIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button--Coin" class="button--regular" />
+            <ui:Button text="+ COIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button--Coin" class="button--regular" style="transition-duration: 0s;" />
             <ui:Button text="RESET" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button--Reset" class="button--regular" style="width: 40%; height: 100px;" />
         </ui:VisualElement>
     </ui:VisualElement>
