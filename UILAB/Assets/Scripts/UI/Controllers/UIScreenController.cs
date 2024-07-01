@@ -27,14 +27,14 @@ public class UIScreenController : MonoBehaviour
         m_CoinButton.RegisterCallback<ClickEvent>(OnClickCoinButton);
         m_ResetButton.RegisterCallback<ClickEvent>(OnClickResetButton);
 
-        CoinEvents.CoinLabelUpdate +=  OnUpdateCoinText;
+        CoinEvents.CoinUpdate +=  OnUpdateCoinText;
     }
 
     void OnDisable() {
         m_CoinButton.UnregisterCallback<ClickEvent>(OnClickCoinButton);
         m_ResetButton.UnregisterCallback<ClickEvent>(OnClickResetButton);
 
-        CoinEvents.CoinLabelUpdate -=  OnUpdateCoinText;
+        CoinEvents.CoinUpdate -=  OnUpdateCoinText;
     }
 
     void OnClickCoinButton(ClickEvent evt) {

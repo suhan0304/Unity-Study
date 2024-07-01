@@ -13,7 +13,7 @@ public static class GameDataManager
         {
             coin = value;
 
-            CoinEvents.CoinLabelUpdate?.Invoke(coin);
+            CoinEvents.CoinUpdate?.Invoke(coin);
         }
     }
 
