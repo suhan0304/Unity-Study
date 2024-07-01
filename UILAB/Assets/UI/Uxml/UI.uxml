@@ -10,4 +10,5 @@
             <ui:Button text="RESET" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button--Reset" class="button--regular" style="width: 40%; height: 100px;" />
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="overlay-vfx" picking-mode="Ignore" />
 </ui:UXML>

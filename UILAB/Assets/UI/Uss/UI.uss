@@ -18,3 +18,12 @@
     -unity-font-definition: url("project://database/Assets/Fonts/Oswald-Regular%20SDF.asset?fileID=11400000&guid=ad821ea1c0eb3634fbb8ef24003a2869&type=2#Oswald-Regular SDF");
     -unity-font-style: normal;
 }
+
+.overlay--vfx {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url("project://database/Assets/Textures/CoinRewardEffect/RenderTexture/coinsVFXRenderTexture.renderTexture?fileID=8400000&guid=d8c16ca2655e59a40b68d72415d686e5&type=2#coinsVFXRenderTexture");
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+}
