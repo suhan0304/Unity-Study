@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using DG.Tweening;
 
 public class UIScreenController : MonoBehaviour
 {
@@ -9,6 +8,7 @@ public class UIScreenController : MonoBehaviour
     [SerializeField] UIDocument m_Document;
     [SerializeField] Button m_CoinButton;
     [SerializeField] Button m_ResetButton;
+    [SerializeField] Label m_CoinLabel;
 
     VisualElement root;
 
@@ -22,15 +22,19 @@ public class UIScreenController : MonoBehaviour
         root = m_Document.rootVisualElement;
         m_CoinButton = root.Q<Button>(coinButtonID);
         m_ResetButton = root.Q<Button>(coinResetID);
-        m_ResetButton = root.Q<Button>(coinLabelID);
+        m_CoinLabel = root.Q<Label>(coinLabelID);
 
         m_CoinButton.RegisterCallback<ClickEvent>(OnClickCoinButton);
         m_ResetButton.RegisterCallback<ClickEvent>(OnClickResetButton);
+
+        CoinEvents.CoinLabelUpdate +=  OnUpdateCoinText;
     }
 
     void OnDisable() {
         m_CoinButton.UnregisterCallback<ClickEvent>(OnClickCoinButton);
         m_ResetButton.UnregisterCallback<ClickEvent>(OnClickResetButton);
+
+        CoinEvents.CoinLabelUpdate -=  OnUpdateCoinText;
     }
 
     void OnClickCoinButton(ClickEvent evt) {
@@ -43,12 +47,12 @@ public class UIScreenController : MonoBehaviour
         Debug.Log($"[UIScreenController] OnClickCoinButton : screenPos ({screenPos.x}, {screenPos.y})");
 
         CoinEvents.CoinButtonClick?.Invoke(screenPos);
+
+        GameDataManager.AddCoin();
     }
 
-    void OnUpdateCoinText() {
-        Sequence seq = DOTween.Sequence();
-
-        seq.stringId = CoinSeq;
+    void OnUpdateCoinText(int CoinValue) {
+        m_CoinLabel.text = CoinValue.ToString();
     }
 
     void OnClickResetButton(ClickEvent evt) {
