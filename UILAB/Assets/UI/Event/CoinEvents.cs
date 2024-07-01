@@ -7,4 +7,7 @@ public static class CoinEvents
     public static Action<Vector2> CoinButtonClick;
     public static Action<Vector2> ResetButtonClick;
 
+    // Update Coin Text
+    public static Action UpdateCoinLabel;
+
 }

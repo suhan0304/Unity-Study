@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using DG.Tweening;
 
 public class UIScreenController : MonoBehaviour
 {
@@ -16,11 +14,15 @@ public class UIScreenController : MonoBehaviour
 
     private const string coinButtonID = "Button--Coin";
     private const string coinResetID = "Button--Reset";
+    private const string coinLabelID = "Label--Coin";
+
+    private const string coinSequenceId = "CoinSeq";
 
     void OnEnable() {
         root = m_Document.rootVisualElement;
         m_CoinButton = root.Q<Button>(coinButtonID);
         m_ResetButton = root.Q<Button>(coinResetID);
+        m_ResetButton = root.Q<Button>(coinLabelID);
 
         m_CoinButton.RegisterCallback<ClickEvent>(OnClickCoinButton);
         m_ResetButton.RegisterCallback<ClickEvent>(OnClickResetButton);
@@ -41,6 +43,12 @@ public class UIScreenController : MonoBehaviour
         Debug.Log($"[UIScreenController] OnClickCoinButton : screenPos ({screenPos.x}, {screenPos.y})");
 
         CoinEvents.CoinButtonClick?.Invoke(screenPos);
+    }
+
+    void OnUpdateCoinText() {
+        Sequence seq = DOTween.Sequence();
+
+        seq.stringId = CoinSeq;
     }
 
     void OnClickResetButton(ClickEvent evt) {
