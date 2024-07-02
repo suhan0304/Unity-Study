@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using Cysharp.Threading.Tasks;
+using TMPro;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CollectionCoin : MonoBehaviour
 {
@@ -19,8 +22,9 @@ public class CollectionCoin : MonoBehaviour
     [SerializeField] private float maxX;
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
-
     List<GameObject> coins = new List<GameObject>();
+
+    private Tween coinReactionTween;
 
     void Start()
     {
@@ -64,12 +68,15 @@ public class CollectionCoin : MonoBehaviour
 
     private async UniTask MoveCoinsTask(int i)
     {
-        await coins[i].transform.DOMove(endPosition.position, duration).ToUniTask();
+        await coins[i].transform.DOMove(endPosition.position, duration).SetEase(Ease.InBack).ToUniTask();
         ReactToCollectionCoin();
     }
-
-    [Button()]
-    private void ReactToCollectionCoin() {
-        endPosition.DOPunchScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
+    
+    private async UniTask ReactToCollectionCoin() {
+        if (coinReactionTween == null) {
+            coinReactionTween = endPosition.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 0.1f).SetEase(Ease.InOutElastic);
+            await coinReactionTween.ToUniTask();
+            coinReactionTween = null;
+        }
     }
 }
