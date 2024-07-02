@@ -27,23 +27,24 @@ public class CollectionCoin : MonoBehaviour
     List<GameObject> coins = new List<GameObject>();
 
     private Tween coinReactionTween;
-    private int coin;
+    private int coin = 0;
 
     void Start()
     {
+        SetCoin(0);
     }
 
     [Button()]
     private async void CollectCoins()
     {
         //0. Reset
-        SetCoin(0);
         for (int i = 0; i < coins.Count; i++)
         {
             Destroy(coins[i]);
         }
         coins.Clear();
 
+        List<UniTask> spawnCoinTaskList = new List<UniTask>();
         // 1. Spanw the coin to a specific location with random value
         for (int i = 0; i < cointAmount; i++)
         {
@@ -52,10 +53,14 @@ public class CollectionCoin : MonoBehaviour
             float yPosition = spawnLocation.position.x + UnityEngine.Random.Range(minX, maxX);
 
             coinInstance.transform.position = new Vector3(xPosition, yPosition);
+            spawnCoinTaskList.Add(coinInstance.transform.DOPunchPosition(new Vector3(0, 30, 0), Random.Range(0, 1f))
+                .SetEase(Ease.InOutElastic).ToUniTask());
             coins.Add(coinInstance);
+            await UniTask.Delay(TimeSpan.FromSeconds(.01f));
         }
 
-        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        await UniTask.WhenAll(spawnCoinTaskList);
+
         // 2. Move all the coins to the coin Image
         await MoveCoinsTask();
     }
