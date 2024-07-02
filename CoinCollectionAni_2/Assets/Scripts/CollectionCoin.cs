@@ -17,9 +17,15 @@ public class CollectionCoin : MonoBehaviour
 
     void Start()
     {
+        CollectionCoins();
+    }
+
+    private void CollectionCoins()
+    {
         // Spanw some Coins
 
-        for (int i = 0; i < cointAmount; i++) {
+        for (int i = 0; i < cointAmount; i++)
+        {
             GameObject coinInstance = Instantiate(coinPrefab, coinParent);
             float xPosition = spawnLocation.position.x + Random.Range(minX, maxX);
             float yPosition = spawnLocation.position.x + Random.Range(minX, maxX);
