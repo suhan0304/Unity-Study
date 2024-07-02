@@ -1,7 +1,3 @@
-# UI-Lab
+# Unity Study
 
-유니티를 기반으로 한 UI 연습용으로 제작한 프로젝트입니다.
-아래와 같은 써드 파티 라이브러리 및 패키지를 사용하여 진행합니다.
-
-- Dotween
-- UI Tool kit
+Unity Study 용으로 제작한 Project용 리포지토리입니다.
