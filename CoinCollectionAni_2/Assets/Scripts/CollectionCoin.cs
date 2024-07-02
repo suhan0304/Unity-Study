@@ -49,8 +49,8 @@ public class CollectionCoin : MonoBehaviour
         for (int i = 0; i < cointAmount; i++)
         {
             GameObject coinInstance = Instantiate(coinPrefab, coinParent);
-            float xPosition = spawnLocation.position.x + UnityEngine.Random.Range(minX, maxX);
-            float yPosition = spawnLocation.position.x + UnityEngine.Random.Range(minX, maxX);
+            float xPosition = spawnLocation.position.x + Random.Range(minX, maxX);
+            float yPosition = spawnLocation.position.x + Random.Range(minX, maxX);
 
             coinInstance.transform.position = new Vector3(xPosition, yPosition);
             spawnCoinTaskList.Add(coinInstance.transform.DOPunchPosition(new Vector3(0, 30, 0), Random.Range(0, 1f))
