@@ -21,7 +21,9 @@ public class CollectionCoin : MonoBehaviour
 
         for (int i = 0; i < cointAmount; i++) {
             GameObject coinInstance = Instantiate(coinPrefab, coinParent);
-            coinInstance.transform.position = spawnLocation.position;
+            float xPosition = spawnLocation.position.x + Random.Range(minX, maxX);
+            float yPosition = spawnLocation.position.x + Random.Range(minX, maxX);
+            coinInstance.transform.position = new Vector3(xPosition, yPosition);
         }
     }
 
