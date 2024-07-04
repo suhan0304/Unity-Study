@@ -520,6 +520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: formation_rock
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0d3e0323c5a415d47a59b7ba216cbfa0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -596,6 +600,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8365590764292887505, guid: cb8023970bbd62147ba1b145685c0a02, type: 3}
   m_PrefabInstance: {fileID: 356092289}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &382853719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382853721}
+  - component: {fileID: 382853720}
+  m_Layer: 0
+  m_Name: Scene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &382853720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382853719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe801b9b6676ff4e9796d5cd49970d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outerObjectsTransform:
+  - {fileID: 1349206777}
+  - {fileID: 965526241}
+  - {fileID: 320737952}
+  - {fileID: 832356215}
+  - {fileID: 2146090027}
+--- !u!4 &382853721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382853719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &637798594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -808,6 +862,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: formation_stone
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af155eef2606f8143acf0955aff5a5e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -885,6 +943,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f757509eabadd48498d18c09819fb9ab, type: 3}
       propertyPath: m_Name
       value: formationLarge_rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f757509eabadd48498d18c09819fb9ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1316,6 +1378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship_wreck
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0b1521fdaa8c0f4ebeb99738b8aa20e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1726,7 +1792,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1733393716}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: afafa135ece30bc428a9597006ae84f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1772,16 +1838,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship_dark
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: afafa135ece30bc428a9597006ae84f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afafa135ece30bc428a9597006ae84f8, type: 3}
---- !u!4 &1651440301 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: afafa135ece30bc428a9597006ae84f8, type: 3}
-  m_PrefabInstance: {fileID: 1651440300}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1664636944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2130,7 +2195,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1349206777}
-  - {fileID: 1651440301}
   - {fileID: 965526241}
   - {fileID: 320737952}
   - {fileID: 832356215}
@@ -2804,6 +2868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tower
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 41b384c774a0c2246ae8695e857fdb40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2823,3 +2891,5 @@ SceneRoots:
   - {fileID: 42108510}
   - {fileID: 1943429477}
   - {fileID: 1733393716}
+  - {fileID: 1651440300}
+  - {fileID: 382853721}
