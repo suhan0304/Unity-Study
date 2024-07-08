@@ -92,7 +92,6 @@ public class Control_Button : VisualElement
             ToggleSelectStyle(this, CardNumber);
             OnSelect?.Invoke(this, CardNumber);
         }
-        
     }
 
     // Hover Style Toggle Method
