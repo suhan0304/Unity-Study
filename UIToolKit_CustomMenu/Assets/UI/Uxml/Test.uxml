@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/ControlButton.uss?fileID=7433441132597879392&amp;guid=917b7c46163d1654a943ab7af264e40e&amp;type=3#ControlButton" />
+    <ui:VisualElement name="VisualElement" class="background--normal" style="flex-grow: 0; position: relative; height: 40px; align-items: stretch; flex-direction: row; width: 100%; padding-right: 0; padding-left: 0;">
+        <ui:VisualElement name="Fill" style="flex-grow: 1; position: absolute;" />
+        <ui:VisualElement name="Icon" style="flex-grow: 1; margin-left: 10px; margin-right: 5px;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+    </ui:VisualElement>
+    <Control_Button name="Control_Button" class="background--normal" />
+</ui:UXML>
