@@ -1,12 +1,6 @@
 using System;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.iOS;
-using UnityEngine;
 using UnityEngine.UIElements;
-
-
 
 
 public class Control_Button : VisualElement
@@ -76,5 +70,25 @@ public class Control_Button : VisualElement
         _fill.AddToClassList("fill--normal");
         _icon.AddToClassList("icon--normal");
         _label.AddToClassList("label--normal");
+
+        // On Event Manager
+        this.RegisterCallback<MouseEnterEvent>(OnMouseEnter);
+        this.RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
+    }
+
+    //On Mouse Enter Control_Button
+    private void OnMouseEnter(MouseEnterEvent evt)
+    {
+        this.AddToClassList("background--hover");
+        _icon.AddToClassList("icon--hover");
+        _label.AddToClassList("label--hover");
+    }
+
+    //On Mouse Leave Control_Button
+    private void OnMouseLeave(MouseLeaveEvent evt)
+    {
+        this.RemoveFromClassList("background--hover");
+        _icon.RemoveFromClassList("icon--hover");
+        _label.RemoveFromClassList("label--hover");
     }
 }
