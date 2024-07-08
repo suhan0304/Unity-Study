@@ -73,26 +73,30 @@ public class Control_Button : VisualElement
         _label.AddToClassList("label--normal");
 
         // On Mouse Enter event
-        this.RegisterCallback<MouseEnterEvent>(evt => OnHover?.Invoke(this));
-        this.RegisterCallback<MouseLeaveEvent>(evt => OnHover?.Invoke(this));
+        this.RegisterCallback<MouseEnterEvent>(OnMouseEventControlButton);
+        this.RegisterCallback<MouseLeaveEvent>(OnMouseEventControlButton);
 
         // On Mouse Click Event
-        this.RegisterCallback<ClickEvent>(evt => OnSelect?.Invoke(this, CardNumber));
+        this.RegisterCallback<ClickEvent>(OnMouseEventControlButton);
     }   
-    
-    public void AttachMethodToAction()
+    public void OnMouseEventControlButton(EventBase evt)
     {
-        OnHover += ToggleHoverStyle;
-        OnSelect += ToggleSelectStyle;
-    }
-    public void DetachMethodToAction()
-    {
-        OnHover -= ToggleHoverStyle;
-        OnSelect -= ToggleSelectStyle;
+        // Mouse Enter Control Button
+        if (evt.eventTypeId == MouseEnterEvent.TypeId() || evt.eventTypeId == MouseLeaveEvent.TypeId()) {
+            ToggleHoverStyle(this);
+            OnHover?.Invoke(this);
+        }
+
+        // Mouse Click Control Button
+        if (evt.eventTypeId == ClickEvent.TypeId()) {
+            ToggleSelectStyle(this, CardNumber);
+            OnSelect?.Invoke(this, CardNumber);
+        }
+        
     }
 
     // Hover Style Toggle Method
-    private void ToggleHoverStyle(Control_Button m_button)
+    public void ToggleHoverStyle(Control_Button m_button)
     {
         m_button.ToggleInClassList("background--hover");
         m_button._icon.ToggleInClassList("icon--hover");
@@ -100,7 +104,7 @@ public class Control_Button : VisualElement
     }
 
     // Select Style Toggle Method
-    private void ToggleSelectStyle(Control_Button m_button, int m_cardNum) {
+    public void ToggleSelectStyle(Control_Button m_button, int m_cardNum) {
         m_button._fill.ToggleInClassList("fill--select");
         m_button._icon.ToggleInClassList("icon--select");
         m_button._label.ToggleInClassList("label--select");
