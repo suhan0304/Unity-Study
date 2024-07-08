@@ -21,7 +21,7 @@
     flex-shrink: 0;
     position: absolute;
     background-color: rgb(0, 0, 0);
-    transition-duration: 0.2s;
+    transition-duration: 0.25s;
     transition-timing-function: ease-out-circ;
 }
 

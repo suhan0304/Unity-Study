@@ -76,7 +76,7 @@ public class Control_Button : VisualElement
         this.RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
 
         // On Mouse Click Event
-        this.RegisterCallback<ClickEvent>(OnClick);
+        this.RegisterCallback<ClickEvent>(OnClicked);
     }
 
     // On Mouse Enter Control_Button
@@ -95,10 +95,12 @@ public class Control_Button : VisualElement
         _label.RemoveFromClassList("label--hover");
     }
 
+    private static Control_Button _currentSelectedButton;
+    
     // On Mouse Click Control_Button
-    private void OnClick(ClickEvent evt) {
+    private void OnClicked(ClickEvent evt) {
         _fill.ToggleInClassList("fill--select");
-        _icon.ToggleInClassList("icon--hover");
-        _label.ToggleInClassList("label--hover");
+        _icon.ToggleInClassList("icon--select");
+        _label.ToggleInClassList("label--select");
     }
 }
