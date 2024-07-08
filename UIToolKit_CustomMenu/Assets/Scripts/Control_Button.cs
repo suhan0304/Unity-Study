@@ -33,7 +33,11 @@ public class Control_Button : VisualElement
     }
 
     public int CardNumber { get; set; }
-    public string ButtonLabel { get; set; }
+    public string ButtonLabel {
+        get { return _label.text; }
+        set{ _label.text = value; }
+    }
+
 
     private VisualElement _fill;
     private VisualElement _icon;
@@ -68,13 +72,7 @@ public class Control_Button : VisualElement
         _icon.pickingMode = PickingMode.Ignore;
 
         // Load and apply the stylesheet
-        var styleSheet = Resources.Load<StyleSheet>("UI/Uss/ControlButton");
-        if (styleSheet != null) {
-            styleSheets.Add(styleSheet);
-        }
-        else {
-            Debug.LogWarning("ControlButton.uss not found in Resources/UI/Uss forder")
-        }
+        this.AddToClassList("background--normal");
         _fill.AddToClassList("fill--normal");
         _icon.AddToClassList("icon--normal");
         _label.AddToClassList("label--normal");
