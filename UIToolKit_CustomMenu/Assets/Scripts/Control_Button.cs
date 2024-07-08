@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.iOS;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 
@@ -60,9 +62,21 @@ public class Control_Button : VisualElement
         _label.name = "Label";
         _icon.name = "Icon";
 
-        //Preventing Clicks
+        // Preventing Clicks
         _fill.pickingMode = PickingMode.Ignore;
         _label.pickingMode = PickingMode.Ignore;
         _icon.pickingMode = PickingMode.Ignore;
+
+        // Load and apply the stylesheet
+        var styleSheet = Resources.Load<StyleSheet>("UI/Uss/ControlButton");
+        if (styleSheet != null) {
+            styleSheets.Add(styleSheet);
+        }
+        else {
+            Debug.LogWarning("ControlButton.uss not found in Resources/UI/Uss forder")
+        }
+        _fill.AddToClassList("fill--normal");
+        _icon.AddToClassList("icon--normal");
+        _label.AddToClassList("label--normal");
     }
 }
