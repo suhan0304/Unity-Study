@@ -1,5 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Uss/ControlButton.uss?fileID=7433441132597879392&amp;guid=917b7c46163d1654a943ab7af264e40e&amp;type=3#ControlButton" />
+    <Style src="project://database/Assets/UI/Uss/ControlButtonHover.uss?fileID=7433441132597879392&amp;guid=3ced066283fe0894fa23632192dff314&amp;type=3#ControlButtonHover" />
+    <Style src="project://database/Assets/UI/Uss/ControlButtonSelect.uss?fileID=7433441132597879392&amp;guid=553098fe484e19e4487c891140d9a2f6&amp;type=3#ControlButtonClick" />
     <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;" />
     <ui:VisualElement name="Container" style="flex-grow: 1; width: 100%; height: 100%;">
         <ui:VisualElement name="Container_Menu" style="flex-grow: 1; width: 270px; justify-content: center; left: 50px; right: 50px;">

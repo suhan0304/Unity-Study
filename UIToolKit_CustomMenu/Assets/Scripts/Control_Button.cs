@@ -71,12 +71,15 @@ public class Control_Button : VisualElement
         _icon.AddToClassList("icon--normal");
         _label.AddToClassList("label--normal");
 
-        // On Event Manager
+        // On Mouse Enter event
         this.RegisterCallback<MouseEnterEvent>(OnMouseEnter);
         this.RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
+
+        // On Mouse Click Event
+        this.RegisterCallback<ClickEvent>(OnClick);
     }
 
-    //On Mouse Enter Control_Button
+    // On Mouse Enter Control_Button
     private void OnMouseEnter(MouseEnterEvent evt)
     {
         this.AddToClassList("background--hover");
@@ -84,11 +87,18 @@ public class Control_Button : VisualElement
         _label.AddToClassList("label--hover");
     }
 
-    //On Mouse Leave Control_Button
+    // On Mouse Leave Control_Button
     private void OnMouseLeave(MouseLeaveEvent evt)
     {
         this.RemoveFromClassList("background--hover");
         _icon.RemoveFromClassList("icon--hover");
         _label.RemoveFromClassList("label--hover");
+    }
+
+    // On Mouse Click Control_Button
+    private void OnClick(ClickEvent evt) {
+        _fill.ToggleInClassList("fill--select");
+        _icon.ToggleInClassList("icon--hover");
+        _label.ToggleInClassList("label--hover");
     }
 }
