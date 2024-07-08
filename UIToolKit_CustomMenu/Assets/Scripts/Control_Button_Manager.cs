@@ -11,7 +11,7 @@ public class Control_Button_Manager : MonoBehaviour
     [SerializeField] private Control_Button selectedButton;
 
 
-    [Button("Init UXML VisualTree")]
+    [Button("Init Control Buttons List")]
     void Init() {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
