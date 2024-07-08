@@ -5,4 +5,7 @@ using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private Control_Button selectedButton;
+
+    
 }

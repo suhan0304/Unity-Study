@@ -72,15 +72,15 @@ public class Control_Button : VisualElement
         _label.AddToClassList("label--normal");
 
         // On Mouse Enter event
-        this.RegisterCallback<MouseEnterEvent>(OnMouseEnter);
-        this.RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
+        this.RegisterCallback<MouseEnterEvent>(OnMouseEnterMenu);
+        this.RegisterCallback<MouseLeaveEvent>(OnMouseLeaveMenu);
 
         // On Mouse Click Event
-        this.RegisterCallback<ClickEvent>(OnClicked);
+        this.RegisterCallback<ClickEvent>(OnSelectMenu);
     }
 
     // On Mouse Enter Control_Button
-    private void OnMouseEnter(MouseEnterEvent evt)
+    private void OnMouseEnterMenu(MouseEnterEvent evt)
     {
         this.AddToClassList("background--hover");
         _icon.AddToClassList("icon--hover");
@@ -88,7 +88,7 @@ public class Control_Button : VisualElement
     }
 
     // On Mouse Leave Control_Button
-    private void OnMouseLeave(MouseLeaveEvent evt)
+    private void OnMouseLeaveMenu(MouseLeaveEvent evt)
     {
         this.RemoveFromClassList("background--hover");
         _icon.RemoveFromClassList("icon--hover");
@@ -97,10 +97,11 @@ public class Control_Button : VisualElement
 
     private static Control_Button _currentSelectedButton;
     
-    // On Mouse Click Control_Button
-    private void OnClicked(ClickEvent evt) {
+    // On Mouse Click(Select) Control_Button
+    private void OnSelectMenu(ClickEvent evt) {
         _fill.ToggleInClassList("fill--select");
         _icon.ToggleInClassList("icon--select");
         _label.ToggleInClassList("label--select");
+        OnSelect?.Invoke(this, CardNumber);
     }
 }
