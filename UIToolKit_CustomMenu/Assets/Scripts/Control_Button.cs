@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 
@@ -72,25 +73,38 @@ public class Control_Button : VisualElement
         _label.AddToClassList("label--normal");
 
         // On Mouse Enter event
-        this.RegisterCallback<MouseEnterEvent>(OnMouseEnterMenu);
-        this.RegisterCallback<MouseLeaveEvent>(OnMouseLeaveMenu);
+        this.RegisterCallback<MouseEnterEvent>(evt => OnHover?.Invoke(this));
+        this.RegisterCallback<MouseLeaveEvent>(evt => OnHover?.Invoke(this));
 
         // On Mouse Click Event
-        this.RegisterCallback<ClickEvent>(OnSelectMenu);
+        this.RegisterCallback<ClickEvent>(evt => OnSelect?.Invoke(this, CardNumber));
+    }   
+    
+    private void OnAttachToPanel(AttachToPanelEvent evt)
+    {
+        OnHover += ToggleHoverStyle;
+        OnSelect += ToggleSelectStyle;
+    }
+
+    private void OnDetachFromPanel(DetachFromPanelEvent evt)
+    {
+        // Detach event handlers
+        OnHover -= ToggleHoverStyle;
+        OnSelect -= ToggleSelectStyle;
     }
 
     // Hover Style Toggle Method
-    private void OnMouseEnterMenu(MouseEnterEvent evt)
+    private void ToggleHoverStyle(Control_Button m_button)
     {
-        this.ToggleInClassList("background--hover");
-        _icon.ToggleInClassList("icon--hover");
-        _label.ToggleInClassList("label--hover");
+        m_button.ToggleInClassList("background--hover");
+        m_button._icon.ToggleInClassList("icon--hover");
+        m_button._label.ToggleInClassList("label--hover");
     }
 
     // Select Style Toggle Method
-    private void ToggleSelectStyle() {
-        _fill.ToggleInClassList("fill--select");
-        _icon.ToggleInClassList("icon--select");
-        _label.ToggleInClassList("label--select");
+    private void ToggleSelectStyle(Control_Button m_button, int m_cardNum) {
+        m_button._fill.ToggleInClassList("fill--select");
+        m_button._icon.ToggleInClassList("icon--select");
+        m_button._label.ToggleInClassList("label--select");
     }
 }
