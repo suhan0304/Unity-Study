@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Uss/ControlButton.uss?fileID=7433441132597879392&amp;guid=917b7c46163d1654a943ab7af264e40e&amp;type=3#ControlButton" />
-    <Control_Button />
-    <Control_Button />
-    <Control_Button />
+    <ui:VisualElement class="background--normal" />
+    <ui:VisualElement />
+    <ui:Label name="Label" class="label--normal label--hover" />
 </ui:UXML>

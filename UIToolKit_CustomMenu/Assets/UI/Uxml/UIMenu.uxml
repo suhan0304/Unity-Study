@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Uss/ControlButton.uss?fileID=7433441132597879392&amp;guid=917b7c46163d1654a943ab7af264e40e&amp;type=3#ControlButton" />
     <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;" />
-    <ui:VisualElement name="Container" style="flex-grow: 1;">
-        <ui:VisualElement name="Container_Menu" style="flex-grow: 0; width: 270px; height: 399px; top: 50%; left: 50px;">
+    <ui:VisualElement name="Container" style="flex-grow: 1; width: 100%; height: 100%;">
+        <ui:VisualElement name="Container_Menu" style="flex-grow: 1; width: 270px; justify-content: center; left: 50px; right: 50px;">
             <Control_Button button_Label="Barbarian Class" />
             <Control_Button button_Label="Bomber Class" />
             <Control_Button button_Label="Hazmat Class" />
