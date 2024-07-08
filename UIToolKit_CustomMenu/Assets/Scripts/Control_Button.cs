@@ -79,29 +79,18 @@ public class Control_Button : VisualElement
         this.RegisterCallback<ClickEvent>(OnSelectMenu);
     }
 
-    // On Mouse Enter Control_Button
+    // Hover Style Toggle Method
     private void OnMouseEnterMenu(MouseEnterEvent evt)
     {
-        this.AddToClassList("background--hover");
-        _icon.AddToClassList("icon--hover");
-        _label.AddToClassList("label--hover");
+        this.ToggleInClassList("background--hover");
+        _icon.ToggleInClassList("icon--hover");
+        _label.ToggleInClassList("label--hover");
     }
 
-    // On Mouse Leave Control_Button
-    private void OnMouseLeaveMenu(MouseLeaveEvent evt)
-    {
-        this.RemoveFromClassList("background--hover");
-        _icon.RemoveFromClassList("icon--hover");
-        _label.RemoveFromClassList("label--hover");
-    }
-
-    private static Control_Button _currentSelectedButton;
-    
-    // On Mouse Click(Select) Control_Button
-    private void OnSelectMenu(ClickEvent evt) {
+    // Select Style Toggle Method
+    private void ToggleSelectStyle() {
         _fill.ToggleInClassList("fill--select");
         _icon.ToggleInClassList("icon--select");
         _label.ToggleInClassList("label--select");
-        OnSelect?.Invoke(this, CardNumber);
     }
 }
