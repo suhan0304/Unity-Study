@@ -80,15 +80,13 @@ public class Control_Button : VisualElement
         this.RegisterCallback<ClickEvent>(evt => OnSelect?.Invoke(this, CardNumber));
     }   
     
-    private void OnAttachToPanel(AttachToPanelEvent evt)
+    public void AttachMethodToAction()
     {
         OnHover += ToggleHoverStyle;
         OnSelect += ToggleSelectStyle;
     }
-
-    private void OnDetachFromPanel(DetachFromPanelEvent evt)
+    public void DetachMethodToAction()
     {
-        // Detach event handlers
         OnHover -= ToggleHoverStyle;
         OnSelect -= ToggleSelectStyle;
     }

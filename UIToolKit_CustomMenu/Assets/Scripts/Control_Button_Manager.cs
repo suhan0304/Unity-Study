@@ -22,10 +22,4 @@ public class Control_Button_Manager : MonoBehaviour
             controlButtons.Add(button);
         }
     }
-    
-    void OnSelectControlButton(Control_Button selectingButton) {
-        if (selectingButton != selectedButton) {
-
-        }
-    }
 }
