@@ -1,5 +1,7 @@
 .background--hover {
     background-color: rgb(255, 255, 255);
+    flex-grow: 1;
+    align-items: center;
 }
 
 .icon--hover {

@@ -3,13 +3,14 @@
     <Style src="project://database/Assets/UI/Uss/ControlButtonHover.uss?fileID=7433441132597879392&amp;guid=3ced066283fe0894fa23632192dff314&amp;type=3#ControlButtonHover" />
     <Style src="project://database/Assets/UI/Uss/ControlButtonSelect.uss?fileID=7433441132597879392&amp;guid=553098fe484e19e4487c891140d9a2f6&amp;type=3#ControlButtonSelect" />
     <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;" />
-    <ui:VisualElement name="Container" style="flex-grow: 1; width: 100%; height: 100%;">
-        <ui:VisualElement name="Container_Menu" style="flex-grow: 1; width: 270px; justify-content: center; left: 50px; right: 50px;">
+    <ui:VisualElement name="Container" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px; margin-top: 0; margin-bottom: 0; margin-right: 0; margin-left: 0; align-items: center;">
+        <ui:VisualElement name="Container_Menu" style="width: 270px; justify-content: center; height: 274px; left: auto;">
             <Control_Button button_Label="Barbarian Class" card_Number="1" />
             <Control_Button button_Label="Bomber Class" card_Number="2" />
             <Control_Button button_Label="Hazmat Class" card_Number="3" />
             <Control_Button button_Label="Pyro Class" card_Number="4" />
             <Control_Button button_Label="Assassin Class" card_Number="5" />
         </ui:VisualElement>
+        <ui:VisualElement name="Container_Card" style="flex-grow: 1;" />
     </ui:VisualElement>
 </ui:UXML>
