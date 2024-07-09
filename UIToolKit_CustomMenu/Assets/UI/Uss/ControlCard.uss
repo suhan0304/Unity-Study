@@ -1,8 +1,8 @@
 .control__card--normal {
     flex-grow: 1;
     padding-left: 0;
-    width: 100%;
-    margin-left: 0;
+    width: auto;
+    margin-left: 10px;
 }
 
 .card__background--normal {
@@ -51,9 +51,10 @@
     flex-grow: 0;
     background-image: url("project://database/Assets/Texture/logout.png?fileID=21300000&guid=7aac8cb5aaaf142408368df8e0bd50d1&type=3#logout");
     -unity-background-scale-mode: stretch-to-fill;
-    width: 45px;
+    width: 25px;
     -unity-background-image-tint-color: rgba(255, 255, 255, 0);
-    height: 45px;
+    height: 25px;
+    margin-right: 5px;
 }
 
 .button__label--normal {

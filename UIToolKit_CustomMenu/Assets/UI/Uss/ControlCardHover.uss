@@ -1,3 +1,18 @@
 .card__image--hover {
     -unity-background-image-tint-color: rgb(255, 255, 255);
 }
+
+.card__button--hover {
+    background-color: rgb(1, 255, 199);
+}
+
+.button__icon--hover {
+}
+
+.button__label--hover {
+    color: rgb(0, 0, 0);
+}
+
+.button__icon--hover {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
