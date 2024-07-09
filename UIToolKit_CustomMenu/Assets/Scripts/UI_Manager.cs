@@ -65,8 +65,8 @@ public class UI_Manager : MonoBehaviour
     [TabGroup("Tap","Control Cards")]
     [Button("Toggle Show/Hide Card Menus")]
     void ToggleShowHideCards() {
-        for (int i = 1; i < controlCards.Count; i++) {
-            controlCards[i].ToggleInClassList($"card-{i}--out");
+        for (int i = 0; i < controlCards.Count; i++) {
+            controlCards[i].ToggleInClassList($"card-{i + 1}--out");
         }
     }
 
