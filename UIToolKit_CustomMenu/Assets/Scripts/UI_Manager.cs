@@ -14,9 +14,10 @@ public class UI_Manager : MonoBehaviour
 
     // Odin - Tap Define 
     [TabGroup("Tap","Control Buttons",SdfIconType.CodeSlash, TextColor="red")]
+    [TabGroup("Tap","Control Cards",SdfIconType.CodeSlash, TextColor="green")]
 
     void Start() {
-        InitButtons();
+        //InitButtons();
     }
 
 
@@ -38,7 +39,7 @@ public class UI_Manager : MonoBehaviour
             button.TabNumber = _tabNumber++;
             controlButtons.Add(button);
         }
-        Debug.Log($"[UI Manager] {controlCards.Count} Buttons Initialized");
+        Debug.Log($"[UI Manager] {controlButtons.Count} Buttons Initialized");
     }
 
     [TabGroup("Tap","Control Cards")]
@@ -53,9 +54,19 @@ public class UI_Manager : MonoBehaviour
         // Load Control Card in UI_Doc
         controlCards = new List<Control_Card>();
         var cards = root.Query<Control_Card>().ToList();
-
+        int cardIndex = 1;
         foreach (var card in cards) {
+            card.AddToClassList($"card-{cardIndex++}");
             controlCards.Add(card);
+        }
+        Debug.Log($"[UI Manager] {controlCards.Count} Cards Initialized");
+    }
+
+    [TabGroup("Tap","Control Cards")]
+    [Button("Toggle Show/Hide Card Menus")]
+    void ToggleShowHideCards() {
+        for (int i = 1; i < controlCards.Count; i++) {
+            controlCards[i].ToggleInClassList($"card-{i}--out");
         }
     }
 

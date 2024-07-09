@@ -7,7 +7,7 @@ public class Control_Button : VisualElement
     internal new class UxmlFactory : UxmlFactory<Control_Button, UxmlTraits> { }
 
     internal new class UxmlTraits : VisualElement.UxmlTraits {
-        private readonly UxmlIntAttributeDescription m_CardNum
+        private readonly UxmlIntAttributeDescription m_tabNum
             = new UxmlIntAttributeDescription { name = "card_Number", defaultValue = 4 };
         private readonly UxmlStringAttributeDescription m_ButtonLabel
             = new UxmlStringAttributeDescription { name = "button_Label", defaultValue = "Menu Button" };
@@ -20,12 +20,12 @@ public class Control_Button : VisualElement
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
             base.Init(ve, bag, cc);
-            ((Control_Button)ve).CardNumber = m_CardNum.GetValueFromBag(bag, cc);
+            ((Control_Button)ve).TabNumber = m_tabNum.GetValueFromBag(bag, cc);
             ((Control_Button)ve).ButtonLabel = m_ButtonLabel.GetValueFromBag(bag, cc);
         }
     }
 
-    public int CardNumber { get; set; }
+    public int TabNumber { get; set; }
     public string ButtonLabel {
         get { return _label.text; }
         set{ _label.text = value; }
@@ -83,8 +83,8 @@ public class Control_Button : VisualElement
 
         // Mouse Click Control Button
         if (evt.eventTypeId == ClickEvent.TypeId()) {
-            ToggleSelectStyle(this, CardNumber);
-            OnSelect?.Invoke(this, CardNumber);
+            ToggleSelectStyle(this, TabNumber);
+            OnSelect?.Invoke(this, TabNumber);
         }
     }
 
@@ -97,7 +97,7 @@ public class Control_Button : VisualElement
     }
 
     // Select Style Toggle Method
-    public void ToggleSelectStyle(Control_Button m_button, int m_cardNum) {
+    public void ToggleSelectStyle(Control_Button m_button, int m_buttonNum) {
         m_button._fill.ToggleInClassList("fill--select");
         m_button._icon.ToggleInClassList("icon--select");
         m_button._label.ToggleInClassList("label--select");
