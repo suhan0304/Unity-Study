@@ -4,14 +4,10 @@
     <Style src="project://database/Assets/UI/Uss/ControlButtonSelect.uss?fileID=7433441132597879392&amp;guid=553098fe484e19e4487c891140d9a2f6&amp;type=3#ControlButtonSelect" />
     <Style src="project://database/Assets/UI/Uss/ControlCard.uss?fileID=7433441132597879392&amp;guid=62466f3bac01b224fb25e3a4565c29b2&amp;type=3#ControlCard" />
     <Style src="project://database/Assets/UI/Uss/ControlCardHover.uss?fileID=7433441132597879392&amp;guid=89b638b70b9ca7142bc08abca8db0139&amp;type=3#ControlCardHover" />
-    <ui:VisualElement name="Control_Card" class="control__card--normal">
-        <ui:VisualElement name="CardBackground" class="card__background--normal">
-            <ui:VisualElement name="Card_Image" class="card__image--normal card__image--hover" />
-            <ui:Label tabindex="-1" text="Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_Label" class="card__label--normal" />
-        </ui:VisualElement>
-        <ui:VisualElement name="Card_Button" class="card__button--normal card__button--hover">
-            <ui:VisualElement name="Button_Icon" class="button__icon--normal button__icon--hover" />
-            <ui:Label tabindex="-1" text="Select" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button_Label" class="button__label--normal button__label--hover" />
-        </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <Control_Card card_Label="1st champion" button_Label="Select" />
+        <Control_Card card_Label="2nd Champion" />
+        <Control_Card card_Label="3nd Champion" />
+        <Control_Card card_Label="4nd Champion" />
     </ui:VisualElement>
 </ui:UXML>

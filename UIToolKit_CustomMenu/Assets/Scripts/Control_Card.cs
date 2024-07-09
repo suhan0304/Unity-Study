@@ -8,9 +8,9 @@ public class Control_Card : VisualElement
 
     internal new class UxmlTraits : VisualElement.UxmlTraits {
         private readonly UxmlStringAttributeDescription m_CardLabel 
-            = new UxmlStringAttributeDescription { name = "card_Label", defaultValue = "" };
+            = new UxmlStringAttributeDescription { name = "card_Label", defaultValue = "Xnd Cham" };
         private readonly UxmlStringAttributeDescription m_ButtonLabel
-            = new UxmlStringAttributeDescription { name = "button_Label", defaultValue = "Menu Button" };
+            = new UxmlStringAttributeDescription { name = "button_Label", defaultValue = "Select" };
 
         public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription 
         {
@@ -116,6 +116,10 @@ public class Control_Card : VisualElement
     // Hover Style Toggle Method
     public void ToggleHoverStyle(Control_Card m_card)
     {
+        _card_Image.ToggleInClassList("card__image--hover");
+        _card_Button.ToggleInClassList("card__button--hover");
+        _button_icon.ToggleInClassList("button__icon--hover");
+        _button_label.ToggleInClassList("button__label--hover");
     }
 
     // Select Style Toggle Method
