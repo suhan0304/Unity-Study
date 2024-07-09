@@ -42,9 +42,9 @@ public class UI_Manager : MonoBehaviour
     }
 
     void OnSelectControlButton(Control_Button currentButton, int cardNumber) {
-        Debug.Log($"[Control Button Manager][{cardNumber}] {currentButton.GetLabelText()} Button Select");
 
         if (selectedButton == currentButton) {
+            Debug.Log($"[Control Button Manager] Control Button Unselect.")
             seletedCardNumber = 0;
             selectedButton = null;
             return;
@@ -56,6 +56,7 @@ public class UI_Manager : MonoBehaviour
         // change selected Button
         selectedButton = currentButton; 
         seletedCardNumber = currentButton.CardNumber;
+        Debug.Log($"[Control Button Manager][{cardNumber}] {currentButton.GetLabelText()} Button Select");
     }
 
 #if UNITY_EDITOR
