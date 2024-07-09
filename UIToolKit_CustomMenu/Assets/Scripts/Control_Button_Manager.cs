@@ -19,8 +19,20 @@ public class Control_Button_Manager : MonoBehaviour
         controlButtons = new List<Control_Button>();
         var buttons = root.Query<Control_Button>().ToList();
         foreach (var button in buttons) {
+            button.OnSelect += OnSelectControlButton;
             controlButtons.Add(button);
         }
         Debug.Log($"[Control Button Manager] {controlButtons.Count} Buttons Initialized");
+    }
+
+    void OnSelectControlButton(Control_Button currentButton, int cardNumber) {
+        if (selectedButton != null && selectedButton != currentButton) {
+            selectedButton.ToggleSelectStyle(selectedButton, selectedButton.CardNumber);
+        }
+        if (selectedButton != currentButton) {
+            selectedButton = currentButton;
+            selectedButton.ToggleSelectStyle(selectedButton, cardNumber);
+        }
+
     }
 }
