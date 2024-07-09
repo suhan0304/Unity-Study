@@ -31,18 +31,16 @@ public class Control_Button : VisualElement
         set{ _label.text = value; }
     }
 
-
     private VisualElement _fill;
     private VisualElement _icon;
     private Label _label;
 
     public event Action<Control_Button> OnHover;
-    
     public event Action<Control_Button, int> OnSelect;
 
     public Control_Button() 
     {
-        // 버튼 클릭할 떄
+        // 버튼 클릭할 때 작동할 Fill 효과
         _fill = new VisualElement();
         Add(_fill);
 
