@@ -1,7 +1,8 @@
 .control__card--normal {
     flex-grow: 1;
-    padding-left: 10px;
-    width: 275px;
+    padding-left: 0;
+    width: 100%;
+    margin-left: 0;
 }
 
 .card__background--normal {

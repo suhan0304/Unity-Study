@@ -12,6 +12,12 @@
             <Control_Button button_Label="Pyro Class" card_Number="4" />
             <Control_Button button_Label="Assassin Class" card_Number="5" />
         </ui:VisualElement>
-        <ui:VisualElement name="Container_Card" style="flex-grow: 0; height: 275px; flex-direction: row;" />
+        <ui:VisualElement name="Container_Card" style="flex-grow: 0; height: 275px; flex-direction: row;">
+            <Control_Card name="Card_1" />
+            <Control_Card name="Card_2" />
+            <Control_Card name="Card_3" />
+            <Control_Card name="Card_4" />
+            <Control_Card name="Card_5" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
