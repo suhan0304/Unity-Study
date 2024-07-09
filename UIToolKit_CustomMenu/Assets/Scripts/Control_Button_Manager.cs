@@ -11,6 +11,9 @@ public class Control_Button_Manager : MonoBehaviour
 
     [SerializeField] private Control_Button selectedButton;
 
+    [TabGroup("Tap","Debug",SdfIconType.CodeSlash, TextColor="red")]
+
+    [TabGroup("Tap","Debug")]
     [Button("Init Control Button List")]
     void Init() {
         var root = UI_Doc.rootVisualElement;
@@ -31,13 +34,19 @@ public class Control_Button_Manager : MonoBehaviour
 
     void OnSelectControlButton(Control_Button currentButton, int cardNumber) {
         Debug.Log($"[Control Button Manager] {currentButton.GetLabelText()} Button Select");
+
+        // change selected Button
+        selectedButton = currentButton;
     }
 
 #if UNITY_EDITOR
-    [TabGroup("Tap","Debug",SdfIconType.CodeSlash, TextColor="red")]
-    [Button("CheckSelectedControlButton")]
+    [TabGroup("Tap","Debug")]
+    [Button("Check Selected Control Button")]
     void CheckSelectedControlButton() {
-        Debug.Log($"[Control Button Manager] {selectedButton.GetLabelText()} Button Selected Now!");
+        if (selectedButton != null)
+            Debug.Log($"[Control Button Manager] {selectedButton.GetLabelText()} Button Selected Now!");
+        else 
+            Debug.Log($"[Control Button Manager] No buttons are selected.");
     }
 #endif
 }
