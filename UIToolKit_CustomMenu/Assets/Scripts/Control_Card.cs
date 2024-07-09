@@ -81,7 +81,7 @@ public class Control_Card : VisualElement
         _button_label.pickingMode = PickingMode.Ignore;
 
         // Load and apply the stylesheet
-        this.AddToClassList("control__card--normal");
+        this.AddToClassList("card--normal");
         _card_BackGround.AddToClassList("card__background--normal");
         _card_Image.AddToClassList("card__image--normal");
         _card_Label.AddToClassList("card__label--normal");
@@ -124,5 +124,10 @@ public class Control_Card : VisualElement
 
     // Select Style Toggle Method
     public void ToggleSelectStyle(Control_Card m_card, int m_cardNum) {
+    }
+
+    // Card Style Update Method
+    public void CardStyleUpda(int card_num) {
+        this.AddToClassList($"card-{card_num}");
     }
 }

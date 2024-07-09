@@ -1,0 +1,39 @@
+.card-1 {
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-cubic;
+    translate: 0 0;
+}
+
+.card-2 {
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-cubic;
+    translate: -95% 0;
+}
+
+.card-3 {
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-cubic;
+    translate: -195% 0;
+}
+
+.card-4 {
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-cubic;
+    translate: -295% 0;
+}
+
+.card-1--out {
+    translate: 0 0;
+}
+
+.card-2--out {
+    translate: 0 0;
+}
+
+.card-3--out {
+    translate: 0 0;
+}
+
+.card-4--out {
+    translate: 0 0;
+}
