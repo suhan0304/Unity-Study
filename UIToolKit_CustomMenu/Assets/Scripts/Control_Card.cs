@@ -125,9 +125,4 @@ public class Control_Card : VisualElement
     // Select Style Toggle Method
     public void ToggleSelectStyle(Control_Card m_card, int m_cardNum) {
     }
-
-    // Card Style Update Method
-    public void CardStyleUpda(int card_num) {
-        this.AddToClassList($"card-{card_num}");
-    }
 }

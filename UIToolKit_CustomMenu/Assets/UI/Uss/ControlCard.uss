@@ -1,9 +1,9 @@
 .card--normal {
     padding-left: 0;
-    width: 380px;
+    width: 360px;
     margin-left: 0;
-    padding-right: 1%;
-    flex-grow: 1;
+    padding-right: 20px;
+    flex-grow: 0;
 }
 
 .card__background--normal {

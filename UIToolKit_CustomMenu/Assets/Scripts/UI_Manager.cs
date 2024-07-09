@@ -10,7 +10,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private List<Control_Card> controlCards;
 
     [SerializeField] private Control_Button selectedButton;
-    [SerializeField, TabGroup("Tap","Control Buttons")] private int seletedCardNumber = 0;
+    [SerializeField, TabGroup("Tap","Control Buttons")] private int seletedTabNumber = 0;
 
     // Odin - Tap Define 
     [TabGroup("Tap","Control Buttons",SdfIconType.CodeSlash, TextColor="red")]
@@ -32,31 +32,49 @@ public class UI_Manager : MonoBehaviour
         // Load Control Button in UI_Doc
         controlButtons = new List<Control_Button>();
         var buttons = root.Query<Control_Button>().ToList();
-        int _CardNumber = 1;
+        int _tabNumber = 1;
         foreach (var button in buttons) {
             button.OnSelect += OnSelectControlButton;
-            button.CardNumber = _CardNumber++;
+            button.TabNumber = _tabNumber++;
             controlButtons.Add(button);
         }
-        Debug.Log($"[Control Button Manager] {controlButtons.Count} Buttons Initialized");
+        Debug.Log($"[UI Manager] {controlCards.Count} Buttons Initialized");
     }
 
-    void OnSelectControlButton(Control_Button currentButton, int cardNumber) {
+    [TabGroup("Tap","Control Cards")]
+    [Button("Init Control Button List"), GUIColor(0,1,0)]
+    void InitCards() {
+        var root = UI_Doc.rootVisualElement;
+
+        // Clear Control Card List
+        if (controlCards != null && controlCards.Count > 0)
+            controlCards.Clear();
+        
+        // Load Control Card in UI_Doc
+        controlCards = new List<Control_Card>();
+        var cards = root.Query<Control_Card>().ToList();
+
+        foreach (var card in cards) {
+            controlCards.Add(card);
+        }
+    }
+
+    void OnSelectControlButton(Control_Button currentButton, int tabNumber) {
 
         if (selectedButton == currentButton) {
-            Debug.Log($"[Control Button Manager] Control Button Unselect.")
-            seletedCardNumber = 0;
+            Debug.Log($"[UI Manager] Control Button Unselect.");
+            seletedTabNumber = 0;
             selectedButton = null;
             return;
         }
         
         if (selectedButton != null) 
-            selectedButton.ToggleSelectStyle(selectedButton, cardNumber); // Untoggle SelectedButton
+            selectedButton.ToggleSelectStyle(selectedButton, selectedButton.TabNumber); // Untoggle SelectedButton
 
         // change selected Button
         selectedButton = currentButton; 
-        seletedCardNumber = currentButton.CardNumber;
-        Debug.Log($"[Control Button Manager][{cardNumber}] {currentButton.GetLabelText()} Button Select");
+        seletedTabNumber = currentButton.TabNumber;
+        Debug.Log($"[UI Manager][{tabNumber}] {currentButton.GetLabelText()} Button Select");
     }
 
 #if UNITY_EDITOR
@@ -64,7 +82,7 @@ public class UI_Manager : MonoBehaviour
     [Button("Check Selected Control Button")]
     void CheckSelectedControlButton() {
         if (selectedButton != null)
-            Debug.Log($"[Control Button Manager][{selectedButton.CardNumber}] {selectedButton.GetLabelText()} Button Selected Now!");
+            Debug.Log($"[Control Button Manager][{selectedButton.TabNumber}] {selectedButton.GetLabelText()} Button Selected Now!");
         else 
             Debug.Log($"[Control Button Manager] No buttons are selected.");
     }

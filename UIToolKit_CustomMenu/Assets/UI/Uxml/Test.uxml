@@ -9,7 +9,6 @@
         <Control_Card card_Label="1st champion" button_Label="Select" class="card-1" />
         <Control_Card card_Label="2nd Champion" class="card-2" />
         <Control_Card card_Label="3nd Champion" class="card-3" />
-        <Control_Card card_Label="4nd Champion" class="card-4" />
-        <Control_Card class="card-5" />
+        <Control_Card card_Label="4nd Champion" class="card-4" style="translate: -1020px 0;" />
     </ui:VisualElement>
 </ui:UXML>
