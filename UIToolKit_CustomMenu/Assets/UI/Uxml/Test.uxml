@@ -1,10 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Uss/ControlButton.uss?fileID=7433441132597879392&amp;guid=917b7c46163d1654a943ab7af264e40e&amp;type=3#ControlButton" />
     <Style src="project://database/Assets/UI/Uss/ControlButtonHover.uss?fileID=7433441132597879392&amp;guid=3ced066283fe0894fa23632192dff314&amp;type=3#ControlButtonHover" />
-    <Style src="project://database/Assets/UI/Uss/ControlButtonClick.uss?fileID=7433441132597879392&amp;guid=553098fe484e19e4487c891140d9a2f6&amp;type=3#ControlButtonClick" />
-    <ui:VisualElement class="background--normal">
-        <ui:VisualElement name="fill" class="fill--normal fill--select" />
-        <ui:VisualElement name="icon" class="icon--normal icon--select" />
-        <ui:Label text="Menu Button" class="label--normal label--select" />
+    <Style src="project://database/Assets/UI/Uss/ControlButtonSelect.uss?fileID=7433441132597879392&amp;guid=553098fe484e19e4487c891140d9a2f6&amp;type=3#ControlButtonSelect" />
+    <Style src="project://database/Assets/UI/Uss/ControlCard.uss?fileID=7433441132597879392&amp;guid=62466f3bac01b224fb25e3a4565c29b2&amp;type=3#ControlCard" />
+    <ui:VisualElement name="Control_Card" class="control__card--normal">
+        <ui:VisualElement name="CardBackground" class="card__background--normal">
+            <ui:VisualElement name="Card_Image" class="card__image--normal" />
+            <ui:Label tabindex="-1" text="Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_Label" class="card__label--normal" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; position: absolute; bottom: 0; height: 30%;" />
     </ui:VisualElement>
 </ui:UXML>

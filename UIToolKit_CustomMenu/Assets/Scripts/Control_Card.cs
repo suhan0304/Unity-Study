@@ -47,27 +47,27 @@ public class Control_Card : VisualElement
     public Control_Card() 
     {
         // 카드 뒷배경
-        _card_BackGround = new VisualElement { name = "CardBackGround" };
+        _card_BackGround = new VisualElement { name = "Card_Background" };
         Add(_card_BackGround);
 
         // 카드 이미지
-        _card_Image = new VisualElement { name = "CardImage" };
+        _card_Image = new VisualElement { name = "Card_Image" };
         _card_BackGround.Add(_card_Image);
 
         // 카드 레이블
-        _card_Label = new Label { name = "CardLabel" };
+        _card_Label = new Label { name = "Card_Label" };
         _card_BackGround.Add(_card_Label);
 
         // 카드 버튼
-        _card_Button = new VisualElement { name = "CardButton" };
+        _card_Button = new VisualElement { name = "Card_Button" };
         Add(_card_Button);
 
         // 버튼 아이콘
-        _button_icon = new VisualElement { name = "ButtonIcon" };
+        _button_icon = new VisualElement { name = "Button_Icon" };
         _card_Button.Add(_button_icon);
 
         // 버튼 레이블
-        _button_label = new Label { name = "ButtonLabel" };
+        _button_label = new Label { name = "Button_Label" };
         _card_Button.Add(_button_label);
 
         // Preventing Clicks
