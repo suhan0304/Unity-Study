@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Rendering;
 using UnityEngine.UIElements;
-
 
 public class Control_Button : VisualElement
 {
@@ -16,7 +14,7 @@ public class Control_Button : VisualElement
 
         public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
         {
-            get {yield break;}
+            get { yield break;}
         }
 
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)

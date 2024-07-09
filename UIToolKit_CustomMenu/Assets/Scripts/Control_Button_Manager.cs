@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,10 +10,11 @@ public class Control_Button_Manager : MonoBehaviour
 
     [SerializeField] private Control_Button selectedButton;
 
+    // Odin - Tap Define 
     [TabGroup("Tap","Debug",SdfIconType.CodeSlash, TextColor="red")]
 
     [TabGroup("Tap","Debug")]
-    [Button("Init Control Button List")]
+    [Button("Init Control Button List"), GUIColor(0,1,0)]
     void Init() {
         var root = UI_Doc.rootVisualElement;
 
@@ -35,8 +35,15 @@ public class Control_Button_Manager : MonoBehaviour
     void OnSelectControlButton(Control_Button currentButton, int cardNumber) {
         Debug.Log($"[Control Button Manager] {currentButton.GetLabelText()} Button Select");
 
-        // change selected Button
-        selectedButton = currentButton;
+        if (selectedButton == currentButton) {
+            selectedButton = null;
+            return;
+        }
+        
+        if (selectedButton != null) 
+            selectedButton.ToggleSelectStyle(selectedButton, cardNumber); // Untoggle SelectedButton
+
+        selectedButton = currentButton; // change selected Button
     }
 
 #if UNITY_EDITOR
