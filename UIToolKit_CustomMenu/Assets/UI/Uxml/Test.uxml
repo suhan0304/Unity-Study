@@ -8,6 +8,9 @@
             <ui:VisualElement name="Card_Image" class="card__image--normal" />
             <ui:Label tabindex="-1" text="Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_Label" class="card__label--normal" />
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; position: absolute; bottom: 0; height: 30%;" />
+        <ui:VisualElement name="Card_Button" class="card__button--normal">
+            <ui:VisualElement name="Button_Icon" class="button__icon--normal" />
+            <ui:Label tabindex="-1" text="Select" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button_Label" class="button__label--normal" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

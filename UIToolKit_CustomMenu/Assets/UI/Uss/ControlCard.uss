@@ -32,3 +32,29 @@
     flex-shrink: 1;
     flex-grow: 1;
 }
+
+.card__button--normal {
+    position: absolute;
+    bottom: 0;
+    height: 30%;
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button__icon--normal {
+    flex-grow: 0;
+    background-image: url("project://database/Assets/Texture/logout.png?fileID=21300000&guid=7aac8cb5aaaf142408368df8e0bd50d1&type=3#logout");
+    -unity-background-scale-mode: stretch-to-fill;
+    width: 45px;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    height: 45px;
+}
+
+.button__label--normal {
+    -unity-font-definition: url("project://database/Assets/Fonts/Oswald-Regular%20SDF.asset?fileID=11400000&guid=e5da9c538a3c5e74497cd54f53401f19&type=2#Oswald-Regular SDF");
+    -unity-font-style: bold;
+    font-size: 35px;
+    color: rgba(0, 0, 0, 0);
+}
