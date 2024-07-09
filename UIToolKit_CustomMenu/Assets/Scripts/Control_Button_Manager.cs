@@ -16,7 +16,7 @@ public class Control_Button_Manager : MonoBehaviour
         var root = UI_Doc.rootVisualElement;
 
         // Clear Control Button List
-        if (controlButtons.Count > 0)
+        if (controlButtons != null && controlButtons.Count > 0)
             controlButtons.Clear();
 
         // Load Control Button in UI_Doc
@@ -30,13 +30,14 @@ public class Control_Button_Manager : MonoBehaviour
     }
 
     void OnSelectControlButton(Control_Button currentButton, int cardNumber) {
-        if (selectedButton != null && selectedButton != currentButton) {
-            selectedButton.ToggleSelectStyle(selectedButton, selectedButton.CardNumber);
-        }
-        if (selectedButton != currentButton) {
-            selectedButton = currentButton;
-            selectedButton.ToggleSelectStyle(selectedButton, cardNumber);
-        }
-
+        Debug.Log($"[Control Button Manager] {currentButton.GetLabelText()} Button Select");
     }
+
+#if UNITY_EDITOR
+    [TabGroup("Tap","Debug",SdfIconType.CodeSlash, TextColor="red")]
+    [Button("CheckSelectedControlButton")]
+    void CheckSelectedControlButton() {
+        Debug.Log($"[Control Button Manager] {selectedButton.GetLabelText()} Button Selected Now!");
+    }
+#endif
 }

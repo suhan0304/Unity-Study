@@ -108,4 +108,9 @@ public class Control_Button : VisualElement
         m_button._icon.ToggleInClassList("icon--select");
         m_button._label.ToggleInClassList("label--select");
     }
+
+    // Get Label Text
+    public string GetLabelText() {
+        return _label.text;
+    }
 }
