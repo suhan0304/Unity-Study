@@ -9,4 +9,5 @@
 .label--hover {
     color: rgb(0, 0, 0);
     -unity-font-style: normal;
+    -unity-font-definition: url("project://database/Assets/Fonts/Oswald-Regular%20SDF.asset?fileID=11400000&guid=e5da9c538a3c5e74497cd54f53401f19&type=2#Oswald-Regular SDF");
 }

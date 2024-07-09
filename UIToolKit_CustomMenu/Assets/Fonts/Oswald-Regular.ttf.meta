@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ba77e26139e65b44bd4d829f0c1e170
+guid: 189c6bda9a30a384aaefa5e449f2e0ff
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Revx Neue Demo
+  - Oswald
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

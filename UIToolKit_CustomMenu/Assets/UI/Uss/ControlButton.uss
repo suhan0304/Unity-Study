@@ -40,4 +40,7 @@
     color: rgb(255, 255, 255);
     -unity-text-align: middle-left;
     font-size: 24px;
+    -unity-font: initial;
+    -unity-font-style: normal;
+    -unity-font-definition: url("project://database/Assets/Fonts/Oswald-Regular%20SDF.asset?fileID=11400000&guid=e5da9c538a3c5e74497cd54f53401f19&type=2#Oswald-Regular SDF");
 }
