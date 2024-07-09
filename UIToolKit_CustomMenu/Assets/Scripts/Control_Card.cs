@@ -77,5 +77,14 @@ public class Control_Card : VisualElement
         _card_Button.pickingMode = PickingMode.Ignore;
         _button_icon.pickingMode = PickingMode.Ignore;
         _button_label.pickingMode = PickingMode.Ignore;
+
+        // Load and apply the stylesheet
+        this.AddToClassList("");
+        _card_BackGround.AddToClassList("");
+        _card_Image.AddToClassList("");
+        _card_Label.AddToClassList("");
+        _card_Button.AddToClassList("");
+        _button_icon.AddToClassList("");
+        _button_label.AddToClassList("");
     }
 }
