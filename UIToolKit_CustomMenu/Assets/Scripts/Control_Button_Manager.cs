@@ -14,7 +14,10 @@ public class Control_Button_Manager : MonoBehaviour
     [Button("Init Control Button List")]
     void Init() {
         var root = UI_Doc.rootVisualElement;
-        controlButtons.Clear();
+
+        // Clear Control Button List
+        if (controlButtons.Count > 0)
+            controlButtons.Clear();
 
         // Load Control Button in UI_Doc
         controlButtons = new List<Control_Button>();
