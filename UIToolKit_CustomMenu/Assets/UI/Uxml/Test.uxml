@@ -6,7 +6,7 @@
     <Style src="project://database/Assets/UI/Uss/ControlCardHover.uss?fileID=7433441132597879392&amp;guid=89b638b70b9ca7142bc08abca8db0139&amp;type=3#ControlCardHover" />
     <Style src="project://database/Assets/UI/Uss/ControlCardInOut.uss?fileID=7433441132597879392&amp;guid=c5b0de9d674271e469fb65c202761da9&amp;type=3#ControlCardInOut" />
     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-        <Control_Card card_Label="1st champion" button_Label="Select" class="card-1" />
+        <Control_Card card_Label="1st champion" button_Label="Select" />
         <Control_Card card_Label="2nd Champion" style="left: 0;" />
         <Control_Card card_Label="3nd Champion" />
         <Control_Card card_Label="4nd Champion" />

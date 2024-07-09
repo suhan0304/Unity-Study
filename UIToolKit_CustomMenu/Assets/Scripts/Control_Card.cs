@@ -8,7 +8,7 @@ public class Control_Card : VisualElement
 
     internal new class UxmlTraits : VisualElement.UxmlTraits {
         private readonly UxmlStringAttributeDescription m_CardLabel 
-            = new UxmlStringAttributeDescription { name = "card_Label", defaultValue = "Xnd Cham" };
+            = new UxmlStringAttributeDescription { name = "card_Label", defaultValue = "0nd Champion" };
         private readonly UxmlStringAttributeDescription m_ButtonLabel
             = new UxmlStringAttributeDescription { name = "button_Label", defaultValue = "Select" };
 
