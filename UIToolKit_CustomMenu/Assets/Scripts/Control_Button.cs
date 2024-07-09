@@ -40,22 +40,19 @@ public class Control_Button : VisualElement
 
     public Control_Button() 
     {
+        this.name = "Background";
+
         // 버튼 클릭할 때 작동할 Fill 효과
-        _fill = new VisualElement();
+        _fill = new VisualElement { name = "Fill" };
         Add(_fill);
 
         // 버튼 아이콘
-        _icon = new VisualElement();
+        _icon = new VisualElement { name = "Label" };
         Add(_icon);
 
         // 버튼 레이블
-        _label = new Label();
+        _label = new Label { name = "Icon" };
         Add(_label);
-
-        this.name = "Background";
-        _fill.name = "Fill";
-        _label.name = "Label";
-        _icon.name = "Icon";
 
         // Preventing Clicks
         _fill.pickingMode = PickingMode.Ignore;
