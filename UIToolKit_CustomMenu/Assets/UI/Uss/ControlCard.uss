@@ -1,5 +1,7 @@
 .control__card--normal {
     flex-grow: 1;
+    padding-left: 10px;
+    width: 275px;
 }
 
 .card__background--normal {
@@ -17,6 +19,7 @@
     margin-right: 25px;
     margin-bottom: 5px;
     flex-grow: 1;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.39);
 }
 
 .card__label--normal {

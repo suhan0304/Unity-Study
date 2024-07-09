@@ -25,21 +25,23 @@ public class Control_Card : VisualElement
         }
     }
     public string CardLabel { 
-        get; 
-        set; 
+        get { return _card_Label.text; }
+        set{ _card_Label.text = value; }
     }
     public string ButtonLabel {
-        get;
-        set;
+        get { return _button_label.text; }
+        set{ _button_label.text = value; }
     }
+
+    public int CardNumber;
 
     private VisualElement _card_BackGround;
     private VisualElement _card_Image;
-    private VisualElement _card_Label;
+    private Label _card_Label;
     
     private VisualElement _card_Button;
     private VisualElement _button_icon;
-    private VisualElement _button_label;
+    private Label _button_label;
 
     public event Action<Control_Card> OnHover;
     public event Action<Control_Card, int> OnSelect;
@@ -79,12 +81,44 @@ public class Control_Card : VisualElement
         _button_label.pickingMode = PickingMode.Ignore;
 
         // Load and apply the stylesheet
-        this.AddToClassList("");
-        _card_BackGround.AddToClassList("");
-        _card_Image.AddToClassList("");
-        _card_Label.AddToClassList("");
-        _card_Button.AddToClassList("");
-        _button_icon.AddToClassList("");
-        _button_label.AddToClassList("");
+        this.AddToClassList("control__card--normal");
+        _card_BackGround.AddToClassList("card__background--normal");
+        _card_Image.AddToClassList("card__image--normal");
+        _card_Label.AddToClassList("card__label--normal");
+        _card_Button.AddToClassList("card__button--normal");
+        _button_icon.AddToClassList("button__icon--normal");
+        _button_label.AddToClassList("button__label--normal");
+
+
+        // On Mouse Enter event
+        this.RegisterCallback<MouseEnterEvent>(OnMouseEventControlButton);
+        this.RegisterCallback<MouseLeaveEvent>(OnMouseEventControlButton);
+
+        // On Mouse Click Event
+        this.RegisterCallback<ClickEvent>(OnMouseEventControlButton);
+    }
+    
+    public void OnMouseEventControlButton(EventBase evt)
+    {
+        // Mouse Enter Control Button
+        if (evt.eventTypeId == MouseEnterEvent.TypeId() || evt.eventTypeId == MouseLeaveEvent.TypeId()) {
+            ToggleHoverStyle(this);
+            OnHover?.Invoke(this);
+        }
+
+        // Mouse Click Control Button
+        if (evt.eventTypeId == ClickEvent.TypeId()) {
+            ToggleSelectStyle(this, CardNumber);
+            OnSelect?.Invoke(this, CardNumber);
+        }
+    }
+
+    // Hover Style Toggle Method
+    public void ToggleHoverStyle(Control_Card m_card)
+    {
+    }
+
+    // Select Style Toggle Method
+    public void ToggleSelectStyle(Control_Card m_card, int m_cardNum) {
     }
 }
