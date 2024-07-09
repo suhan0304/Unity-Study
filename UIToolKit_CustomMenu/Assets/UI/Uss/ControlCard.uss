@@ -2,7 +2,8 @@
     flex-grow: 1;
     padding-left: 0;
     width: auto;
-    margin-left: 10px;
+    margin-left: 0;
+    padding-right: 10px;
 }
 
 .card__background--normal {
@@ -30,7 +31,7 @@
     padding-bottom: 20px;
     padding-left: 30px;
     -unity-text-align: middle-center;
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.39);
     -unity-font-definition: url("project://database/Assets/Fonts/Oswald-Regular%20SDF.asset?fileID=11400000&guid=e5da9c538a3c5e74497cd54f53401f19&type=2#Oswald-Regular SDF");
     font-size: 30px;
     flex-shrink: 1;

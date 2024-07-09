@@ -13,6 +13,11 @@ public class Control_Button_Manager : MonoBehaviour
     // Odin - Tap Define 
     [TabGroup("Tap","Debug",SdfIconType.CodeSlash, TextColor="red")]
 
+    void Start() {
+        Init();
+    }
+
+
     [TabGroup("Tap","Debug")]
     [Button("Init Control Button List"), GUIColor(0,1,0)]
     void Init() {
