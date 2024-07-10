@@ -10,7 +10,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private List<Control_Card> controlCards;
 
     [SerializeField] private Control_Button selectedButton;
-    [SerializeField, TabGroup("Tap","Control Buttons")] private int seletedTabNumber = 0;
+    [SerializeField, TabGroup("Tap","Control Buttons")] private int selectedTabNumber = 0;
 
     // Odin - Tap Define 
     [TabGroup("Tap","Control Buttons",SdfIconType.CodeSlash, TextColor="red")]
@@ -37,7 +37,6 @@ public class UI_Manager : MonoBehaviour
         var buttons = root.Query<Control_Button>().ToList();
         int _tabNumber = 1;
         foreach (var button in buttons) {
-            button.OnSelect += ToggleShowHideCards;
             button.OnSelect += OnSelectControlButton;
             button.TabNumber = _tabNumber++;
             controlButtons.Add(button);
@@ -46,13 +45,24 @@ public class UI_Manager : MonoBehaviour
     }
 
     void OnSelectControlButton(Control_Button currentButton, int tabNumber) {
-        if (selectedButton != null)
-        {
-            selectedButton.ToggleSelectStyle(currentButton, tabNumber);
+        if (selectedButton != null) {
+            selectedButton.ToggleSelectStyle(selectedButton, selectedTabNumber);
+            if (selectedButton == currentButton) {
+                selectedButton = null;
+                selectedTabNumber = 0;
+                return;
+            }
+            // Hide Cards
+            HideCards();
         }
         // change selected Button
         selectedButton = currentButton; 
-        seletedTabNumber = currentButton.TabNumber;
+        selectedTabNumber = currentButton.TabNumber;
+        
+        // TODO - Cards Update (Tab Number!)
+
+        // Show Updated Cards
+        ShowCards();
 
         Debug.Log($"[UI Manager][{tabNumber}] {currentButton.GetLabelText()} Button Select");
     }
@@ -82,16 +92,30 @@ public class UI_Manager : MonoBehaviour
     }
 
     [TabGroup("Tap","Control Cards")]
-    [Button("Toggle Show/Hide Card Menus")]
-    void ToggleShowHideCards(Control_Button currentButton, int tabNumber) {
+    [Button("Toggle Show Card Menus")]
+    void ShowCards() {
         for (int i = 0; i < controlCards.Count; i++) {
-            controlCards[i].ToggleInClassList($"card-{i + 1}--out");
+            controlCards[i].AddToClassList($"card-{i + 1}--out");
+        }
+    }
+
+    [TabGroup("Tap","Control Cards")]
+    [Button("Toggle Show Card Menus")]
+    void HideCards() {
+        for (int i = 0; i < controlCards.Count; i++) {
+            controlCards[i].RemoveFromClassList($"card-{i + 1}--out");
         }
     }
 
 #endregion
 
 #if UNITY_EDITOR
+    [Button("Init All Element"), GUIColor(1,1,1)]
+    void Init() {
+        InitButtons();
+        InitCards();
+    }
+
     [TabGroup("Tap","Control Buttons")]
     [Button("Check Selected Control Button")]
     void CheckSelectedControlButton() {
