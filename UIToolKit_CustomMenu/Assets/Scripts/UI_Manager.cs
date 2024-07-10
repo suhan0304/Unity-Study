@@ -75,10 +75,10 @@ public class UI_Manager : MonoBehaviour
         if (selectedButton != null)
         {
             UnselectTapMenu();
-            seletedTabNumber = 0;
-            selectedButton = null;
-            Debug.Log($"[UI Manager] Control Button Tab Menu Unselect.");
+            Debug.Log($"[UI Manager] Control Button Tab Menu Unselect");
             if (selectedButton == currentButton) {
+                seletedTabNumber = 0;
+                selectedButton = null;
                 return;
             }
         }
