@@ -48,7 +48,10 @@ public class UI_Manager : MonoBehaviour
 
         Debug.Log($"[UI Manager][{selectedTabNumber} - {currentTabNumber}] Button Select");
         if (selectedTabNumber != 0) {
+
             selectedButton.ToggleSelectStyle(selectedButton, selectedTabNumber);
+            HideCards();
+
             if (selectedTabNumber == currentTabNumber) {
                 selectedButton = null;
                 selectedTabNumber = 0;
@@ -92,7 +95,9 @@ public class UI_Manager : MonoBehaviour
     void ShowCards() {
         Debug.LogWarning($"[UI Manager] Show Cards");
         for (int i = 0; i < controlCards.Count; i++) {
-            controlCards[i].AddToClassList($"card-{i}");
+            controlCards[i].AddToClassList($"card-{i + 1}");
+        }
+        for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].AddToClassList($"card-{i + 1}--out");
         }
     }
@@ -102,7 +107,9 @@ public class UI_Manager : MonoBehaviour
     void HideCards() {
         Debug.LogWarning($"[UI Manager] Hide Cards");
         for (int i = 0; i < controlCards.Count; i++) {
-            controlCards[i].RemoveFromClassList($"card-{i}");
+            controlCards[i].RemoveFromClassList($"card-{i + 1}");
+        }
+        for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].RemoveFromClassList($"card-{i + 1}--out");
         }
     }
