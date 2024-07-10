@@ -15,7 +15,7 @@
             <Control_Button button_Label="Assassin Class" card_Number="5" />
         </ui:VisualElement>
         <ui:VisualElement name="Container_Card" style="flex-grow: 1; height: 300px; flex-direction: row; width: auto;">
-            <Control_Card name="Card_1" button_Label="1st Champion" />
+            <Control_Card name="Card_1" button_Label="Select" />
             <Control_Card name="Card_2" />
             <Control_Card name="Card_3" />
             <Control_Card name="Card_4" />

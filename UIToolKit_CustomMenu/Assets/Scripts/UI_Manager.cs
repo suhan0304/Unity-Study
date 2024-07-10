@@ -72,21 +72,28 @@ public class UI_Manager : MonoBehaviour
     }
 
     void OnSelectControlButton(Control_Button currentButton, int tabNumber) {
-
-        if (selectedButton == currentButton) {
-            Debug.Log($"[UI Manager] Control Button Unselect.");
+        if (selectedButton != null)
+        {
+            UnselectTapMenu();
             seletedTabNumber = 0;
             selectedButton = null;
-            return;
+            Debug.Log($"[UI Manager] Control Button Tab Menu Unselect.");
+            if (selectedButton == currentButton) {
+                return;
+            }
         }
-        
-        if (selectedButton != null) 
-            selectedButton.ToggleSelectStyle(selectedButton, selectedButton.TabNumber); // Untoggle SelectedButton
 
         // change selected Button
         selectedButton = currentButton; 
         seletedTabNumber = currentButton.TabNumber;
         Debug.Log($"[UI Manager][{tabNumber}] {currentButton.GetLabelText()} Button Select");
+    }
+
+    // Unselect Tab Menu
+    private void UnselectTapMenu()
+    {
+        selectedButton.ToggleSelectStyle(selectedButton, selectedButton.TabNumber); // Untoggle SelectedButton
+        ToggleShowHideCards(selectedButton, seletedTabNumber); // Hide SelectedButton's Tab Menu
     }
 
 #if UNITY_EDITOR

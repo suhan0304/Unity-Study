@@ -4,6 +4,7 @@
 
 .card__button--hover {
     background-color: rgb(1, 255, 199);
+    padding-right: 20px;
 }
 
 .button__icon--hover {
