@@ -1,47 +1,51 @@
 .card-1 {
-    translate: 0 0;
-    visibility: visible;
-    opacity: 1;
+    opacity: 0;
+    display: none;
+    transition-duration: 0.45s;
+    transition-timing-function: ease-out-cubic;
 }
 
 .card-2 {
-    translate: -340px 0;
-    visibility: visible;
-    opacity: 1;
+    opacity: 0;
+    display: none;
+    transition-duration: 0.45s;
+    transition-timing-function: ease-out-cubic;
 }
 
 .card-3 {
-    translate: -680px 0;
-    visibility: visible;
-    opacity: 1;
+    opacity: 0;
+    display: none;
+    transition-duration: 0.45s;
+    transition-timing-function: ease-out-cubic;
 }
 
 .card-4 {
-    translate: -1020px 0;
-    visibility: visible;
-    opacity: 1;
+    opacity: 0;
+    display: none;
+    transition-duration: 0.45s;
+    transition-timing-function: ease-out-cubic;
 }
 
 .card-1--out {
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
+    opacity: 1;
+    display: flex;
     translate: 0 0;
 }
 
 .card-2--out {
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
-    translate: 0 0;
+    opacity: 1;
+    display: flex;
+    translate: 100% 0;
 }
 
 .card-3--out {
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
-    translate: 0 0;
+    opacity: 1;
+    display: flex;
+    translate: 200% 0;
 }
 
 .card-4--out {
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
-    translate: 0 0;
+    opacity: 1;
+    display: flex;
+    translate: 300% 0;
 }
