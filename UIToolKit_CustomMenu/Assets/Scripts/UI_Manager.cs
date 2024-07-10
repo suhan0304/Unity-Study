@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -18,9 +19,8 @@ public class UI_Manager : MonoBehaviour
     [TabGroup("Tap","Control Cards",SdfIconType.CodeSlash, TextColor="green")]
 
     void Start() {
-        //InitButtons();
-    }
 
+    }
 
 #region ControlButtons
 
@@ -45,13 +45,14 @@ public class UI_Manager : MonoBehaviour
         Debug.Log($"[UI Manager] {controlButtons.Count} Buttons Initialized");
     }
 
-    void OnSelectControlButton(Control_Button currentButton, int currentTabNumber) {
+    async void OnSelectControlButton(Control_Button currentButton, int currentTabNumber) {
 
-        Debug.Log($"[UI Manager][{selectedTabNumber} - {currentTabNumber}] Button Select");
+        Debug.Log($"[UI Manager][{selectedTabNumber} → {currentTabNumber}] Button Select");
         if (selectedTabNumber != 0) {
+            HideCards();
+            await UniTask.Delay(TimeSpan.FromSeconds(0.3f));
 
             selectedButton.ToggleSelectStyle(selectedButton, selectedTabNumber);
-            HideCards();
 
             if (selectedTabNumber == currentTabNumber) {
                 selectedButton = null;
@@ -85,7 +86,9 @@ public class UI_Manager : MonoBehaviour
         // Load Control Card in UI_Doc
         controlCards = new List<Control_Card>();
         var cards = root.Query<Control_Card>().ToList();
+        int index = 1;
         foreach (var card in cards) {
+            card.AddToClassList($"card-{index++}");
             controlCards.Add(card);
         }
         Debug.Log($"[UI Manager] {controlCards.Count} Cards Initialized");

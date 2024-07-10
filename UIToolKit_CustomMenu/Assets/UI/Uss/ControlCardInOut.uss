@@ -1,47 +1,47 @@
 .card-1 {
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out-cubic;
     translate: 0 0;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .card-2 {
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out-cubic;
     translate: 0 0;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .card-3 {
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out-cubic;
     translate: 0 0;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .card-4 {
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out-cubic;
     translate: 0 0;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .card-1--out {
     opacity: 1;
-    display: flex;
     translate: 0 0;
+    visibility: visible;
 }
 
 .card-2--out {
     opacity: 1;
-    display: flex;
     translate: 100% 0;
+    visibility: visible;
 }
 
 .card-3--out {
     opacity: 1;
-    display: flex;
     translate: 200% 0;
+    visibility: visible;
 }
 
 .card-4--out {
     opacity: 1;
-    display: flex;
     translate: 300% 0;
+    visibility: visible;
 }

@@ -5,6 +5,8 @@
     padding-right: 20px;
     flex-grow: 0;
     position: absolute;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out-cubic;
 }
 
 .card__background--normal {
