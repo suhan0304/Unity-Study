@@ -1,35 +1,26 @@
 .card-1 {
     opacity: 0;
     display: none;
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
 }
 
 .card-2 {
     opacity: 0;
     display: none;
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
 }
 
 .card-3 {
     opacity: 0;
     display: none;
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
 }
 
 .card-4 {
     opacity: 0;
     display: none;
-    transition-duration: 0.45s;
-    transition-timing-function: ease-out-cubic;
 }
 
 .card-1--out {
     opacity: 1;
     display: flex;
-    translate: 0 0;
 }
 
 .card-2--out {

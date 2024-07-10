@@ -1,12 +1,14 @@
 .card--normal {
     padding-left: 0;
     width: 360px;
+    height: 100%;
     margin-left: 0;
     padding-right: 20px;
     flex-grow: 0;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out-cubic;
     position: absolute;
-    height: 100%;
-    left: 0;
+    translate: 0% 0;
 }
 
 .card__background--normal {
