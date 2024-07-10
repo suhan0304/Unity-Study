@@ -44,10 +44,12 @@ public class UI_Manager : MonoBehaviour
         Debug.Log($"[UI Manager] {controlButtons.Count} Buttons Initialized");
     }
 
-    void OnSelectControlButton(Control_Button currentButton, int tabNumber) {
-        if (selectedButton != null) {
+    void OnSelectControlButton(Control_Button currentButton, int currentTabNumber) {
+
+        Debug.Log($"[UI Manager][{selectedTabNumber} - {currentTabNumber}] Button Select");
+        if (selectedTabNumber != 0) {
             selectedButton.ToggleSelectStyle(selectedButton, selectedTabNumber);
-            if (selectedButton == currentButton) {
+            if (selectedTabNumber == currentTabNumber) {
                 selectedButton = null;
                 selectedTabNumber = 0;
                 return;
@@ -63,8 +65,6 @@ public class UI_Manager : MonoBehaviour
 
         // Show Updated Cards
         ShowCards();
-
-        Debug.Log($"[UI Manager][{tabNumber}] {currentButton.GetLabelText()} Button Select");
     }
 
 #endregion
@@ -94,14 +94,16 @@ public class UI_Manager : MonoBehaviour
     [TabGroup("Tap","Control Cards")]
     [Button("Toggle Show Card Menus")]
     void ShowCards() {
+        Debug.LogWarning($"[UI Manager] Show Cards");
         for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].AddToClassList($"card-{i + 1}--out");
         }
     }
 
     [TabGroup("Tap","Control Cards")]
-    [Button("Toggle Show Card Menus")]
+    [Button("Toggle Hide Card Menus")]
     void HideCards() {
+        Debug.LogWarning($"[UI Manager] Hide Cards");
         for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].RemoveFromClassList($"card-{i + 1}--out");
         }
