@@ -2,54 +2,50 @@
     transition-duration: 0.25s;
     transition-timing-function: ease-out-cubic;
     translate: 0 0;
-    visibility: hidden;
-    opacity: 0;
+    transition-delay: 0.25s;
+    visibility: visible;
+    opacity: 1;
 }
 
 .card-2 {
     transition-duration: 0.25s;
     transition-timing-function: ease-out-cubic;
     translate: -340px 0;
-    visibility: hidden;
-    opacity: 0;
+    transition-delay: 0.25s;
+    visibility: visible;
+    opacity: 1;
 }
 
 .card-3 {
     transition-duration: 0.25s;
     transition-timing-function: ease-out-cubic;
     translate: -680px 0;
-    visibility: hidden;
-    opacity: 0;
+    transition-delay: 0.25s;
+    visibility: visible;
+    opacity: 1;
 }
 
 .card-4 {
     transition-duration: 0.25s;
     transition-timing-function: ease-out-cubic;
     translate: -1020px 0;
-    visibility: hidden;
-    opacity: 0;
+    transition-delay: 0.25s;
+    visibility: visible;
+    opacity: 1;
 }
 
 .card-1--out {
     translate: 0 0;
-    visibility: visible;
-    opacity: 1;
 }
 
 .card-2--out {
     translate: 0 0;
-    visibility: visible;
-    opacity: 1;
 }
 
 .card-3--out {
     translate: 0 0;
-    visibility: visible;
-    opacity: 1;
 }
 
 .card-4--out {
     translate: 0 0;
-    visibility: visible;
-    opacity: 1;
 }

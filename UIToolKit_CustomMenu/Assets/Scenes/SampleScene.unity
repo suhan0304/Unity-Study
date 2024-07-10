@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_Doc: {fileID: 558986626}
-  seletedCardNumber: 0
+  selectedTabNumber: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
