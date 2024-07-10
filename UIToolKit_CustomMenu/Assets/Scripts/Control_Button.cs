@@ -98,7 +98,7 @@ public class Control_Button : VisualElement
     }
 
     // Select Style Toggle Method
-    private void ToggleSelectStyle(Control_Button m_button, int m_buttonNum) {
+    public void ToggleSelectStyle(Control_Button m_button, int m_tapNum) {
         m_button._fill.ToggleInClassList("fill--select");
         m_button._icon.ToggleInClassList("icon--select");
         m_button._label.ToggleInClassList("label--select");

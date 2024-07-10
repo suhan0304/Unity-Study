@@ -48,6 +48,7 @@ public class UI_Manager : MonoBehaviour
     void OnSelectControlButton(Control_Button currentButton, int tabNumber) {
         if (selectedButton != null)
         {
+            selectedButton.ToggleSelectStyle(currentButton, tabNumber);
         }
         // change selected Button
         selectedButton = currentButton; 
