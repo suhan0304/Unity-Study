@@ -46,19 +46,19 @@ public class UI_Manager : MonoBehaviour
     }
 
     async void OnSelectControlButton(Control_Button currentButton, int currentTabNumber) {
-
-        Debug.Log($"[UI Manager][{selectedTabNumber} → {currentTabNumber}] Button Select");
+        
         if (selectedTabNumber != 0) {
             HideCards();
-            await UniTask.Delay(TimeSpan.FromSeconds(0.3f));
-
-            selectedButton.ToggleSelectStyle(selectedButton, selectedTabNumber);
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
 
             if (selectedTabNumber == currentTabNumber) {
+                Debug.Log($"[UI Manager][{selectedTabNumber} = {currentTabNumber}] Unselect");
                 selectedButton = null;
                 selectedTabNumber = 0;
                 return;
             }
+            selectedButton.ToggleSelectStyle(selectedButton, selectedTabNumber);
+            Debug.Log($"[UI Manager][{selectedTabNumber} → {currentTabNumber}] Button Select");
         }
         // change selected Button
         selectedButton = currentButton; 
