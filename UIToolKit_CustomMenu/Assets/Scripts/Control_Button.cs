@@ -71,19 +71,20 @@ public class Control_Button : VisualElement
 
         // On Mouse Click Event
         this.RegisterCallback<ClickEvent>(OnMouseEventControlButton);
+
+        OnHover += ToggleHoverStyle;
+        OnSelect += ToggleSelectStyle;
     }   
     
     public void OnMouseEventControlButton(EventBase evt)
     {
         // Mouse Enter Control Button
         if (evt.eventTypeId == MouseEnterEvent.TypeId() || evt.eventTypeId == MouseLeaveEvent.TypeId()) {
-            ToggleHoverStyle(this);
             OnHover?.Invoke(this);
         }
 
         // Mouse Click Control Button
         if (evt.eventTypeId == ClickEvent.TypeId()) {
-            ToggleSelectStyle(this, TabNumber);
             OnSelect?.Invoke(this, TabNumber);
         }
     }
@@ -97,7 +98,7 @@ public class Control_Button : VisualElement
     }
 
     // Select Style Toggle Method
-    public void ToggleSelectStyle(Control_Button m_button, int m_buttonNum) {
+    private void ToggleSelectStyle(Control_Button m_button, int m_buttonNum) {
         m_button._fill.ToggleInClassList("fill--select");
         m_button._icon.ToggleInClassList("icon--select");
         m_button._label.ToggleInClassList("label--select");

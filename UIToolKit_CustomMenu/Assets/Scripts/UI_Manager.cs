@@ -21,6 +21,8 @@ public class UI_Manager : MonoBehaviour
     }
 
 
+#region ControlButtons
+
     [TabGroup("Tap","Control Buttons")]
     [Button("Init Control Button List"), GUIColor(0,1,0)]
     void InitButtons() {
@@ -35,13 +37,28 @@ public class UI_Manager : MonoBehaviour
         var buttons = root.Query<Control_Button>().ToList();
         int _tabNumber = 1;
         foreach (var button in buttons) {
-            button.OnSelect += OnSelectControlButton;
             button.OnSelect += ToggleShowHideCards;
+            button.OnSelect += OnSelectControlButton;
             button.TabNumber = _tabNumber++;
             controlButtons.Add(button);
         }
         Debug.Log($"[UI Manager] {controlButtons.Count} Buttons Initialized");
     }
+
+    void OnSelectControlButton(Control_Button currentButton, int tabNumber) {
+        if (selectedButton != null)
+        {
+        }
+        // change selected Button
+        selectedButton = currentButton; 
+        seletedTabNumber = currentButton.TabNumber;
+
+        Debug.Log($"[UI Manager][{tabNumber}] {currentButton.GetLabelText()} Button Select");
+    }
+
+#endregion
+
+#region ControlCards
 
     [TabGroup("Tap","Control Cards")]
     [Button("Init Control Button List"), GUIColor(0,1,0)]
@@ -71,30 +88,7 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    void OnSelectControlButton(Control_Button currentButton, int tabNumber) {
-        if (selectedButton != null)
-        {
-            UnselectTapMenu();
-            Debug.Log($"[UI Manager] Control Button Tab Menu Unselect");
-            if (selectedButton == currentButton) {
-                seletedTabNumber = 0;
-                selectedButton = null;
-                return;
-            }
-        }
-
-        // change selected Button
-        selectedButton = currentButton; 
-        seletedTabNumber = currentButton.TabNumber;
-        Debug.Log($"[UI Manager][{tabNumber}] {currentButton.GetLabelText()} Button Select");
-    }
-
-    // Unselect Tab Menu
-    private void UnselectTapMenu()
-    {
-        selectedButton.ToggleSelectStyle(selectedButton, selectedButton.TabNumber); // Untoggle SelectedButton
-        ToggleShowHideCards(selectedButton, seletedTabNumber); // Hide SelectedButton's Tab Menu
-    }
+#endregion
 
 #if UNITY_EDITOR
     [TabGroup("Tap","Control Buttons")]
