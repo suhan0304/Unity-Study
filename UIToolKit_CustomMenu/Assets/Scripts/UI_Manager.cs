@@ -36,6 +36,7 @@ public class UI_Manager : MonoBehaviour
         int _tabNumber = 1;
         foreach (var button in buttons) {
             button.OnSelect += OnSelectControlButton;
+            button.OnSelect += ToggleShowHideCards;
             button.TabNumber = _tabNumber++;
             controlButtons.Add(button);
         }
@@ -64,7 +65,7 @@ public class UI_Manager : MonoBehaviour
 
     [TabGroup("Tap","Control Cards")]
     [Button("Toggle Show/Hide Card Menus")]
-    void ToggleShowHideCards() {
+    void ToggleShowHideCards(Control_Button currentButton, int tabNumber) {
         for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].ToggleInClassList($"card-{i + 1}--out");
         }
