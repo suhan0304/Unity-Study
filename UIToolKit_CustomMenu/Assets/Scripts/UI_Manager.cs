@@ -96,9 +96,6 @@ public class UI_Manager : MonoBehaviour
     void ShowCards() {
         Debug.LogWarning($"[UI Manager] Show Cards");
         for (int i = 0; i < controlCards.Count; i++) {
-            controlCards[i].RemoveFromClassList($"card-{i}");
-        }
-        for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].AddToClassList($"card-{i + 1}--out");
         }
     }
@@ -107,9 +104,6 @@ public class UI_Manager : MonoBehaviour
     [Button("Toggle Hide Card Menus")]
     void HideCards() {
         Debug.LogWarning($"[UI Manager] Hide Cards");
-        for (int i = 0; i < controlCards.Count; i++) {
-            controlCards[i].RemoveFromClassList($"card-{i}");
-        }
         for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].RemoveFromClassList($"card-{i + 1}--out");
         }
