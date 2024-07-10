@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -84,9 +85,7 @@ public class UI_Manager : MonoBehaviour
         // Load Control Card in UI_Doc
         controlCards = new List<Control_Card>();
         var cards = root.Query<Control_Card>().ToList();
-        int cardIndex = 1;
         foreach (var card in cards) {
-            card.AddToClassList($"card-{cardIndex++}");
             controlCards.Add(card);
         }
         Debug.Log($"[UI Manager] {controlCards.Count} Cards Initialized");
@@ -97,6 +96,9 @@ public class UI_Manager : MonoBehaviour
     void ShowCards() {
         Debug.LogWarning($"[UI Manager] Show Cards");
         for (int i = 0; i < controlCards.Count; i++) {
+            controlCards[i].RemoveFromClassList($"card-{i}");
+        }
+        for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].AddToClassList($"card-{i + 1}--out");
         }
     }
@@ -105,6 +107,9 @@ public class UI_Manager : MonoBehaviour
     [Button("Toggle Hide Card Menus")]
     void HideCards() {
         Debug.LogWarning($"[UI Manager] Hide Cards");
+        for (int i = 0; i < controlCards.Count; i++) {
+            controlCards[i].RemoveFromClassList($"card-{i}");
+        }
         for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].RemoveFromClassList($"card-{i + 1}--out");
         }
