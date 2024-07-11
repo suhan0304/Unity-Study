@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tab_Data 3
   m_EditorClassIdentifier: 
   tabData:
-  - card_image: {fileID: 0}
-    card_label_text: 
-  - card_image: {fileID: 0}
-    card_label_text: 
+  - card_image: {fileID: 2800000, guid: f8d420322b08c6742825367614f4b803, type: 3}
+    card_label_text: Snake Lava
+  - card_image: {fileID: 2800000, guid: c872a48db0454144f82e5426263d891d, type: 3}
+    card_label_text: Snake Slime
