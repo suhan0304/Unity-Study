@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tabData:
   - card_image: {fileID: 2800000, guid: 93b34e6cf97229449bdda1743820bcaf, type: 3}
-    card_label_text: Skull
+    card_label_text: Ghost
   - card_image: {fileID: 2800000, guid: 4e5135d2fc33ece42b7308617c803a56, type: 3}
-    card_label_text: Skill
+    card_label_text: X Ghost
   - card_image: {fileID: 2800000, guid: 353117325fc5f6c448611ce10dee0625, type: 3}
-    card_label_text: Skall
+    card_label_text: V Ghost
