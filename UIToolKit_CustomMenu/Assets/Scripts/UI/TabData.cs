@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Tab_Data", menuName = "Tab_Data", order = 0)]
