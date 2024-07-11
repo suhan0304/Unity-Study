@@ -4,22 +4,26 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Cysharp.Threading.Tasks;
 using System;
+using Unity.VisualScripting;
 
 public class UI_Manager : MonoBehaviour
 {
+    // Odin - Tap Define 
+    [TabGroup("Tap","Control Buttons",SdfIconType.CodeSlash, TextColor="red")]
+    [TabGroup("Tap","Control Cards",SdfIconType.CodeSlash, TextColor="green")]
+    [TabGroup("Tap","Tab Manager",SdfIconType.CodeSlash, TextColor="blue")]
+    
     [SerializeField] private UIDocument UI_Doc;
     [SerializeField] private List<Control_Button> controlButtons;
     [SerializeField] private List<Control_Card> controlCards;
 
     [SerializeField] private Control_Button selectedButton;
-    [SerializeField, TabGroup("Tap","Control Buttons")] private int selectedTabNumber = 0;
+    [SerializeField, TabGroup("Tap","Control Buttons")] private int selectedTabNumber = -1;
 
-    // Odin - Tap Define 
-    [TabGroup("Tap","Control Buttons",SdfIconType.CodeSlash, TextColor="red")]
-    [TabGroup("Tap","Control Cards",SdfIconType.CodeSlash, TextColor="green")]
+    [SerializeField, TabGroup("Tap","Tab Manager")] private List<TabData> tabDatas = new List<TabData>();
 
     void Start() {
-
+        Init(); 
     }
 
 #region ControlButtons
@@ -36,7 +40,7 @@ public class UI_Manager : MonoBehaviour
         // Load Control Button in UI_Doc
         controlButtons = new List<Control_Button>();
         var buttons = root.Query<Control_Button>().ToList();
-        int _tabNumber = 1;
+        int _tabNumber = 0;
         foreach (var button in buttons) {
             button.OnSelect += OnSelectControlButton;
             button.TabNumber = _tabNumber++;
@@ -47,14 +51,14 @@ public class UI_Manager : MonoBehaviour
 
     async void OnSelectControlButton(Control_Button currentButton, int currentTabNumber) {
         
-        if (selectedTabNumber != 0) {
+        if (selectedTabNumber != -1) {
             HideCards();
             await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
 
             if (selectedTabNumber == currentTabNumber) {
                 Debug.Log($"[UI Manager][{selectedTabNumber} = {currentTabNumber}] Unselect");
                 selectedButton = null;
-                selectedTabNumber = 0;
+                selectedTabNumber = -1;
                 return;
             }
             selectedButton.ToggleSelectStyle(selectedButton, selectedTabNumber);
@@ -64,10 +68,11 @@ public class UI_Manager : MonoBehaviour
         selectedButton = currentButton; 
         selectedTabNumber = currentButton.TabNumber;
         
-        // TODO - Cards Update (Tab Number!)
+        // Cards Update (using Tab Number)
+        int countCards = await CardsUpdate(currentTabNumber);
 
         // Show Updated Cards
-        ShowCards();
+        ShowCards(countCards);
     }
 
 #endregion
@@ -96,9 +101,9 @@ public class UI_Manager : MonoBehaviour
 
     [TabGroup("Tap","Control Cards")]
     [Button("Toggle Show Card Menus")]
-    void ShowCards() {
+    void ShowCards(int countCards) {
         Debug.LogWarning($"[UI Manager] Show Cards");
-        for (int i = 0; i < controlCards.Count; i++) {
+        for (int i = 0; i < countCards; i++) {
             controlCards[i].AddToClassList($"card-{i + 1}--out");
         }
     }
@@ -110,6 +115,17 @@ public class UI_Manager : MonoBehaviour
         for (int i = 0; i < controlCards.Count; i++) {
             controlCards[i].RemoveFromClassList($"card-{i + 1}--out");
         }
+    }
+
+    [TabGroup("Tap","Control Cards")]
+    [Button("Cards Update")]
+    private UniTask<int> CardsUpdate(int tabNumber) {
+        List<CardData> selectedTabData = tabDatas[tabNumber].tabData;
+        for (int i = 0; i < selectedTabData.Count; i++) {
+            controlCards[i].set_card_Image(selectedTabData[i].card_image);
+            controlCards[i].set_card_Label(selectedTabData[i].card_label_text);
+        }
+        return UniTask.FromResult(selectedTabData.Count);;
     }
 
 #endregion
