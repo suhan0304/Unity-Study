@@ -8,11 +8,11 @@
     <ui:VisualElement style="flex-grow: 0; flex-shrink: 0;" />
     <ui:VisualElement name="Container" style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; padding-left: 50px; padding-right: 50px; padding-top: 50px; padding-bottom: 50px; margin-top: 0; margin-bottom: 0; margin-right: 0; margin-left: 0; align-items: center;">
         <ui:VisualElement name="Container_Menu" style="width: 300px; justify-content: center; height: 300px; left: auto; margin-right: 20px;">
-            <Control_Button button_Label="Barbarian Class" card_Number="1" />
-            <Control_Button button_Label="Bomber Class" card_Number="2" />
-            <Control_Button button_Label="Hazmat Class" card_Number="3" />
-            <Control_Button button_Label="Pyro Class" card_Number="4" />
-            <Control_Button button_Label="Assassin Class" card_Number="5" />
+            <Control_Button button_Label="Alien Class" card_Number="1" />
+            <Control_Button button_Label="Ghost Class" card_Number="2" />
+            <Control_Button button_Label="Snake Class" card_Number="3" />
+            <Control_Button button_Label="Slime Class" card_Number="4" />
+            <Control_Button button_Label="Block Class" card_Number="5" />
         </ui:VisualElement>
         <ui:VisualElement name="Container_Card" style="height: 300px; flex-direction: row; width: auto; justify-content: flex-start; align-items: stretch;">
             <Control_Card name="Card_1" />
