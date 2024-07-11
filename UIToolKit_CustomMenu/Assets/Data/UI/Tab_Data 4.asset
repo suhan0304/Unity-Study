@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Tab_Data 4
   m_EditorClassIdentifier: 
   tabData:
-  - card_image: {fileID: 0}
-    card_label_text: 
-  - card_image: {fileID: 0}
-    card_label_text: 
-  - card_image: {fileID: 0}
-    card_label_text: 
-  - card_image: {fileID: 0}
-    card_label_text: 
+  - card_image: {fileID: 2800000, guid: 4107bf3155d8c6644a8be6f443d0f766, type: 3}
+    card_label_text: Slime
+  - card_image: {fileID: 2800000, guid: 21ff7b00f6137f94b91afa91e26ab15c, type: 3}
+    card_label_text: Green Slime
+  - card_image: {fileID: 2800000, guid: fe50bd2aa8a96a14aad90425c84ecf5c, type: 3}
+    card_label_text: Blud Slime
