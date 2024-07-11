@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Tab_Data 5
   m_EditorClassIdentifier: 
   tabData:
-  - card_image: {fileID: 0}
-    card_label_text: 
+  - card_image: {fileID: 2800000, guid: 03a7be888e6502e4982c6f5d0228cbd0, type: 3}
+    card_label_text: Grass Block
+  - card_image: {fileID: 2800000, guid: d880de3aa942f094f86ce01207a5bbaf, type: 3}
+    card_label_text: Slime Block
