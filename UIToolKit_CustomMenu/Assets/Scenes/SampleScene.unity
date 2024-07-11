@@ -441,7 +441,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_Doc: {fileID: 558986626}
-  selectedTabNumber: 0
+  selectedTabNumber: -1
+  tabDatas:
+  - {fileID: 11400000, guid: 70e4b6f732a7dd54783c23e1efb1462e, type: 2}
+  - {fileID: 11400000, guid: e08ccd0957d9e684c8d7ff7e723dddec, type: 2}
+  - {fileID: 11400000, guid: 4e9ef0e9d686c2d4dbbba4756f865589, type: 2}
+  - {fileID: 11400000, guid: e9a772340a25f2b4e953c68574a7ef52, type: 2}
+  - {fileID: 11400000, guid: a676a6ec023c95249914a546f8b67be7, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
