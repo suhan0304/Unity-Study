@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Control_Card : VisualElement
@@ -38,7 +39,18 @@ public class Control_Card : VisualElement
     private VisualElement _card_BackGround;
     private VisualElement _card_Image;
     private Label _card_Label;
-    
+
+    public void set_card_Image(Texture2D _card_image)
+    {
+        this._card_Image.style.backgroundImage = _card_image;
+    }
+
+    public void set_card_Label(string _card_label_text)
+    {
+        this._card_Label.text = _card_label_text;
+    }
+
+
     private VisualElement _card_Button;
     private VisualElement _button_icon;
     private Label _button_label;
