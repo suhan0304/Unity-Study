@@ -34,10 +34,13 @@ class MinusPositionProcessor : PositionProcessor{
 public class Processor : MonoBehaviour
 {
     private void Start() {
-        PositionProcessor positionProcessor = new PositionProcessor();
+        PlusPositionProcessor plusPositionProcessor = new PlusPositionProcessor();
+        Vector3 totalPosition1 = plusPositionProcessor.process(this.transform);
+        Debug.Log("Total Position: " + totalPosition1);
 
-        Vector3 totalPosition = positionProcessor.process(this.transform);
         
-        Debug.Log("Total Position: " + totalPosition);
+        MinusPositionProcessor minusPositionProcessor = new MinusPositionProcessor();
+        Vector3 totalPosition2 = minusPositionProcessor.process(this.transform);
+        Debug.Log("Total Position: " + totalPosition2);
     }
 }
