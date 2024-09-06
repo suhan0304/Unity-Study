@@ -1,20 +1,22 @@
 using System;
 using UnityEngine;
 
-class PositionProcessor {
+abstract class PositionProcessor {
     public Vector3 process(Transform parent) {
         Vector3 result = Vector3.zero;
 
         try {
-            foreach(Transform child in parent) {
-                result += child.position;
-            }
+            result = calculate(parent);
         } catch (Exception e) {
             Debug.LogError(e.Message);
         }
     
         return result;
     }
+
+    protected abstract Vector3 calculate(Transform parent);
+
+    protected abstract Vector3 getResult();
 }
 
 class MinusPositionProcessor {
