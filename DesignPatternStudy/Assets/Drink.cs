@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract class CaffeineBeverage : MonoBehaviour {
+abstract class CaffeineBeverage {
     public void prepareRecipe() {
         boilWater();
         brew();
@@ -29,7 +29,7 @@ abstract class CaffeineBeverage : MonoBehaviour {
     }
 }
 
-class Coffee : CaffeineBeverage{
+class Coffee : CaffeineBeverage {
     protected override void brew() {
         Debug.Log("필터로 커피 우려내는 중");
         
