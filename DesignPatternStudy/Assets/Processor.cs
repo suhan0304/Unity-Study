@@ -36,7 +36,7 @@ class MinusPositionProcessor {
 public class Processor : MonoBehaviour
 {
     private void Start() {
-        MinusPositionProcessor positionProcessor = new MinusPositionProcessor();
+        PositionProcessor positionProcessor = new PositionProcessor();
 
         Vector3 totalPosition = positionProcessor.process(this.transform);
         
