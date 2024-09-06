@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+
+class PositionProcessor {
+    public Vector3 process(Transform parent) {
+        Vector3 result = Vector3.zero;
+
+        try {
+            foreach(Transform child in parent) {
+                result += child.position;
+            }
+        } catch (Exception e) {
+            Debug.LogError(e.Message);
+        }
+    
+        return result;
+    }
+}
 
 public class Processor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private void Start() {
+        PositionProcessor positionProcessor = new PositionProcessor();
 
-    // Update is called once per frame
-    void Update()
-    {
+        Vector3 totalPosition = positionProcessor.process(this.transform);
         
+        Debug.Log("Total Position: " + totalPosition);
     }
 }
