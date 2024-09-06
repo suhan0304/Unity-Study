@@ -6,7 +6,9 @@ abstract class PositionProcessor {
         Vector3 result = Vector3.zero;
 
         try {
-            result = calculate(parent);
+            foreach (Transform child in parent) {
+                result = calculate(result, child);
+            }
         } catch (Exception e) {
             Debug.LogError(e.Message);
         }
@@ -14,24 +16,18 @@ abstract class PositionProcessor {
         return result;
     }
 
-    protected abstract Vector3 calculate(Transform parent);
-
-    protected abstract Vector3 getResult();
+    protected abstract Vector3 calculate(Vector3 result, Transform parent);
 }
 
-class MinusPositionProcessor {
-    public Vector3 process(Transform parent) {
-        Vector3 result = Vector3.zero;
+class PlusPositionProcessor : PositionProcessor{
+    protected override Vector3 calculate(Vector3 result, Transform child) {
+        return result += child.position;
+    }
+}
 
-        try {
-            foreach(Transform child in parent) {
-                result -= child.position;
-            }
-        } catch (Exception e) {
-            Debug.LogError(e.Message);
-        }
-    
-        return result;
+class MinusPositionProcessor : PositionProcessor{
+    protected override Vector3 calculate(Vector3 result, Transform child) {
+        return result -= child.position;
     }
 }
 
