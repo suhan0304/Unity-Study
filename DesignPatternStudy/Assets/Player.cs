@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     void Start() {
-        OpenDoor door = new OpenDoor();
+        DoorContext door = new DoorContext();        
         door.PrintCurrentState();
 
         // 문 열기 : CLOSE → OPEN

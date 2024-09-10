@@ -22,12 +22,11 @@ public class OpenDoor
             changeState(OpenDoor.CLOSE);
         }
         else if (DoorState == CLOSE) {
-            Debug.Log("문 CLOSE");
+            Debug.Log("문 OPEN");
             changeState(OpenDoor.OPEN);
         }
         else if (DoorState == LOCK) {
-            Debug.Log("문 CLOSE");
-            changeState(OpenDoor.OPEN);
+            Debug.Log("문을 열 수 없습니다.");
         }
     }
 
@@ -39,7 +38,8 @@ public class OpenDoor
             throw new System.Exception("문이 UNLOCK 된 상태입니다.");
         }
         else if (DoorState == LOCK) {
-            Debug.Log("잠금을 해제할 수 있습니다.");
+            Debug.Log("문을 땄습니다!");
+            changeState(OpenDoor.OPEN);
         }
     }
 
