@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
+public class OpenDoor
 {
     public static readonly int OPEN = 0;
     public static readonly int CLOSE = 1;
@@ -10,15 +8,15 @@ public class OpenDoor : MonoBehaviour
 
     private int DoorState;
 
-    OpenDoor() {
+    public OpenDoor() {
         this.DoorState = OpenDoor.CLOSE; //닫은 상태로 시작
     }
 
-    void changeState(int state) { //상태 전환
+    public void changeState(int state) { //상태 전환
         this.DoorState = state;
     }
 
-    void OnDoorOpenButtonClick() {
+    public void DoorOpenButtonClick() {
         if (DoorState == OPEN) {
             Debug.Log("문 CLOSE");
             changeState(OpenDoor.CLOSE);
@@ -33,7 +31,7 @@ public class OpenDoor : MonoBehaviour
         }
     }
 
-    void TryUnlockDoor() { //자물쇠로 문을 따기 (LOCK에서만 동작)
+    public void TryUnlockDoor() { //자물쇠로 문을 따기 (LOCK에서만 동작)
         if (DoorState == OPEN) {
             throw new System.Exception("문이 UNLOCK 된 상태입니다.");
         }
@@ -41,16 +39,16 @@ public class OpenDoor : MonoBehaviour
             throw new System.Exception("문이 UNLOCK 된 상태입니다.");
         }
         else if (DoorState == LOCK) {
-            Debug.Log("문을 따는 중..");
+            Debug.Log("잠금을 해제할 수 있습니다.");
         }
     }
 
-    void setLockState() {
+    public void setLockState() {
         Debug.Log("문을 잠궜습니다.");
         changeState(OpenDoor.LOCK);
     }
 
-    void currentStatePrint() {
+    public void PrintCurrentState() {
         if (DoorState == OPEN) {
             Debug.Log("문은 현재 OPEN 상태입니다.");
         }
