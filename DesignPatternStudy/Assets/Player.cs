@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
         door.setLockState();
         door.PrintCurrentState();
         door.TryUnlockDoor(); // 문 따기 시도
+        door.PrintCurrentState();
 
         // 문 다시 열기 : LOCK → OPEN
         door.DoorOpenButtonClick();
