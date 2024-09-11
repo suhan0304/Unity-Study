@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class createMonster : MonoBehaviour
 {
+    /*
     public static Monster createMob(int type) {
         if (type == 0) {
             throw new System.Exception("Monster Type Error!");  
@@ -47,4 +48,5 @@ public class createMonster : MonoBehaviour
         Monster slime1 = createMob(2);
         Debug.Log(slime1.PrintAboutMonster());
     }
+    */
 }
