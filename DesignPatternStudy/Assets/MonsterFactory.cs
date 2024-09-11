@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public abstract class MonsterFactory
-{
+{    
     // 객체 생성 전처리 + 후처리 메서드 (상속 불가)
     public Monster orderMonster() {
         // 객체 생성 전처리
@@ -20,7 +20,17 @@ public abstract class MonsterFactory
     abstract protected Monster createMonster(GameObject monsterObject);
 }
 
-public class GoblinFoctory : MonsterFactory {
+public class GoblinFactory : MonsterFactory {
+    // Thread-safe 한 싱글톤 객체화
+    private GoblinFactory() {}
+
+    private static class MonsterInstanceHolder {
+        public static readonly GoblinFactory INSTANCE = new GoblinFactory();
+    }
+    public static GoblinFactory getInstance() {
+        return MonsterInstanceHolder.INSTANCE;
+    }
+
     protected override Monster createMonster(GameObject monsterObject) {
         Goblin goblin = monsterObject.AddComponent<Goblin>();
         goblin.Initialize(1, "Goblin", 100, true);
@@ -29,6 +39,16 @@ public class GoblinFoctory : MonsterFactory {
 }
 
 public class SlimeFoctory : MonsterFactory {
+    // Thread-safe 한 싱글톤 객체화
+    private SlimeFoctory() {}
+
+    private static class MonsterInstanceHolder {
+        public static readonly SlimeFoctory INSTANCE = new SlimeFoctory();
+    }
+    public static SlimeFoctory getInstance() {
+        return MonsterInstanceHolder.INSTANCE;
+    }
+
     protected override Monster createMonster(GameObject monsterObject) {
         Slime slime = monsterObject.AddComponent<Slime>();
         slime.Initialize(2, "Slime", 50, false);
@@ -37,6 +57,16 @@ public class SlimeFoctory : MonsterFactory {
 }
 
 public class SkeletonFoctory : MonsterFactory {
+    // Thread-safe 한 싱글톤 객체화
+    private SkeletonFoctory() {}
+
+    private static class MonsterInstanceHolder {
+        public static readonly SkeletonFoctory INSTANCE = new SkeletonFoctory();
+    }
+    public static SkeletonFoctory getInstance() {
+        return MonsterInstanceHolder.INSTANCE;
+    }
+
     protected override Monster createMonster(GameObject monsterObject) {
         Skeleton skeleton = monsterObject.AddComponent<Skeleton>();
         skeleton.Initialize(3, "Skeleton", 200, true);
