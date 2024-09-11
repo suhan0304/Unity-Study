@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class createMonster : MonoBehaviour
@@ -10,35 +8,43 @@ public class createMonster : MonoBehaviour
         }
 
         // 몬스터 객체 생성
-        Monster monster = new Monster();
+        GameObject monsterObject = new GameObject();
+        Monster monster = monsterObject.AddComponent<Monster>();
 
         // 몬스터 개체 생성 후처리
-        monster.type = type;
+        monster.monsterType = type;
 
         if(type == 1) {
-            monster.name = "Goblin";
-            monster.hp = 100;
-            monster.agressive = true;
+            monster.monsterName = "Goblin";
+            monster.monsterHp = 100;
+            monster.monsterAgressive = true;
         } else if(type == 2) {
-            monster.name = "Slime";
-            monster.hp = 50;
-            monster.agressive = false;
+            monster.monsterName = "Slime";
+            monster.monsterHp = 50;
+            monster.monsterAgressive = false;
         } else if(type == 3) {
-            monster.name = "Skeleton";
-            monster.hp = 200;
-            monster.agressive = true;
+            monster.monsterName = "Skeleton";
+            monster.monsterHp = 200;
+            monster.monsterAgressive = true;
         }
+
+        //게임 오브젝트 이름을 몬스터 이름으로 설정
+        monsterObject.name = monster.monsterName;
 
         Debug.Log($"{monster.name} 몬스터가 스폰 되었습니다!");
 
         return monster;
     } 
 
-    public void main() {
+    private void Start() {
+        mobSpawn();
+    }
+
+    private void mobSpawn() {
         Monster goblin1 = createMob(1);
         Debug.Log(goblin1.PrintAboutMonster());
         
         Monster slime1 = createMob(2);
-        Debug.Log(goblin1.PrintAboutMonster());
+        Debug.Log(slime1.PrintAboutMonster());
     }
 }
