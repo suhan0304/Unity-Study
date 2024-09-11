@@ -31,7 +31,7 @@ public class createMonster : MonoBehaviour
         //게임 오브젝트 이름을 몬스터 이름으로 설정
         monsterObject.name = monster.monsterName;
 
-        Debug.Log($"{monster.name} 몬스터가 스폰 되었습니다!");
+        Debug.Log($"{monster.monsterName} 몬스터가 스폰 되었습니다!");
 
         return monster;
     } 
