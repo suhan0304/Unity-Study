@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int type;
+    string name;
+    int hp;
+    bool agressive; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public String PrintAboutMonster() {
+        return string.Format("Monster {{ type: '{0}', name: '{1}', HP: '{2}', agressive: '{3}' }}", type, name, hp, agressive);
     }
 }
