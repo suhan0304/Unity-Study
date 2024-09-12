@@ -29,3 +29,7 @@ public class Slime : Monster {
 public class Skeleton : Monster {
     // Skeleton 관련 로직 + 이벤트 관리
 }
+
+public class Zombie : Monster {
+    // Zombie 관련 로직 + 이벤트 관리
+}

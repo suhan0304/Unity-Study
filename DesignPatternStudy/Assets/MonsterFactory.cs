@@ -73,3 +73,11 @@ public class SkeletonFoctory : MonsterFactory {
         return skeleton;
     }
 }
+
+public class ZombieFactory : MonsterFactory {
+    protected override Monster createMonster(GameObject monsterObject) {
+        Zombie zombie = monsterObject.AddComponent<Zombie>();
+        zombie.Initialize(4, "Zombie", 500, true);
+        return zombie;
+    }
+}
