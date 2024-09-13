@@ -1,6 +1,6 @@
 using UnityEngine;
 
-interface EnvObj
+public interface EnvObj
 {
     public void Create(); //환경 오브젝트 생성
 }

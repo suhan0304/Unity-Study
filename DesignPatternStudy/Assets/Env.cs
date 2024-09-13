@@ -1,25 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Env : MonoBehaviour
 {
-    // 추상 팩토리에서 객체를 생성하는 부분 코드는 같기 때문에 따로 메서드로 묶음 분리
-    public static Tree CreateTree(EnvObjAbstractFactory fac)
-    {
-        return fac.CreateTree();
-    }
-    
     private void Start()
     {
-        EnvObjAbstractFactory factory = null;
-        
-        // Forest Tree 생성
-        factory = ForestFactory.GetInstance();
-        Tree forestTree = CreateTree(factory);
-        forestTree.Create();
+        EnvObjAbstractFactoryMethod factory = null;
 
-        // Desert Tree 생성
-        factory = DesertFactory.GetInstance();
-        Tree desertTree = CreateTree(factory);
-        desertTree.Create();
+        factory = ForestFactoryMethod.GetInstance();
+        List<EnvObj> list = factory.createOperation();
+
+        foreach (EnvObj obj in list)
+        {
+            obj.Create();
+        }
     }
 }

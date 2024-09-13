@@ -1,20 +1,37 @@
-public interface EnvObjAbstractFactory
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public interface EnvObjAbstractFactoryMethod
 {
     Tree CreateTree();
     Rock CreateRock();
     Grass CreateGrass();
+
+    public List<EnvObj> createOperation()
+    {
+        Tree tree = CreateTree();
+        Rock rock = CreateRock();
+        Grass grass = CreateGrass();
+        
+        // tree.추가세팅(); //후처리
+        // rock.추가세팅(); //후처리
+        // grass.추가세팅(); //후처리
+        
+        return new List<EnvObj> { tree, rock, grass };
+    }
 }
 
-class ForestFactory : EnvObjAbstractFactory
+class ForestFactoryMethod : EnvObjAbstractFactoryMethod
 {
-    private ForestFactory() { }
+    private ForestFactoryMethod() { }
 
     private static class SingleInstanceHolder
     {
-        public static readonly ForestFactory INSTANCE = new ForestFactory();
+        public static readonly ForestFactoryMethod INSTANCE = new ForestFactoryMethod();
     }
 
-    public static ForestFactory GetInstance()
+    public static ForestFactoryMethod GetInstance()
     {
         return SingleInstanceHolder.INSTANCE;
     }
@@ -30,16 +47,16 @@ class ForestFactory : EnvObjAbstractFactory
     }
 }
 
-class DesertFactory : EnvObjAbstractFactory
+class DesertFactoryMethod : EnvObjAbstractFactoryMethod
 { 
-    private DesertFactory() { }
+    private DesertFactoryMethod() { }
 
     private static class SingleInstanceHolder
     {
-        public static readonly DesertFactory INSTANCE = new DesertFactory();
+        public static readonly DesertFactoryMethod INSTANCE = new DesertFactoryMethod();
     }
 
-    public static DesertFactory GetInstance()
+    public static DesertFactoryMethod GetInstance()
     {
         return SingleInstanceHolder.INSTANCE;
     }
@@ -55,16 +72,16 @@ class DesertFactory : EnvObjAbstractFactory
     }
 }
 
-class SwampFactory : EnvObjAbstractFactory
+class SwampFactoryMethod : EnvObjAbstractFactoryMethod
 { 
-    private SwampFactory() { }
+    private SwampFactoryMethod() { }
 
     private static class SingleInstanceHolder
     {
-        public static readonly SwampFactory INSTANCE = new SwampFactory();
+        public static readonly SwampFactoryMethod INSTANCE = new SwampFactoryMethod();
     }
 
-    public static SwampFactory GetInstance()
+    public static SwampFactoryMethod GetInstance()
     {
         return SingleInstanceHolder.INSTANCE;
     }
