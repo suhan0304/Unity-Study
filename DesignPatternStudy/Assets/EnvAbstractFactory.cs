@@ -7,6 +7,18 @@ public interface EnvObjAbstractFactory
 
 class ForestFactory : EnvObjAbstractFactory
 {
+    private ForestFactory() { }
+
+    private static class SingleInstanceHolder
+    {
+        public static readonly ForestFactory INSTANCE = new ForestFactory();
+    }
+
+    public static ForestFactory GetInstance()
+    {
+        return SingleInstanceHolder.INSTANCE;
+    }
+
     public Tree CreateTree() {
         return new ForestTree();
     }
@@ -19,7 +31,19 @@ class ForestFactory : EnvObjAbstractFactory
 }
 
 class DesertFactory : EnvObjAbstractFactory
-{
+{ 
+    private DesertFactory() { }
+
+    private static class SingleInstanceHolder
+    {
+        public static readonly DesertFactory INSTANCE = new DesertFactory();
+    }
+
+    public static DesertFactory GetInstance()
+    {
+        return SingleInstanceHolder.INSTANCE;
+    }
+
     public Tree CreateTree() {
         return new DesertTree();
     }
@@ -32,7 +56,19 @@ class DesertFactory : EnvObjAbstractFactory
 }
 
 class SwampFactory : EnvObjAbstractFactory
-{
+{ 
+    private SwampFactory() { }
+
+    private static class SingleInstanceHolder
+    {
+        public static readonly SwampFactory INSTANCE = new SwampFactory();
+    }
+
+    public static SwampFactory GetInstance()
+    {
+        return SingleInstanceHolder.INSTANCE;
+    }
+    
     public Tree CreateTree() {
         return new SwampTree();
     }

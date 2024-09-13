@@ -13,12 +13,12 @@ public class Env : MonoBehaviour
         EnvObjAbstractFactory factory = null;
         
         // Forest Tree 생성
-        factory = new ForestFactory();
+        factory = ForestFactory.GetInstance();
         Tree forestTree = CreateTree(factory);
         forestTree.Create();
-        
+
         // Desert Tree 생성
-        factory = new DesertFactory();
+        factory = DesertFactory.GetInstance();
         Tree desertTree = CreateTree(factory);
         desertTree.Create();
     }
