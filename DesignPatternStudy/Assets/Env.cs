@@ -2,30 +2,24 @@ using UnityEngine;
 
 public class Env : MonoBehaviour
 {
+    // 추상 팩토리에서 객체를 생성하는 부분 코드는 같기 때문에 따로 메서드로 묶음 분리
+    public static Tree CreateTree(EnvObjAbstractFactory fac)
+    {
+        return fac.CreateTree();
+    }
+    
     private void Start()
     {
-        EnvObjFactoryMethod factory = null;
-        Tree tree = null;
-        Rock rock = null;
+        EnvObjAbstractFactory factory = null;
         
         // Forest Tree 생성
-        factory = new TreeFactory();
-        tree = (Tree)factory.CreateOperation("Forest");
-        tree.Create();
+        factory = new ForestFactory();
+        Tree forestTree = CreateTree(factory);
+        forestTree.Create();
         
         // Desert Tree 생성
-        factory = new TreeFactory();
-        tree = (Tree)factory.CreateOperation("Desert");
-        tree.Create();
-        
-        // Forest Rock 생성
-        factory = new RockFactory();
-        rock = (Rock)factory.CreateOperation("Forest");
-        rock.Create();
-        
-        // Desert Rock 생성
-        factory = new RockFactory();
-        rock = (Rock)factory.CreateOperation("Desert");
-        rock.Create();
+        factory = new DesertFactory();
+        Tree desertTree = CreateTree(factory);
+        desertTree.Create();
     }
 }
