@@ -17,12 +17,19 @@ class ForestTree : Tree
     }
 }
 
-
 class DesertTree : Tree
 {
     public override void Create()
     {
         Debug.Log("Desert Tree 생성 완료");
+    }
+}
+
+class SwampTree : Tree
+{
+    public override void Create()
+    {
+        Debug.Log("Swamp Tree 생성 완료");
     }
 }
 
@@ -40,12 +47,19 @@ class ForestRock : Rock
     }
 }
 
-
 class DesertRock : Rock
 {
     public override void Create()
     {
         Debug.Log("Desert Rock 생성 완료");
+    }
+}
+
+class SwampRock : Rock
+{
+    public override void Create()
+    {
+        Debug.Log("Swamp Rock 생성 완료");
     }
 }
 
@@ -63,11 +77,18 @@ class ForestGrass : Grass
     }
 }
 
-
 class DesertGrass : Grass
 {
     public override void Create()
     {
         Debug.Log("Desert Grass 생성 완료");
+    }
+}
+
+class SwampGrass : Grass
+{
+    public override void Create()
+    {
+        Debug.Log("Swamp Grass 생성 완료");
     }
 }

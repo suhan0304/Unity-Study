@@ -17,6 +17,7 @@ class ForestFactory : EnvObjAbstractFactory
         return new ForestGrass();
     }
 }
+
 class DesertFactory : EnvObjAbstractFactory
 {
     public Tree CreateTree() {
@@ -27,5 +28,18 @@ class DesertFactory : EnvObjAbstractFactory
     }
     public Grass CreateGrass() {
         return new DesertGrass();
+    }
+}
+
+class SwampFactory : EnvObjAbstractFactory
+{
+    public Tree CreateTree() {
+        return new SwampTree();
+    }
+    public Rock CreateRock() {
+        return new SwampRock();
+    }
+    public Grass CreateGrass() {
+        return new SwampGrass();
     }
 }
