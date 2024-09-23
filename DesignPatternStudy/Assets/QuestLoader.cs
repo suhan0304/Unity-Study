@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
-enum QuestLevel
+
+public interface IQuest
+{
+    string GetQuestName();
+    QuestLevel GetQuestLevel();
+    string GetInfo(IQuest quest);
+}
+
+public enum QuestLevel
  {
      LEVEL10,
      LEVEL20,
      LEVEL30
  }
 
-class Quest
+class Quest : IQuest
 {
     private string questName;
     private string questDescription;
@@ -32,7 +40,7 @@ class Quest
         return questLevel;
     }
 
-    public string GetInfo()
+    public string GetInfo(IQuest quest)
     {
         return "Display : " + GetQuestName() + " Quest information";
     }
@@ -40,16 +48,64 @@ class Quest
 
 class PrintQuestInfo
 {
-    private int userLevel;
+    private IQuest viewer;
 
-    public PrintQuestInfo(int userLevel)
+    public PrintQuestInfo(IQuest viewer)
     {
-        this.userLevel = userLevel;
+        this.viewer = viewer;
     }
 
-    public void PrintAllQuests(List<Quest> quests)
+    public void PrintAllQuests(List<IQuest> quests)
     {
-        quests.ForEach(quest => Debug.Log(quest.GetInfo()));
+        quests.ForEach(quest => Debug.Log(quest.GetInfo(viewer)));
+    }
+}
+
+public class ProtectedQuest : IQuest
+{
+    private IQuest quest;
+
+    public ProtectedQuest(IQuest quest) {
+        this.quest = quest;
+    }
+
+    public string GetQuestName() {
+        return this.quest.GetQuestName();
+    }
+
+    public QuestLevel GetQuestLevel() {
+        return this.quest.GetQuestLevel();
+    }
+
+    public string GetInfo(IQuest viewer)
+    {
+        QuestLevel questLevel = this.quest.GetQuestLevel(); // 조회 당하는 퀘스트의 레벨 조건
+        
+        // 조회 유저의 레벨에 따라 출력을 제어
+        switch (viewer.GetQuestLevel())
+        {
+            case QuestLevel.LEVEL30 :
+                // 레벨 30은 모든 퀘스트 열람 가능하므로 바로 반환
+                return this.quest.GetInfo(viewer);
+            case QuestLevel.LEVEL20 :
+                // 레벨 20은 30레벨 퀘스트를 볼 수 없음
+                if (questLevel != QuestLevel.LEVEL30)
+                {
+                    return this.quest.GetInfo(viewer);
+                }
+
+                return "현재 레벨에는 공개되지 않는 퀘스트입니다.";
+            case QuestLevel.LEVEL10 :     
+                // 레벨 10은 20, 30레벨 퀘스트를 볼 수 없음
+                if (questLevel != QuestLevel.LEVEL30 && questLevel != QuestLevel.LEVEL20)
+                {
+                    return this.quest.GetInfo(viewer);
+                }
+
+                return "현재 레벨에는 공개되지 않는 퀘스트입니다.";
+            default :
+                return "viewer 퀘스트 레벨을 확인해주세요.";
+        }
     }
 }
 
@@ -68,10 +124,26 @@ public class QuestLoader : MonoBehaviour
         {
             gatherHerbs, defendVillage, huntBoars, rescueCaptives, slayDragon, retrieveArtifact
         };
-        
-        /*--------------------------------------------------*/
 
-        PrintQuestInfo view = new PrintQuestInfo(10);
-        view.PrintAllQuests(quests);
+        List<IQuest> protectedQuests = new List<IQuest>();
+        foreach (Quest quest in quests)
+        {
+            protectedQuests.Add(new ProtectedQuest(quest));
+        }
+
+        Debug.Log("----- Level. 10 유저가 퀘스트 정보 조회 -----");
+        PrintQuestInfo view = new PrintQuestInfo(new Quest("_user", QuestLevel.LEVEL10));
+        view.PrintAllQuests(protectedQuests);
+        Debug.Log("-----------------------------------------\n");
+
+        Debug.Log("----- Level. 20 유저가 퀘스트 정보 조회 -----");
+        view = new PrintQuestInfo(new Quest("_user", QuestLevel.LEVEL20));
+        view.PrintAllQuests(protectedQuests);
+        Debug.Log("-----------------------------------------\n");
+
+        Debug.Log("----- Level. 30 유저가 퀘스트 정보 조회 -----");
+        view = new PrintQuestInfo(new Quest("_user", QuestLevel.LEVEL30));
+        view.PrintAllQuests(protectedQuests);
+        Debug.Log("-----------------------------------------\n");
     }
 }
