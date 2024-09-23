@@ -134,16 +134,16 @@ public class QuestLoader : MonoBehaviour
         Debug.Log("----- Level. 10 유저가 퀘스트 정보 조회 -----");
         PrintQuestInfo view = new PrintQuestInfo(new Quest("_user", QuestLevel.LEVEL10));
         view.PrintAllQuests(protectedQuests);
-        Debug.Log("-----------------------------------------\n");
+        Debug.Log("-----------------------------------------");
 
         Debug.Log("----- Level. 20 유저가 퀘스트 정보 조회 -----");
         view = new PrintQuestInfo(new Quest("_user", QuestLevel.LEVEL20));
         view.PrintAllQuests(protectedQuests);
-        Debug.Log("-----------------------------------------\n");
+        Debug.Log("-----------------------------------------");
 
         Debug.Log("----- Level. 30 유저가 퀘스트 정보 조회 -----");
         view = new PrintQuestInfo(new Quest("_user", QuestLevel.LEVEL30));
         view.PrintAllQuests(protectedQuests);
-        Debug.Log("-----------------------------------------\n");
+        Debug.Log("-----------------------------------------");
     }
 }
