@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
-public class HighResolutionItemImage : MonoBehaviour
+public class HighResolutionItemImage
 {
-    // Start is called before the first frame update
-    void Start()
+    string img;
+
+    public HighResolutionItemImage(string path)
     {
-        
+        LoadItemImage(path);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LoadItemImage(string path)
     {
-        
+        try
+        {
+            Thread.Sleep((1000));
+            img = path;
+        }
+        catch (ThreadInterruptedException e)
+        {
+            Debug.Log(e.StackTrace);
+        }
+    }
+
+    public void ShowItemIamge()
+    {
+        Debug.Log($"{img} 이미지 출력");
     }
 }
