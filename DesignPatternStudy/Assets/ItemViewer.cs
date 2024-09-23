@@ -1,16 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemViewer : MonoBehaviour
 {
     public void Start()
     {
-        HighResolutionItemImage itemImage1 = new HighResolutionItemImage("itemImage1_Path");
-        HighResolutionItemImage itemImage2 = new HighResolutionItemImage("itemImage2_Path");
-        HighResolutionItemImage itemImage3 = new HighResolutionItemImage("itemImage3_Path");
+        IImage itemImage1 = new ItemImageProxy("itemImage1_Path");
+        IImage itemImage2 = new ItemImageProxy("itemImage2_Path");
+        IImage itemImage3 = new ItemImageProxy("itemImage3_Path");
         
-        itemImage2.ShowItemIamge();
+        itemImage2.ShowItemImage();
     }
 }
