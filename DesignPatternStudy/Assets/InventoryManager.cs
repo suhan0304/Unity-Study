@@ -61,33 +61,24 @@ class B_InventorySystem
     }
 }
 
-class InventorySystemAdaptor : IInventorySystem
+class InventorySystemAdaptor : B_InventorySystem, IInventorySystem
 {
-    A_InventorySystem AinventorySystem;
-    B_InventorySystem BinventorySystem;
-
-    public InventorySystemAdaptor(A_InventorySystem AinventorySystem, B_InventorySystem BinventorySystem)
-    {
-        this.AinventorySystem = AinventorySystem;
-        this.BinventorySystem = BinventorySystem;
-    }
-
     public void AddItem(Item item)
     {
-        BinventorySystem.AddItemToSaveLocation(item, SaveLocation.Local);
-        BinventorySystem.SyncInventory();
+        AddItemToSaveLocation(item, SaveLocation.Local);
+        SyncInventory();
     }
 
     public void RemoveItem(Item item)
     {
-        BinventorySystem.RemoveItemToSaveLocation(item, SaveLocation.Local);
-        BinventorySystem.SyncInventory();
+        RemoveItemToSaveLocation(item, SaveLocation.Local);
+        SyncInventory();
     }
 
     public void ResetInventory()
     {
-        AinventorySystem.ResetInventory();
-        BinventorySystem.SyncInventory();
+        // A InventorySystem의 ResetInventory 로직을 그대로 복붙 및 구현
+        SyncInventory();
     }
 }
 
@@ -120,7 +111,7 @@ class inventoryManager : MonoBehaviour
 {
     void Start()
     {
-        IInventorySystem adaptor = new InventorySystemAdaptor(new A_InventorySystem(), new B_InventorySystem());
+        IInventorySystem adaptor = new InventorySystemAdaptor();
         Inventory inventory = new Inventory();
         inventory.setInventorySystem(adaptor);
     }
