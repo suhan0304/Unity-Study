@@ -1,7 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+
+
+enum SaveLocation
+{
+    Local,
+    Cloud,
+    Both
+}
 
 public class Item
 {
@@ -11,48 +20,70 @@ public class Item
 
 interface IInventorySystem
 {
-    void AddItem(Item item); 
-    void RemoveItem(Item item);
-    void ResetInventory();
 }
 
 class A_InventorySystem : IInventorySystem
 {
-    public void AddItem(Item item) {}
-    public void RemoveItem(Item item) {}
-    public void ResetInventory() {}
-}
+    public void AddItem(Item item)
+    {
+        // 인벤토리 아이템 추가 로직
+    }
 
-enum SaveLocation
-{
-    Local,
-    Cloud,
-    Both
+    public void RemoveItem(Item item)
+    {
+        // 인벤토리 아이템 삭제 로직
+    }
+
+    public void ResetInventory()
+    {
+        // 인벤토리 초기화 로직
+    }
 }
-class B_InventorySystem
+class B_InventorySystem  : IInventorySystem
 {
-    public void AddItemToSaveLocation(Item item, SaveLocation saveLocation) {}
-    public void RemoveItemToSaveLocation(Item item, SaveLocation saveLocation) {}
-    public void SyncInventory() {}
+    public void AddItemToSaveLocation(Item item, SaveLocation saveLocation)
+    {
+        // saveLocation에 item 추가
+    }
+
+    public void RemoveItemToSaveLocation(Item item, SaveLocation saveLocation)
+    {
+        // saveLocation에 item 삭제
+    }
+
+    public void SyncInventory()
+    {
+        // Local과 Cloud 인벤토리 동기화
+    }
 }
 
 class Inventory
 {
     IInventorySystem _inventorySystem;
+    //public void SetSystem(IInventorySystem inventorySystem) { this._inventorySystem = inventorySystem; }
 
-    public void SetSystem(IInventorySystem inventorySystem)
+    public void AddItemToInventory(Item item, SaveLocation saveLocation)
     {
-        this._inventorySystem = inventorySystem;
+        B_InventorySystem BinventorySystem = _inventorySystem as B_InventorySystem;
+        
+        BinventorySystem.AddItemToSaveLocation(item, saveLocation);
     }
 
-    public void AddItemToInventory(Item item)
+    public void RemoveItemFromInventory(Item item, SaveLocation saveLocation)
     {
-        _inventorySystem.AddItem(item);
+        B_InventorySystem BinventorySystem = _inventorySystem as B_InventorySystem;
+    
+        BinventorySystem.RemoveItemToSaveLocation(item, saveLocation);
     }
 
-    public void RemoveItemFromInventory(Item item)
+    public void ResetIventory()
     {
-        _inventorySystem.RemoveItem(item);
+        A_InventorySystem AinventorySystem = _inventorySystem as A_InventorySystem;
+        B_InventorySystem BinventorySystem = _inventorySystem as B_InventorySystem;
+        
+        // 인벤토리 초기화 후 Sync로 클라우드와 동기화
+        AinventorySystem.ResetInventory();
+        BinventorySystem.SyncInventory();
     }
 }
 
