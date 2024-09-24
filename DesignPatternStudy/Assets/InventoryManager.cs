@@ -18,8 +18,12 @@ public class Item
     public string description;
 }
 
-interface IInventorySystem
+// 기존의 인터페이스는 수정하지 않는다.
+interface IInventorySystem 
 {
+    void AddItem(Item item);
+    void RemoveItem(Item item);
+    void ResetInventory();
 }
 
 class A_InventorySystem : IInventorySystem
@@ -39,7 +43,7 @@ class A_InventorySystem : IInventorySystem
         // 인벤토리 초기화 로직
     }
 }
-class B_InventorySystem  : IInventorySystem
+class B_InventorySystem 
 {
     public void AddItemToSaveLocation(Item item, SaveLocation saveLocation)
     {
@@ -57,33 +61,58 @@ class B_InventorySystem  : IInventorySystem
     }
 }
 
+class InventorySystemAdaptor : IInventorySystem
+{
+    A_InventorySystem AinventorySystem;
+    B_InventorySystem BinventorySystem;
+
+    public InventorySystemAdaptor(A_InventorySystem AinventorySystem, B_InventorySystem BinventorySystem)
+    {
+        this.AinventorySystem = AinventorySystem;
+        this.BinventorySystem = BinventorySystem;
+    }
+
+    public void AddItem(Item item)
+    {
+        BinventorySystem.AddItemToSaveLocation(item, SaveLocation.Local);
+        BinventorySystem.SyncInventory();
+    }
+
+    public void RemoveItem(Item item)
+    {
+        BinventorySystem.RemoveItemToSaveLocation(item, SaveLocation.Local);
+        BinventorySystem.SyncInventory();
+    }
+
+    public void ResetInventory()
+    {
+        AinventorySystem.ResetInventory();
+        BinventorySystem.SyncInventory();
+    }
+}
+
 class Inventory
 {
     IInventorySystem _inventorySystem;
-    //public void SetSystem(IInventorySystem inventorySystem) { this._inventorySystem = inventorySystem; }
 
-    public void AddItemToInventory(Item item, SaveLocation saveLocation)
+    public void setInventorySystem(IInventorySystem inventorySystem)
     {
-        B_InventorySystem BinventorySystem = _inventorySystem as B_InventorySystem;
-        
-        BinventorySystem.AddItemToSaveLocation(item, saveLocation);
+        _inventorySystem = inventorySystem;
     }
 
-    public void RemoveItemFromInventory(Item item, SaveLocation saveLocation)
+    public void AddItem(Item item)
     {
-        B_InventorySystem BinventorySystem = _inventorySystem as B_InventorySystem;
+        _inventorySystem.AddItem(item);
+    }
     
-        BinventorySystem.RemoveItemToSaveLocation(item, saveLocation);
+    public void RemoveItem(Item item)
+    {
+        _inventorySystem.RemoveItem(item);
     }
 
-    public void ResetIventory()
+    public void ResetInventory()
     {
-        A_InventorySystem AinventorySystem = _inventorySystem as A_InventorySystem;
-        B_InventorySystem BinventorySystem = _inventorySystem as B_InventorySystem;
-        
-        // 인벤토리 초기화 후 Sync로 클라우드와 동기화
-        AinventorySystem.ResetInventory();
-        BinventorySystem.SyncInventory();
+        _inventorySystem.ResetInventory();
     }
 }
 
@@ -91,7 +120,8 @@ class inventoryManager : MonoBehaviour
 {
     void Start()
     {
+        IInventorySystem adaptor = new InventorySystemAdaptor(new A_InventorySystem(), new B_InventorySystem());
         Inventory inventory = new Inventory();
-        inventory.SetSystem(new A_InventorySystem());
+        inventory.setInventorySystem(adaptor);
     }
 }
