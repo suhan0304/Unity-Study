@@ -26,40 +26,60 @@ interface IInventorySystem
 
 class A_InventorySystem : IInventorySystem
 {
+    private List<Item> sharedItems;
+
+    // 공유된 인벤토리를 받는다.
+    public A_InventorySystem(List<Item> sharedItems)
+    {
+        this.sharedItems = sharedItems;
+    }
+
     public void AddItem(Item item)
     {
-        // 인벤토리 아이템 추가 로직
+        sharedItems.Add(item);
+        Debug.Log(item.name + " was added to A_InventorySystem.");
     }
 
     public void RemoveItem(Item item)
     {
-        // 인벤토리 아이템 삭제 로직
+        sharedItems.Remove(item);
+        Debug.Log(item.name + " was removed from A_InventorySystem.");
     }
 
     public void ResetInventory()
     {
-        // 인벤토리 초기화 로직
+        sharedItems.Clear();
+        Debug.Log("A_InventorySystem inventory reset.");
     }
 }
 
 class B_InventorySystem 
 {
+    private List<Item> sharedItems;
+
+    // 공유된 인벤토리를 받는다.
+    public B_InventorySystem(List<Item> sharedItems)
+    {
+        this.sharedItems = sharedItems;
+    }
+
     public void AddItemToSaveLocation(Item item, SaveLocation saveLocation)
     {
-        // saveLocation에 item 추가
+        sharedItems.Add(item);
+        Debug.Log(item.name + " was added to B_InventorySystem at " + saveLocation.ToString());
     }
 
     public void RemoveItemToSaveLocation(Item item, SaveLocation saveLocation)
     {
-        // saveLocation에 item 삭제
+        sharedItems.Remove(item);
+        Debug.Log(item.name + " was removed from B_InventorySystem at " + saveLocation.ToString());
     }
 
     public void SyncInventory()
     {
-        // Local과 Cloud 인벤토리 동기화
+        Debug.Log("B_InventorySystem inventory synced.");
     }
 }
-
 // 객체 어댑터 패턴으로 변경한 InventorySystemAdaptor
 class InventorySystemAdaptor : IInventorySystem
 {
@@ -89,6 +109,55 @@ class InventorySystemAdaptor : IInventorySystem
 
     public void ResetInventory()
     {
-        // A_InventorySystem의 기능 사용
         aInventorySystem.ResetInventory();
-        bInventory
+        bInventorySystem.SyncInventory();
+    }
+}
+
+class Inventory
+{
+    IInventorySystem _inventorySystem;
+
+    public void setInventorySystem(IInventorySystem inventorySystem)
+    {
+        _inventorySystem = inventorySystem;
+    }
+
+    public void AddItem(Item item)
+    {
+        _inventorySystem.AddItem(item);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        _inventorySystem.RemoveItem(item);
+    }
+
+    public void ResetInventory()
+    {
+        _inventorySystem.ResetInventory();
+    }
+}
+
+class InventoryManager : MonoBehaviour
+{
+    void Start()
+    {
+        // 공유 인벤토리 리스트 생성
+        List<Item> sharedInventory = new List<Item>();
+
+        // A와 B 시스템에 동일한 공유 인벤토리 리스트를 전달
+        A_InventorySystem aInventory = new A_InventorySystem(sharedInventory);
+        B_InventorySystem bInventory = new B_InventorySystem(sharedInventory);
+
+        // 어댑터 패턴으로 A와 B 시스템을 통합
+        IInventorySystem adaptor = new InventorySystemAdaptor(aInventory, bInventory);
+        Inventory inventory = new Inventory();
+        inventory.setInventorySystem(adaptor);
+
+        // 테스트용 아이템 생성
+        Item newItem = new Item { name = "Sword", description = "A sharp blade" };
+        inventory.AddItem(newItem);  // 아이템 추가
+        inventory.ResetInventory();  // 인벤토리 초기화
+    }
+}
