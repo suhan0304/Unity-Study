@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-
 enum SaveLocation
 {
     Local,
@@ -43,6 +42,7 @@ class A_InventorySystem : IInventorySystem
         // 인벤토리 초기화 로직
     }
 }
+
 class B_InventorySystem 
 {
     public void AddItemToSaveLocation(Item item, SaveLocation saveLocation)
@@ -61,58 +61,35 @@ class B_InventorySystem
     }
 }
 
-class InventorySystemAdaptor : B_InventorySystem, IInventorySystem
+// 객체 어댑터 패턴으로 변경한 InventorySystemAdaptor
+class InventorySystemAdaptor : IInventorySystem
 {
-    public void AddItem(Item item)
-    {
-        AddItemToSaveLocation(item, SaveLocation.Local);
-        SyncInventory();
-    }
+    A_InventorySystem aInventorySystem;
+    B_InventorySystem bInventorySystem;
 
-    public void RemoveItem(Item item)
+    // 생성자를 통해 두 시스템을 받는다.
+    public InventorySystemAdaptor(A_InventorySystem aInventorySystem, B_InventorySystem bInventorySystem)
     {
-        RemoveItemToSaveLocation(item, SaveLocation.Local);
-        SyncInventory();
-    }
-
-    public void ResetInventory()
-    {
-        // A InventorySystem의 ResetInventory 로직을 그대로 복붙 및 구현
-        SyncInventory();
-    }
-}
-
-class Inventory
-{
-    IInventorySystem _inventorySystem;
-
-    public void setInventorySystem(IInventorySystem inventorySystem)
-    {
-        _inventorySystem = inventorySystem;
+        this.aInventorySystem = aInventorySystem;
+        this.bInventorySystem = bInventorySystem;
     }
 
     public void AddItem(Item item)
     {
-        _inventorySystem.AddItem(item);
+        // B_InventorySystem의 기능 사용
+        bInventorySystem.AddItemToSaveLocation(item, SaveLocation.Local);
+        bInventorySystem.SyncInventory();
     }
-    
+
     public void RemoveItem(Item item)
     {
-        _inventorySystem.RemoveItem(item);
+        // B_InventorySystem의 기능 사용
+        bInventorySystem.RemoveItemToSaveLocation(item, SaveLocation.Local);
+        bInventorySystem.SyncInventory();
     }
 
     public void ResetInventory()
     {
-        _inventorySystem.ResetInventory();
-    }
-}
-
-class inventoryManager : MonoBehaviour
-{
-    void Start()
-    {
-        IInventorySystem adaptor = new InventorySystemAdaptor();
-        Inventory inventory = new Inventory();
-        inventory.setInventorySystem(adaptor);
-    }
-}
+        // A_InventorySystem의 기능 사용
+        aInventorySystem.ResetInventory();
+        bInventory
