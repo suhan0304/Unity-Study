@@ -10,6 +10,7 @@ enum SaveLocation
     Both
 }
 
+[System.Serializable]
 public class Item
 {
     public string name;
@@ -37,19 +38,19 @@ class A_InventorySystem : IInventorySystem
     public void AddItem(Item item)
     {
         sharedItems.Add(item);
-        Debug.Log(item.name + " was added to A_InventorySystem.");
+        Debug.Log(item.name + " was added to Inventory.");
     }
 
     public void RemoveItem(Item item)
     {
         sharedItems.Remove(item);
-        Debug.Log(item.name + " was removed from A_InventorySystem.");
+        Debug.Log(item.name + " was removed from Inventory.");
     }
 
     public void ResetInventory()
     {
         sharedItems.Clear();
-        Debug.Log("A_InventorySystem inventory reset.");
+        Debug.Log("Inventory inventory reset.");
     }
 }
 
@@ -66,18 +67,18 @@ class B_InventorySystem
     public void AddItemToSaveLocation(Item item, SaveLocation saveLocation)
     {
         sharedItems.Add(item);
-        Debug.Log(item.name + " was added to B_InventorySystem at " + saveLocation.ToString());
+        Debug.Log(item.name + " was added to Inventory at " + saveLocation.ToString());
     }
 
     public void RemoveItemToSaveLocation(Item item, SaveLocation saveLocation)
     {
         sharedItems.Remove(item);
-        Debug.Log(item.name + " was removed from B_InventorySystem at " + saveLocation.ToString());
+        Debug.Log(item.name + " was removed from Inventory at " + saveLocation.ToString());
     }
 
     public void SyncInventory()
     {
-        Debug.Log("B_InventorySystem inventory synced.");
+        Debug.Log("Local + Save Inventory inventory synced.");
     }
 }
 // 객체 어댑터 패턴으로 변경한 InventorySystemAdaptor
@@ -139,12 +140,15 @@ class Inventory
     }
 }
 
-class InventoryManager : MonoBehaviour
+
+public class InventoryManager : MonoBehaviour
 {
+    [SerializeField]
+    // 공유 인벤토리 리스트 생성
+    private List<Item> sharedInventory = new List<Item>();
+    
     void Start()
     {
-        // 공유 인벤토리 리스트 생성
-        List<Item> sharedInventory = new List<Item>();
 
         // A와 B 시스템에 동일한 공유 인벤토리 리스트를 전달
         A_InventorySystem aInventory = new A_InventorySystem(sharedInventory);
@@ -158,6 +162,6 @@ class InventoryManager : MonoBehaviour
         // 테스트용 아이템 생성
         Item newItem = new Item { name = "Sword", description = "A sharp blade" };
         inventory.AddItem(newItem);  // 아이템 추가
-        inventory.ResetInventory();  // 인벤토리 초기화
+        //inventory.ResetInventory();  // 인벤토리 초기화
     }
 }
