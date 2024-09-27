@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.UIElements;
+using Debug = UnityEngine.Debug;
 
 // 원본 객체와 장식된 객체 모두를 묶는 인터페이스
 interface IData
@@ -80,27 +81,49 @@ class SynchronizedDecorator : MyDataDecorator
 }
 
 // 나중에 기능 추가가 되도 수정없이 유연하게 클래스만 정의하면 추가 가능
-class AnotherSkillDecorator : MyDataDecorator
+class timerMeasureDecorator : MyDataDecorator
 {
-    private IData mydataObj;
-
-    public AnotherSkillDecorator(IData mydataObj) : base(mydataObj)
+    public timerMeasureDecorator (IData mydataObj) : base(mydataObj)
     {
     }
-    
-    // 추가 기능 --- 
+
+    public void setData(int data)
+    {
+        Stopwatch stopwatch = Stopwatch.StartNew(); // 시간 측정 시작
+        base.setData(data);
+        stopwatch.Stop(); // 시간 측정 종료
+        // 나노세컨드 대신 ticks 출력 (1 tick = 100 나노초)
+        Console.WriteLine(stopwatch.ElapsedTicks + " ticks"); 
+    }
+
+    public int getData()
+    {
+        Stopwatch stopwatch = Stopwatch.StartNew(); // 시간 측정 시작
+        int result = base.getData();
+        stopwatch.Stop(); // 시간 측정 종료
+        Console.WriteLine(stopwatch.ElapsedTicks + " ticks"); 
+        return result;
+    }
 }
 
 public class DataManager : MonoBehaviour
 {
     public void Start()
     {
-        // 동시성이 필요없을 때
         IData data = new MyData();
         
-        // 동시성이 필요할 때
-        IData dataSync = new SynchronizedDecorator(data);
-        dataSync.setData(13579);
-        Debug.Log(dataSync.getData());
+        // 시간 측정 하고 싶을 때
+        IData data1 = new timerMeasureDecorator(data);
+        data1.setData(13579);
+        
+        Debug.Log("------------");
+        
+        // 동서시성이 적용된 로직 안의 코드의 시간 측정을 하고 싶을 때
+        IData data2 = new SynchronizedDecorator(new timerMeasureDecorator(data1));
+        
+        Debug.Log("------------");
+        
+        // 동서시성이 적용된 코드를 시간 측정을 하고 싶을 때
+        IData data3 = new timerMeasureDecorator(new SynchronizedDecorator(data1));
     }
 }
