@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface Weapon {
+public interface WeaponManager {
     void offensive();
 }
 
