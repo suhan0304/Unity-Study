@@ -84,6 +84,6 @@ class Buttstock : WeaponAccessory
 
     private void holding()
     {
-        Debug.Log(".견착 완료...");
+        Debug.Log("견착 완료...");
     }
 }
