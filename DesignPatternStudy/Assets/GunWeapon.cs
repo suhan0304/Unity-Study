@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-class Weapon
+// 원본 객체와 장식된 객체 모두를 묶는 인터페이스
+public interface Weapon
 {
-    void aim_and_fire()
-    {
-    }
+    public void aim_and_fire();
 }
 
+// 장식될 원본 객체
 class BaseWeapon : Weapon
 {
     public void aim_and_fire()
@@ -17,45 +18,72 @@ class BaseWeapon : Weapon
     }
 }
 
-class GeneradeBaseWeapon : Weapon
+// 장식자 추상 클래스
+public abstract class WeaponAccessory : Weapon
 {
+    private Weapon rifle;
+    
+    protected WeaponAccessory(Weapon rifle) { this.rifle = rifle; }
+
     public void aim_and_fire()
     {
-        Debug.Log("총알 발사");
+        rifle.aim_and_fire();
     }
+}
+
+// 장식자 클래스 (유탄 발사기)
+class Generade : WeaponAccessory
+{
+    public Generade(Weapon rifle) : base(rifle)
+    {
+    }
+
+    public void aim_and_fire()
+    {
+        base.aim_and_fire();
+        generade_fire();
+    }
+
     public void generade_fire()
     {
         Debug.Log("유탄 발사");
     }
 }
 
-class ScopedBaseWeapon : Weapon
+// 장식자 클래스 (조준경)
+class Scoped : WeaponAccessory
 {
+    public Scoped(Weapon rifle) : base(rifle)
+    {
+    }
+
     public void aim_and_fire()
     {
         aiming();
-        Debug.Log("조준하여 총알 발사");
+        base.aim_and_fire();
     }
+
     public void aiming()
     {
-        Debug.Log("조준 중...");
+        Debug.Log("조준 중..");
     }
 }
 
-class ButtstockScopedGeneradeBaseWeapon : Weapon
+// 장식자 클래스 (개머리판)
+class Buttstock : WeaponAccessory
 {
+    public Buttstock(Weapon rifle) : base(rifle)
+    {
+    }
+
     public void aim_and_fire()
     {
         holding();
-        aiming();
-        Debug.Log("조준하여 총알 발사");
+        base.aim_and_fire();
     }
-    public void aiming()
-    {
-        Debug.Log("조준 중...");
-    }
+
     public void holding()
     {
-        Debug.Log("견착 완료...");
+        Debug.Log(".견착 완료...");
     }
 }

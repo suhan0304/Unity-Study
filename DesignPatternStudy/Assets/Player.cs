@@ -3,19 +3,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     void Start() {
-        // 플레이어 손에 무기 착용 전략을 설정
-        TakeWeaponStrategy hand = new TakeWeaponStrategy();
-
-        // 플레이어가 검을 들도록 전략 설정
-        hand.setWeapon(new Sword());
-        hand.attack(); // "칼을 휘두르다"
-
-        // 플레이어가 방패를 들도록 전략 변경
-        hand.setWeapon(new Shield());
-        hand.attack(); // "방패로 밀친다"
+        // 1. 유탄 발사기가 달린 총
+        Weapon generade_rifle = new Generade(new BaseWeapon());
+        generade_rifle.aim_and_fire();
         
-        // 플레이어가 석궁을 들도록 전략 변경
-        hand.setWeapon(new Crossbow());
-        hand.attack(); // "석궁을 발사하다"
+        // 2. 개머리판을 장착하고 스코프를 달은 총
+        Weapon buttstock_scoped_rifle = new Buttstock(new Generade(new BaseWeapon()));
+        buttstock_scoped_rifle.aim_and_fire();
+        
+        // 3. 유탄 발사기 + 개머리판 + 스코프가 달린 총
+        Weapon buttstock_scoped_generade_rifle = new Buttstock(new Scoped(new Generade(new BaseWeapon())));
+        buttstock_scoped_generade_rifle.aim_and_fire();
+
     }
 }
