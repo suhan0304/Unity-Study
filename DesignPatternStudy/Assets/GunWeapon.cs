@@ -25,7 +25,7 @@ public abstract class WeaponAccessory : Weapon
     
     protected WeaponAccessory(Weapon rifle) { this.rifle = rifle; }
 
-    public void aim_and_fire()
+    public virtual void aim_and_fire()
     {
         rifle.aim_and_fire();
     }
@@ -38,13 +38,13 @@ class Generade : WeaponAccessory
     {
     }
 
-    public void aim_and_fire()
+    public override void aim_and_fire()
     {
         base.aim_and_fire();
         generade_fire();
     }
 
-    public void generade_fire()
+    private void generade_fire()
     {
         Debug.Log("유탄 발사");
     }
@@ -57,13 +57,13 @@ class Scoped : WeaponAccessory
     {
     }
 
-    public void aim_and_fire()
+    public override void aim_and_fire()
     {
         aiming();
         base.aim_and_fire();
     }
 
-    public void aiming()
+    private void aiming()
     {
         Debug.Log("조준 중..");
     }
@@ -76,13 +76,13 @@ class Buttstock : WeaponAccessory
     {
     }
 
-    public void aim_and_fire()
+    public override void aim_and_fire()
     {
         holding();
         base.aim_and_fire();
     }
 
-    public void holding()
+    private void holding()
     {
         Debug.Log(".견착 완료...");
     }
