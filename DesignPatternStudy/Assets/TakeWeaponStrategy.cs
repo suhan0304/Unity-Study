@@ -1,8 +1,8 @@
 public class TakeWeaponStrategy 
 {
-    public Weapon wp;
+    public WeaponManager wp;
 
-    public void setWeapon(Weapon wp) {
+    public void setWeapon(WeaponManager wp) {
         this.wp = wp;
     }
 
