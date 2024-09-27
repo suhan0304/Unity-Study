@@ -80,28 +80,26 @@ class SynchronizedDecorator : MyDataDecorator
     }
 }
 
-// 나중에 기능 추가가 되도 수정없이 유연하게 클래스만 정의하면 추가 가능
 class timerMeasureDecorator : MyDataDecorator
 {
     public timerMeasureDecorator (IData mydataObj) : base(mydataObj)
     {
     }
 
-    public void setData(int data)
+    public override void setData(int data)
     {
         Stopwatch stopwatch = Stopwatch.StartNew(); // 시간 측정 시작
         base.setData(data);
         stopwatch.Stop(); // 시간 측정 종료
-        // 나노세컨드 대신 ticks 출력 (1 tick = 100 나노초)
-        Console.WriteLine(stopwatch.ElapsedTicks + " ticks"); 
+        Debug.Log(stopwatch.ElapsedTicks + " ticks"); 
     }
 
-    public int getData()
+    public override int getData()
     {
         Stopwatch stopwatch = Stopwatch.StartNew(); // 시간 측정 시작
         int result = base.getData();
         stopwatch.Stop(); // 시간 측정 종료
-        Console.WriteLine(stopwatch.ElapsedTicks + " ticks"); 
+        Debug.Log(stopwatch.ElapsedTicks + " ticks"); 
         return result;
     }
 }
@@ -120,10 +118,14 @@ public class DataManager : MonoBehaviour
         
         // 동서시성이 적용된 로직 안의 코드의 시간 측정을 하고 싶을 때
         IData data2 = new SynchronizedDecorator(new timerMeasureDecorator(data1));
+        data2.setData(24680);
+        Debug.Log(data2.getData());
         
         Debug.Log("------------");
         
-        // 동서시성이 적용된 코드를 시간 측정을 하고 싶을 때
+        // 동시성이 적용된 코드를 시간 측정을 하고 싶을 때
         IData data3 = new timerMeasureDecorator(new SynchronizedDecorator(data1));
+        data3.setData(99999);
+        Debug.Log(data3.getData());
     }
 }
