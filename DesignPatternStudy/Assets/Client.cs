@@ -12,6 +12,7 @@ public class Client : MonoBehaviour
         {
             new HealthUI("HealthBar", player),
             new HealthUI("HealthText", player),
+            new HealthUI("Status", player),
         };
         
         player.TakeDamage(20);
