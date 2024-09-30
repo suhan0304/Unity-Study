@@ -120,12 +120,5 @@ public class DataManager : MonoBehaviour
         IData data2 = new SynchronizedDecorator(new timerMeasureDecorator(data));
         data2.setData(24680);
         Debug.Log(data2.getData());
-        
-        Debug.Log("------------");
-        
-        // 동시성이 적용된 코드를 시간 측정을 하고 싶을 때
-         
-        data3.setData(99999);
-        Debug.Log(data3.getData());
     }
 }
