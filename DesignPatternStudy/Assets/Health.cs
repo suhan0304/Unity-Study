@@ -1,19 +1,15 @@
 using UnityEngine;
 
-interface IUI {
-    void Display();
-}
+// 체력 UI를 표시하는 클래스 (Observer 역할)
+class HealthUI : IObserver {
+    private string UIName;
 
-class HealthUI : IUI {
-    Player player;
-    string playerName;
-
-    public HealthUI(string name, Player player) {
-        this.playerName = name;
-        this.player = player;
+    public HealthUI(string name) {
+        this.UIName = name;
     }
 
-    public void Display() {
-       Debug.Log($"{playerName} HP : {player.Health}");
+    // Subject의 상태 변경 시 호출되는 메서드
+    public void Update(Player player) {
+        Debug.Log($"{UIName}'s health: {player.Health}");
     }
 }
