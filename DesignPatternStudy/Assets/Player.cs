@@ -47,13 +47,13 @@ class Player : ISubject {
     }
 }
 
-class PlayerWithAction
+class PlayerDelegate
 {
     public int Health { get; private set; }
 
-    public event Action<PlayerWithAction> OnHealthChanged;
+    public event Action<PlayerDelegate> OnHealthChanged;
 
-    public PlayerWithAction(int health)
+    public PlayerDelegate(int health)
     {
         this.Health = health;
     }
