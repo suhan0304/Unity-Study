@@ -46,3 +46,22 @@ class Player : ISubject {
         }
     }
 }
+
+class PlayerWithAction
+{
+    public int Health { get; private set; }
+
+    public event Action<PlayerWithAction> OnHealthChanged;
+
+    public PlayerWithAction(int health)
+    {
+        this.Health = health;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        if (Health < 0) Health = 0;
+        OnHealthChanged?.Invoke(this);
+    }
+}
