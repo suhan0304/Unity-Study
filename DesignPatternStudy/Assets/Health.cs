@@ -12,4 +12,7 @@ using UnityEngine;
      public void Update(Player player) {
          Debug.Log($"{UIName}'s health: {player.Health}");
      }
+     public void UpdateDelegate(PlayerDelegate player) {
+         Debug.Log($"{UIName}'s health: {player.Health}");
+     }
  }
