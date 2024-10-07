@@ -45,7 +45,7 @@ public class ItemInventory : IAggregate<Item>
         return items;
     }
 
-    public IIterator<Item> CreateQuantityIterator()
+    public IIterator<Item> CreateIterator()
     {
         return new QuantityItemIterator(this);
     }
@@ -163,7 +163,7 @@ public class InventoryWithSort : MonoBehaviour
 
         // 아이템 수량 순서대로 조회
         Debug.Log("Items sorted by quantity:");
-        Print(itemInventory.CreateQuantityIterator());
+        Print(itemInventory.CreateIterator());
 
         // 아이템 날짜 순서대로 조회
         Debug.Log("Items sorted by acquisition date:");
