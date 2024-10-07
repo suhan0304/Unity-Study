@@ -134,7 +134,7 @@ public class DateItemIterator : IEnumerator<Item>
     public void Dispose() { }
 }
 
-public class InventoryWithIterator : MonoBehaviour
+public class InventoryWithSort : MonoBehaviour
 {
     void Start()
     {
@@ -142,10 +142,10 @@ public class InventoryWithIterator : MonoBehaviour
         ItemInventory itemInventory = new ItemInventory();
 
         // 2. 인벤토리에 아이템 추가
-        itemInventory.AddItem("Sword", 2, new DateTime(2023, 10, 7));
-        itemInventory.AddItem("Potion", 5, new DateTime(2023, 5, 12));
-        itemInventory.AddItem("Shield", 1, new DateTime(2023, 8, 23));
-        itemInventory.AddItem("Bow", 3, new DateTime(2023, 12, 1));
+        itemInventory.AddItem("Sword", 2, new DateTime(2024, 10, 7));
+        itemInventory.AddItem("Potion", 5, new DateTime(2024, 5, 12));
+        itemInventory.AddItem("Shield", 1, new DateTime(2024, 8, 23));
+        itemInventory.AddItem("Bow", 3, new DateTime(2024, 12, 1));
 
         // 3. 아이템 수량 순서대로 조회
         Debug.Log("Items sorted by quantity:");
@@ -156,6 +156,7 @@ public class InventoryWithIterator : MonoBehaviour
         Print(itemInventory.GetDateItemIterator());
     }
 
+    
     void Print(IEnumerator<Item> iterator)
     {
         while (iterator.MoveNext())
