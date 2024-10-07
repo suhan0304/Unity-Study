@@ -1,71 +1,167 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Item
 {
-    public string Name { get; set; } // 아이템 이름
-    public DateTime AcquisitionDate { get; set; } // 획득 일자
-    public int Quantity { get; set; } // 아이템 수량
+    public string Name { get; set; }
+    public DateTime AcquisitionDate { get; set; }
+    public int Quantity { get; set; }
 
-    // 생성자: 수량과 획득 일자 설정 가능
     public Item(string name, int quantity, DateTime acquisitionDate)
     {
         Name = name;
         Quantity = quantity;
         AcquisitionDate = acquisitionDate;
     }
-
-    // 기본 생성자: 획득 일자는 현재 시간으로 설정, 수량은 1
-    public Item(string name)
-    {
-        Name = name;
-        Quantity = 1;
-        AcquisitionDate = DateTime.Now; // 현재 시각으로 설정
-    }
 }
 
-public class ItemInventory
+public class ItemInventory : IEnumerable<Item>
 {
-    private List<Item> items = new List<Item>(); // 아이템 리스트
+    private List<Item> items = new List<Item>();
 
     public void AddItem(string name, int quantity, DateTime acquisitionDate)
     {
-        items.Add(new Item(name, quantity, acquisitionDate)); // 새로운 아이템 추가
+        items.Add(new Item(name, quantity, acquisitionDate));
     }
 
     public List<Item> GetItems()
     {
-        return items; // 아이템 리스트 반환
+        return items;
+    }
+
+    // 수량 순서 이터레이터 반환
+    public IEnumerator<Item> GetQuantityItemIterator()
+    {
+        return new QuantityItemIterator(items);
+    }
+
+    // 날짜 순서 이터레이터 반환
+    public IEnumerator<Item> GetDateItemIterator()
+    {
+        return new DateItemIterator(items);
+    }
+
+    // IEnumerable<Item>의 GetEnumerator 구현
+    public IEnumerator<Item> GetEnumerator()
+    {
+        return items.GetEnumerator(); // 기본 발행 순서
+    }
+
+    // IEnumerable의 GetEnumerator 구현 (비제네릭 버전)
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
 
-public class InventoryWithSort : UnityEngine.MonoBehaviour
+// 수량 순서 이터레이터
+public class QuantityItemIterator : IEnumerator<Item>
+{
+    private List<Item> items;
+    private int position = -1;
+
+    public QuantityItemIterator(List<Item> items)
+    {
+        // 수량 순으로 정렬
+        this.items = new List<Item>(items);
+        this.items.Sort((i1, i2) => i1.Quantity.CompareTo(i2.Quantity));
+    }
+
+    public bool MoveNext()
+    {
+        position++;
+        return position < items.Count;
+    }
+
+    public void Reset()
+    {
+        position = -1;
+    }
+
+    public Item Current
+    {
+        get
+        {
+            if (position < 0 || position >= items.Count)
+                throw new InvalidOperationException();
+            return items[position];
+        }
+    }
+
+    object IEnumerator.Current => Current;
+
+    public void Dispose() { }
+}
+
+// 날짜 순서 이터레이터
+public class DateItemIterator : IEnumerator<Item>
+{
+    private List<Item> items;
+    private int position = -1;
+
+    public DateItemIterator(List<Item> items)
+    {
+        // 날짜 순으로 정렬
+        this.items = new List<Item>(items);
+        this.items.Sort((i1, i2) => i1.AcquisitionDate.CompareTo(i2.AcquisitionDate));
+    }
+
+    public bool MoveNext()
+    {
+        position++;
+        return position < items.Count;
+    }
+
+    public void Reset()
+    {
+        position = -1;
+    }
+
+    public Item Current
+    {
+        get
+        {
+            if (position < 0 || position >= items.Count)
+                throw new InvalidOperationException();
+            return items[position];
+        }
+    }
+
+    object IEnumerator.Current => Current;
+
+    public void Dispose() { }
+}
+
+public class InventoryWithIterator : MonoBehaviour
 {
     void Start()
     {
         // 1. 인벤토리 생성
         ItemInventory itemInventory = new ItemInventory();
 
-        // 2. 인벤토리에 아이템 추가 (직접 날짜와 수량을 설정)
+        // 2. 인벤토리에 아이템 추가
         itemInventory.AddItem("Sword", 2, new DateTime(2023, 10, 7));
         itemInventory.AddItem("Potion", 5, new DateTime(2023, 5, 12));
         itemInventory.AddItem("Shield", 1, new DateTime(2023, 8, 23));
         itemInventory.AddItem("Bow", 3, new DateTime(2023, 12, 1));
 
-        // 3. 아이템 발행 순서대로 조회하기
-        List<Item> items = itemInventory.GetItems();
-        UnityEngine.Debug.Log("Items in added order:");
-        foreach (Item item in items)
-        {
-            UnityEngine.Debug.Log($"{item.Name} / {item.Quantity} / {item.AcquisitionDate}");
-        }
+        // 3. 아이템 수량 순서대로 조회
+        Debug.Log("Items sorted by quantity:");
+        Print(itemInventory.GetQuantityItemIterator());
 
-        // 4. 아이템을 날짜별로 정렬해서 조회하기
-        items.Sort((i1, i2) => i1.AcquisitionDate.CompareTo(i2.AcquisitionDate)); // 획득 날짜별로 정렬
-        UnityEngine.Debug.Log("Items sorted by acquisition date:");
-        foreach (Item item in items)
+        // 4. 아이템 날짜 순서대로 조회
+        Debug.Log("Items sorted by acquisition date:");
+        Print(itemInventory.GetDateItemIterator());
+    }
+
+    void Print(IEnumerator<Item> iterator)
+    {
+        while (iterator.MoveNext())
         {
-            UnityEngine.Debug.Log($"{item.Name} / {item.Quantity} / {item.AcquisitionDate}");
+            Item item = iterator.Current;
+            Debug.Log($"{item.Name} / {item.Quantity} / {item.AcquisitionDate}");
         }
     }
 }
