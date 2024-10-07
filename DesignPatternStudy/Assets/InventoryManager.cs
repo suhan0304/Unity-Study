@@ -11,7 +11,7 @@ enum SaveLocation
 }
 
 [System.Serializable]
-public class Item
+public class ItemObject
 {
     public string name;
     public string description;
@@ -20,59 +20,59 @@ public class Item
 // 기존의 인터페이스는 수정하지 않는다.
 interface IInventorySystem 
 {
-    void AddItem(Item item);
-    void RemoveItem(Item item);
+    void AddItemObject(ItemObject item);
+    void RemoveItemObject(ItemObject item);
     void ResetInventory();
 }
 
 class A_InventorySystem : IInventorySystem
 {
-    private List<Item> sharedItems;
+    private List<ItemObject> sharedItemObjects;
 
     // 공유된 인벤토리를 받는다.
-    public A_InventorySystem(List<Item> sharedItems)
+    public A_InventorySystem(List<ItemObject> sharedItemObjects)
     {
-        this.sharedItems = sharedItems;
+        this.sharedItemObjects = sharedItemObjects;
     }
 
-    public void AddItem(Item item)
+    public void AddItemObject(ItemObject item)
     {
-        sharedItems.Add(item);
+        sharedItemObjects.Add(item);
         Debug.Log(item.name + " was added to Inventory.");
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItemObject(ItemObject item)
     {
-        sharedItems.Remove(item);
+        sharedItemObjects.Remove(item);
         Debug.Log(item.name + " was removed from Inventory.");
     }
 
     public void ResetInventory()
     {
-        sharedItems.Clear();
+        sharedItemObjects.Clear();
         Debug.Log("Inventory inventory reset.");
     }
 }
 
 class B_InventorySystem 
 {
-    private List<Item> sharedItems;
+    private List<ItemObject> sharedItemObjects;
 
     // 공유된 인벤토리를 받는다.
-    public B_InventorySystem(List<Item> sharedItems)
+    public B_InventorySystem(List<ItemObject> sharedItemObjects)
     {
-        this.sharedItems = sharedItems;
+        this.sharedItemObjects = sharedItemObjects;
     }
 
-    public void AddItemToSaveLocation(Item item, SaveLocation saveLocation)
+    public void AddItemObjectToSaveLocation(ItemObject item, SaveLocation saveLocation)
     {
-        sharedItems.Add(item);
+        sharedItemObjects.Add(item);
         Debug.Log(item.name + " was added to Inventory at " + saveLocation.ToString());
     }
 
-    public void RemoveItemToSaveLocation(Item item, SaveLocation saveLocation)
+    public void RemoveItemObjectToSaveLocation(ItemObject item, SaveLocation saveLocation)
     {
-        sharedItems.Remove(item);
+        sharedItemObjects.Remove(item);
         Debug.Log(item.name + " was removed from Inventory at " + saveLocation.ToString());
     }
 
@@ -94,17 +94,17 @@ class InventorySystemAdaptor : IInventorySystem
         this.bInventorySystem = bInventorySystem;
     }
 
-    public void AddItem(Item item)
+    public void AddItemObject(ItemObject item)
     {
         // B_InventorySystem의 기능 사용
-        bInventorySystem.AddItemToSaveLocation(item, SaveLocation.Local);
+        bInventorySystem.AddItemObjectToSaveLocation(item, SaveLocation.Local);
         bInventorySystem.SyncInventory();
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItemObject(ItemObject item)
     {
         // B_InventorySystem의 기능 사용
-        bInventorySystem.RemoveItemToSaveLocation(item, SaveLocation.Local);
+        bInventorySystem.RemoveItemObjectToSaveLocation(item, SaveLocation.Local);
         bInventorySystem.SyncInventory();
     }
 
@@ -124,14 +124,14 @@ class Inventory
         _inventorySystem = inventorySystem;
     }
 
-    public void AddItem(Item item)
+    public void AddItemObject(ItemObject item)
     {
-        _inventorySystem.AddItem(item);
+        _inventorySystem.AddItemObject(item);
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItemObject(ItemObject item)
     {
-        _inventorySystem.RemoveItem(item);
+        _inventorySystem.RemoveItemObject(item);
     }
 
     public void ResetInventory()
@@ -145,7 +145,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField]
     // 공유 인벤토리 리스트 생성
-    private List<Item> sharedInventory = new List<Item>();
+    private List<ItemObject> sharedInventory = new List<ItemObject>();
     
     void Start()
     {
@@ -160,8 +160,8 @@ public class InventoryManager : MonoBehaviour
         inventory.setInventorySystem(adaptor);
 
         // 테스트용 아이템 생성
-        Item newItem = new Item { name = "Sword", description = "A sharp blade" };
-        inventory.AddItem(newItem);  // 아이템 추가
+        ItemObject newItemObject = new ItemObject { name = "Sword", description = "A sharp blade" };
+        inventory.AddItemObject(newItemObject);  // 아이템 추가
         //inventory.ResetInventory();  // 인벤토리 초기화
     }
 }
