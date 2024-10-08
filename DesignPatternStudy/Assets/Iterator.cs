@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
-public class Iterator : MonoBehaviour
+abstract class Iterator : IEnumerator
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    object IEnumerator.Current => Current();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract int key();
+    public abstract object Current();
+    public abstract bool MoveNext();
+    public abstract void Reset();
 }
