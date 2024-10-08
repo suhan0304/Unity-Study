@@ -13,3 +13,9 @@ abstract class Iterator : IEnumerator
     public abstract bool MoveNext();
     public abstract void Reset();
 }
+
+abstract class IteratorAggregate : IEnumerable 
+{
+    public abstract IEnumerator GetEnumerator();
+}
+
