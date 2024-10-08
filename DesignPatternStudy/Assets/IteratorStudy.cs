@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
@@ -97,5 +98,25 @@ class WordsCollection : IteratorAggregate
 }
 
 class IteratorStudy : MonoBehaviour {
+    void Start() {
+        var collection = new WordsCollection();
+        collection.AddItem("First");
+        collection.AddItem("Second");
+        collection.AddItem("Third");
     
+        Debug.Log("Straight traversal:");
+
+        foreach (var element in collection) {
+            Debug.Log(element);
+        }
+
+        Debug.Log("Reverse traversal");
+
+        collection.ReverseDirection();
+
+        foreach (var element in collection) {
+            Debug.Log(element);
+        }
+
+    }
 }
