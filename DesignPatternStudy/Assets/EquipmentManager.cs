@@ -38,6 +38,7 @@ public class EquipmentData {
     }
  }
 
+// 데이터 베이스 역할을 하는 클래스
 public class DBMS
 {
     private Dictionary<string, EquipmentData> db = new Dictionary<string, EquipmentData>();
@@ -61,6 +62,7 @@ public class DBMS
     }
 }
 
+// DBMS에서 조회된 데이터를 임시로 담아두는 클래스 *속도향상*
 public class Cache
 {
     private Dictionary<string, EquipmentData> cache = new Dictionary<string, EquipmentData>();
