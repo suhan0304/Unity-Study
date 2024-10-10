@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
-class EquipmentData {
+public class EquipmentData {
     private string name;
     private int physicalDamage;
     private int magicalDamage;
     private float attackSpeed;
+
+    public string getName()
+    {
+        return this.name;
+    }
 
     public int getPhysicalDamage()
     {
@@ -30,6 +36,43 @@ class EquipmentData {
         this.magicalDamage = magicalDamage;
         this.attackSpeed = attackSpeed;
     }
-
-    
  }
+
+public class DBMS
+{
+    private Dictionary<string, EquipmentData> db = new Dictionary<string, EquipmentData>();
+
+    public void Put(string name, EquipmentData equipment)
+    {
+        db[name.ToLower()] = equipment;
+    }
+
+    // 데이터베이스에 쿼리를 날려 결과를 받아오는 메소드
+    public EquipmentData Query(string name)
+    {
+        try
+        {
+            Thread.Sleep(500); // DB 조회 시간을 비유하여 0.5초 대기로 구현
+        }
+        catch (ThreadInterruptedException) {}
+
+        db.TryGetValue(name.ToLower(), out var equipment);
+        return equipment;
+    }
+}
+
+public class Cache
+{
+    private Dictionary<string, EquipmentData> cache = new Dictionary<string, EquipmentData>();
+
+    public void Put(EquipmentData equipment)
+    {
+        cache[equipment.getName().ToLower()] = equipment;
+    }
+
+    public EquipmentData Get(string name)
+    {
+        cache.TryGetValue(name.ToLower(), out var equipment);
+        return equipment;
+    }
+}
