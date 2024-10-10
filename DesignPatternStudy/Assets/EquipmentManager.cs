@@ -78,3 +78,33 @@ public class Cache
         return equipment;
     }
 }
+
+public class Message
+{
+    private EquipmentData equipment;
+
+    public Message(EquipmentData equipment)
+    {
+        this.equipment = equipment;
+    }
+
+    public string MakeName()
+    {
+        return "Name : \"" + equipment.getName() + "\"";
+    }
+
+    public string MakePhysicalDamage()
+    {
+        return "Physical Damage : " + equipment.getPhysicalDamage();
+    }
+
+    public string MakeMagicalDamage()
+    {
+        return "Magical Damage : " + equipment.getMagicalDamage();
+    }
+
+    public string MakeAttackSpeed()
+    {
+        return "Attack Speed : " + equipment.getAttackSpeed();
+    }
+}
