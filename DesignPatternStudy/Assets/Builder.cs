@@ -11,36 +11,31 @@ class Hamburger {
     private int lettuce;
     private int tomato;
     private int bacon;
-
-    public Hamburger(int bun, int patty, int cheese, int lettuce, int tomato, int bacon) {
-        this.bun = bun;
-        this.patty = patty;
-        this.cheese = cheese;
-        this.lettuce = lettuce;
-        this.tomato = tomato;
-        this.bacon = bacon;
-    }
-
-    public Hamburger(int bun, int patty, int cheese, int lettuce, int tomato) {
-        this.bun = bun;
-        this.patty = patty;
-        this.cheese = cheese;
-        this.lettuce = lettuce;
-        this.tomato = tomato;
-    }
     
+    public Hamburger() {}
 
-    public Hamburger(int bun, int patty, int cheese, int lettuce) {
+    public void setBun(int bun) {
         this.bun = bun;
+    }
+
+    public void setPatty(int patty) {
         this.patty = patty;
+    }
+
+    public void setCheese(int cheese) {
         this.cheese = cheese;
+    }
+
+    public void setLettuce(int lettuce) {
         this.lettuce = lettuce;
     }
 
-    public Hamburger(int bun, int patty, int cheese) {
-        this.bun = bun;
-        this.patty = patty;
-        this.cheese = cheese;
+    public void setTomato(int tomato) {
+        this.tomato = tomato;
+    }
+
+    public void setBacon(int bacon) {
+        this.bacon = bacon;
     }
 }
 public class Builder : MonoBehaviour
@@ -48,12 +43,24 @@ public class Builder : MonoBehaviour
     void Start()
     {
         // 모든 재료가 있는 햄버거
-        Hamburger hamburger1 = new Hamburger(2, 1, 2, 4, 6, 8);
+        Hamburger hamburger1 = new Hamburger();
+        hamburger1.setBun(2);
+        hamburger1.setPatty(1);
+        hamburger1.setCheese(2);
+        hamburger1.setLettuce(4);
+        hamburger1.setTomato(6);
+        hamburger1.setBacon(8);
 
         // 빵과 패티 치즈만 있는 햄버거
-        Hamburger hamburger2 = new Hamburger(2, 1, 1);
+        Hamburger hamburger2 = new Hamburger();
+        hamburger2.setBun(2);
+        hamburger2.setPatty(1);
+        hamburger2.setCheese(2);
 
         // 빵과 패티 베이컨만 있는 햄버거
-        Hamburger hamburger3 = new Hamburger(2, 0, 0, 0, 0, 6);
+        Hamburger hamburger3 = new Hamburger();
+        hamburger3.setBun(2);
+        hamburger2.setPatty(1);
+        hamburger3.setBacon(8);
     }
 }
