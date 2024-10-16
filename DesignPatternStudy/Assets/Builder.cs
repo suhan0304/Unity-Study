@@ -1,66 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-class Hamburger {
-    // 필수 매개변수
-    private int bun;
-    private int patty;
+public class NPC
+{
+    private string name;
+    private int level;
 
-    // 선택 매개변수
-    private int cheese;
-    private int lettuce;
-    private int tomato;
-    private int bacon;
-    
-    public Hamburger() {}
-
-    public void setBun(int bun) {
-        this.bun = bun;
+    private NPC(Builder builder)
+    {
+        this.name = builder.name;
+        this.level = builder.level;
     }
 
-    public void setPatty(int patty) {
-        this.patty = patty;
-    }
+    public string Name => name; 
+    public int Level => level;  
 
-    public void setCheese(int cheese) {
-        this.cheese = cheese;
-    }
+    public class Builder
+    {
+        internal string name; 
+        internal int level;
 
-    public void setLettuce(int lettuce) {
-        this.lettuce = lettuce;
-    }
+        public Builder Name(string name)
+        {
+            this.name = name;
+            return this; 
+        }
 
-    public void setTomato(int tomato) {
-        this.tomato = tomato;
-    }
+        public Builder Level(int level)
+        {
+            this.level = level;
+            return this; 
+        }
 
-    public void setBacon(int bacon) {
-        this.bacon = bacon;
+        public NPC Build()
+        {
+            return new NPC(this); 
+        }
     }
 }
+
 public class Builder : MonoBehaviour
 {
-    void Start()
-    {
-        // 모든 재료가 있는 햄버거
-        Hamburger hamburger1 = new Hamburger();
-        hamburger1.setBun(2);
-        hamburger1.setPatty(1);
-        hamburger1.setCheese(2);
-        hamburger1.setLettuce(4);
-        hamburger1.setTomato(6);
-        hamburger1.setBacon(8);
-
-        // 빵과 패티 치즈만 있는 햄버거
-        Hamburger hamburger2 = new Hamburger();
-        hamburger2.setBun(2);
-        hamburger2.setPatty(1);
-        hamburger2.setCheese(2);
-
-        // 빵과 패티 베이컨만 있는 햄버거
-        Hamburger hamburger3 = new Hamburger();
-        hamburger3.setBun(2);
-        hamburger2.setPatty(1);
-        hamburger3.setBacon(8);
-    }
 }
