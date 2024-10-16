@@ -72,7 +72,7 @@ public class NPC
     }
 }
 
-public class Builder : MonoBehaviour
+public class SimpleBuilder : MonoBehaviour
 {
     void Start()
     {
