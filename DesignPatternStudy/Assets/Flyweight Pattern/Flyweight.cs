@@ -118,12 +118,10 @@ public class Terrain : MonoBehaviour
 
 public class Flyweight : MonoBehaviour
 {
-     private Terrain terrain;
-
     void Start()
     {
         // 지형 생성
-        terrain = new Terrain();
+        Terrain terrain = new Terrain();
 
         // 지형에 Oak 나무 5 그루 생성
         for (int i = 0; i < 5; i++)
