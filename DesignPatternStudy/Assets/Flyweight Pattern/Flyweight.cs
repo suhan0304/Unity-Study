@@ -10,29 +10,57 @@ class Memory {
     }
 }
 
-public class DefaultTree
+// ConcreteFlyweight - 플라이웨이트 객체는 불변성을 가져야 한다. 변경되면 모든 것에 영향을 준다.
+public sealed class TreeModel
 {
-    long objSize = 100; // 100MB
+    // 메시, 텍스쳐 총 사이즈 (메모리 사용 크기)
+    private readonly long objSize = 90; // 90MB
 
-    string type; // 나무 종류
-    Mesh mesh; // 메쉬
-    Texture texture; // 나무 껍질 + 잎사귀 텍스쳐
+    // 불변 필드
+    private readonly string type; // 나무 종류
+    private readonly Mesh mesh; // 메쉬
+    private readonly Texture2D texture; // 나무 껍질 + 잎사귀 텍스쳐
 
-    // 위치 변수
-    public double position_x;
-    public double position_y;
-
-    // public 생성자
-    public DefaultTree(string type, Mesh mesh, Texture texture, double position_x, double position_y)
+    // 생성자
+    public TreeModel(string type, Mesh mesh, Texture2D texture)
     {
         this.type = type;
         this.mesh = mesh;
         this.texture = texture;
+
+        // 나무 객체를 생성하여 메모리에 적재했으니 메모리 사용 크기 증가
+        Memory.size += this.objSize;
+    }
+}
+
+// UnsahredConcreteFlyweight
+public class DefaultTree
+{
+    // 좌표값과 나무 모델 참조 객체 크기를 합친 사이즈
+    private readonly long objSize = 10; // 10MB
+
+    // 위치 변수
+    private readonly double position_x;
+    private readonly double position_y;
+
+    // 나무 모델
+    private readonly TreeModel model;
+
+    // 생성자
+    public DefaultTree(TreeModel model, double position_x, double position_y)
+    {
+        this.model = model;
         this.position_x = position_x;
         this.position_y = position_y;
 
         // 나무 객체를 생성하였으니 메모리 사용 크기 증가
         Memory.size += this.objSize;
+    }
+
+    // 나무의 위치 정보와 모델을 출력하기 위한 메서드
+    public void Render()
+    {
+        Debug.Log("x: " + position_x + " y: " + position_y + " 위치에 " + model.GetType() + " 나무 생성 완료");
     }
 }
 
