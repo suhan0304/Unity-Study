@@ -101,7 +101,7 @@ public static class TreeModelFactory
 public class Terrain : MonoBehaviour
 {
     // 지형 타일 크기
-    private const int CANVAS_SIZE = 10000;
+    public const int CANVAS_SIZE = 10000;
 
     // 나무를 렌더링하는 메서드
     public void Render(string type, float positionX, float positionY)
@@ -118,18 +118,18 @@ public class Terrain : MonoBehaviour
 
 public class Flyweight : MonoBehaviour
 {
+     private Terrain terrain;
+
     void Start()
     {
         // 지형 생성
-        Terrain terrain = new Terrain();
+        terrain = new Terrain();
 
         // 지형에 Oak 나무 5 그루 생성
         for (int i = 0; i < 5; i++)
         {
             terrain.Render(
                 "Oak", // type
-                new Mesh(), // mesh
-                new Texture2D(256, 256), // texture
                 Random.Range(0, Terrain.CANVAS_SIZE), // position_x
                 Random.Range(0, Terrain.CANVAS_SIZE)  // position_y
             );
@@ -140,8 +140,6 @@ public class Flyweight : MonoBehaviour
         {
             terrain.Render(
                 "Acacia", // type
-                new Mesh(), // mesh
-                new Texture2D(256, 256), // texture
                 Random.Range(0, Terrain.CANVAS_SIZE), // position_x
                 Random.Range(0, Terrain.CANVAS_SIZE)  // position_y
             );
@@ -152,8 +150,6 @@ public class Flyweight : MonoBehaviour
         {
             terrain.Render(
                 "Jungle", // type
-                new Mesh(), // mesh
-                new Texture2D(256, 256), // texture
                 Random.Range(0, Terrain.CANVAS_SIZE), // position_x
                 Random.Range(0, Terrain.CANVAS_SIZE)  // position_y
             );
