@@ -40,11 +40,11 @@ public class DefaultTree
     private readonly long objSize = 10; // 10MB
 
     // 위치 변수
-    private readonly double position_x;
-    private readonly double position_y;
+    public readonly double position_x;
+    public readonly double position_y;
 
     // 나무 모델
-    private readonly TreeModel model;
+    public readonly TreeModel model;
 
     // 생성자
     public DefaultTree(TreeModel model, double position_x, double position_y)
@@ -64,29 +64,55 @@ public class DefaultTree
     }
 }
 
+// FlyweightFactory
+public static class TreeModelFactory
+{
+    // Flyweight Pool - TreeModel 객체들을 Dictionary로 등록하여 캐싱
+    private static readonly Dictionary<string, TreeModel> cache = new Dictionary<string, TreeModel>(); // Thread-Safe
+
+    // static factory method
+    public static TreeModel GetInstance(string key)
+    {
+        // 캐시되어 있다면 반환
+        if (cache.ContainsKey(key))
+        {
+            return cache[key];
+        }
+        else
+        {
+            // 캐시되어 있지 않으면 나무 모델 객체를 새로 생성
+            TreeModel model = new TreeModel(
+                key,
+                new Mesh(),     // Unity에서 사용할 실제 Mesh
+                new Texture2D(1, 1) // Unity에서 사용할 실제 Texture
+            );
+
+            Debug.Log("-- 나무 모델 객체 새로 생성 완료 --");
+
+            // 캐시에 적재
+            cache[key] = model;
+
+            return model;
+        }
+    }
+}
 
 // user
-public class Terrain
+public class Terrain : MonoBehaviour
 {
     // 지형 타일 크기
-    public static readonly int CANVAS_SIZE = 10000;
+    private const int CANVAS_SIZE = 10000;
 
-    // 나무를 렌더링
-    public void Render(string type, Mesh mesh, Texture texture, double position_x, double position_y)
+    // 나무를 렌더링하는 메서드
+    public void Render(string type, float positionX, float positionY)
     {
-        // Random 객체 생성
-        System.Random rand = new System.Random();
+        // 1. 캐시되어 있는 나무 모델 객체 가져오기
+        TreeModel model = TreeModelFactory.GetInstance(type);
 
-        // 나무를 지형에 생성
-        DefaultTree tree = new DefaultTree(
-            type, // 나무 종류
-            mesh, // mesh
-            texture, // texture
-            Random.Range(0, CANVAS_SIZE), // position_x
-            Random.Range(0, CANVAS_SIZE)  // position_y
-        );
+        // 2. 재사용한 나무 모델 객체와 변화하는 속성인 좌표값으로 나무 생성
+        DefaultTree tree = new DefaultTree(model, positionX, positionY);
 
-        Debug.Log("x:" + tree.position_x + " y:" + tree.position_y + " 위치에 " + type + " 나무 생성 완료");
+        Debug.Log($"x: {tree.position_x} y: {tree.position_y} 위치에 {type} 나무 생성 완료");
     }
 }
 
