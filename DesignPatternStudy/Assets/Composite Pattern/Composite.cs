@@ -45,3 +45,21 @@ class Bag : ItemComponent {
         return name;
     }
 }
+
+class Item_Composite : ItemComponent {
+    string name;
+    int price;
+
+    public Item_Composite(string name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public string getName() {
+        return name;
+    }
+}
