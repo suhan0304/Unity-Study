@@ -95,13 +95,11 @@ public class Composite : MonoBehaviour {
 
         //----------------------------------------------------//
 
-        Composite composite = new Composite();
-
         // 가방 안에 있는 모든 아이템의 값어치 출력 ( 서브 가방에 있는 물건의 값어치 포함 )
-        composite.printPrice(bag_main);
+        printPrice(bag_main);
 
         // 가방 안에 있는 모든 아이템의 값어치 출력
-        composite.printPrice(bag_food);
+        printPrice(bag_food);
 
     }    
     public void printPrice(ItemComponent bag) {
