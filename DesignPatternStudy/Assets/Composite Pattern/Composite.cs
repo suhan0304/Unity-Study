@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 // Component 인터페이스
-interface ItemComponent {
+public interface ItemComponent {
     int getPrice();
     string getName();
 }
@@ -61,5 +61,51 @@ class Item_Composite : ItemComponent {
 
     public string getName() {
         return name;
+    }
+}
+
+
+
+public class Composite : MonoBehaviour {
+    public void Start() {
+        // 1. 메인 가방 인스턴스 생성
+        Bag bag_main = new Bag("메인 가방");
+
+        // 2. 아이템 인스턴스 생성
+        Item_Composite armor = new Item_Composite("갑옷", 250);
+        Item_Composite sword = new Item_Composite("장검", 500);
+
+        // 3. 메인 가방에는 모험에 필요한 무구 아이템만을 추가
+        bag_main.add(armor);
+        bag_main.add(sword);
+
+        // 4. 서브 가방 인스턴스 생성
+        Bag bag_food = new Bag("음식 가방");
+
+        // 5. 아이템 인스턴스 생성
+        Item_Composite apple = new Item_Composite("사과", 290);
+        Item_Composite Banana = new Item_Composite("바나나", 160);
+
+        // 6. 서브 가방에 음식 추가
+        bag_food.add(apple);
+        bag_food.add(Banana);
+
+        // 7. 메인 가방에 서브 가방 추가
+        bag_main.add(bag_food);
+
+        //----------------------------------------------------//
+
+        Composite composite = new Composite();
+
+        // 가방 안에 있는 모든 아이템의 값어치 출력 ( 서브 가방에 있는 물건의 값어치 포함 )
+        composite.printPrice(bag_main);
+
+        // 가방 안에 있는 모든 아이템의 값어치 출력
+        composite.printPrice(bag_food);
+
+    }    
+    public void printPrice(ItemComponent bag) {
+        int result = bag.getPrice();
+        Debug.Log(bag.getName() + "의 아이템 총합 : " + result + " 골드");
     }
 }
